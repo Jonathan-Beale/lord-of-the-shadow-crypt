@@ -11,7 +11,7 @@ func enter():
 
 func exit(new_state: State = null):
 	print("Exit Fall State")
-	player.velocity.x = 0.0
+	#player.velocity.x = 0.0
 	super(new_state)
 
 func process_input(event: InputEvent) -> State:
