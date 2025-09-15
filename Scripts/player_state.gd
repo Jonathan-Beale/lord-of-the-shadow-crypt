@@ -17,12 +17,29 @@ var fall_anim: String = "Fall"
 var punch_anim: String = "Punch"
 var kick_anim: String = "Kick"
 
-@export_group("States")
-@export var idle_state: PlayerState
-@export var walk_state: PlayerState
-@export var jump_state: PlayerState
-@export var fall_state: PlayerState
-@export var punch_state: PlayerState
+#@export_group("States")
+@onready var idle_state:  PlayerState = (
+	get_node_or_null(^"Idle") 
+		if get_node_or_null(^"Idle") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Idle")
+)
+@onready var walk_state:  PlayerState = (
+	get_node_or_null(^"Walk") 
+		if get_node_or_null(^"Walk") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Walk")
+)
+@onready var jump_state:  PlayerState = (
+	get_node_or_null(^"Jump") 
+		if get_node_or_null(^"Jump") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Jump")
+)
+@onready var fall_state: PlayerState = (
+	get_node_or_null(^"Fall") 
+		if get_node_or_null(^"Fall") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Fall")
+)
+
+#@onready var punch_state: PlayerState = get_owner().get_node(^"Punch")
 
 var sprite_flipped: bool = false
 

@@ -353,33 +353,17 @@ shape = SubResource("RectangleShape2D_b26j0")
 script = ExtResource("6_dw050")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
+[node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_b26j0")
-idle_state = NodePath(".")
-walk_state = NodePath("../Walk")
-jump_state = NodePath("../Jump")
-fall_state = NodePath("../Fall")
 
-[node name="Walk" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
+[node name="Walk" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_n7ghd")
-idle_state = NodePath("../Idle")
-walk_state = NodePath(".")
-jump_state = NodePath("../Jump")
-fall_state = NodePath("../Fall")
 
-[node name="Jump" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
+[node name="Jump" type="Node2D" parent="StateMachine"]
 script = ExtResource("23_qtqh7")
-idle_state = NodePath("../Idle")
-walk_state = NodePath("../Walk")
-jump_state = NodePath(".")
-fall_state = NodePath("../Fall")
 
-[node name="Fall" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fall_state")]
+[node name="Fall" type="Node2D" parent="StateMachine"]
 script = ExtResource("24_dx0e4")
-idle_state = NodePath("../Idle")
-walk_state = NodePath("../Walk")
-jump_state = NodePath("../Jump")
-fall_state = NodePath(".")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
