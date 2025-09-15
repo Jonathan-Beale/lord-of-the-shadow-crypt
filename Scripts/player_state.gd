@@ -7,6 +7,7 @@ const JUMP_FORCE: float = 450
 const AIR_SPEED: float = 1220
 const MOVE_SPEED: float = 820
 const MAX_SPEED: float = 160
+const DEADZONE := 0.15
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 9.8)
 
@@ -89,6 +90,12 @@ func process_physics(delta: float) -> State:
 		player.velocity.x = min(0.0, (max_x - player.global_position.x) / delta)
 
 	player.move_and_slide()
+	return null
+
+func process_input(event: InputEvent) -> State:
+	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
+		return null
+	super(event)
 	return null
 
 func get_move_dir() -> float:

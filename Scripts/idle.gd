@@ -1,6 +1,5 @@
 class_name PlayerIdleState
 extends PlayerState
-const DEADZONE := 0.15
 
 func enter():
 	print("Idle State")
@@ -14,9 +13,7 @@ func process_input(event: InputEvent) -> State:
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
 		return null
 	super(event)
-	print(event)
-	print(event.is_action_pressed(movement_key))
-	if event.is_action_pressed(movement_key):
+	if event.is_action_pressed(left_key) or event.is_action_pressed(right_key):
 		determine_sprite_flipped(event)
 		return walk_state
 	if event.is_action_pressed(jump_key):
