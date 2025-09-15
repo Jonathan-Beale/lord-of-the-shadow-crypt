@@ -26,9 +26,11 @@ func process_physics(delta: float) -> State:
 	return null
 
 func change_state(new_state: State):
-	print("Changing states")
+	#print("Changing states to ", State)
 	if not new_state: return null
-	if current_state: current_state.exit()
+	if current_state: current_state.exit(new_state)
 	current_state = new_state
 	if current_state:
 		current_state.enter()
+	#if current_state:
+		#current_state.enter()

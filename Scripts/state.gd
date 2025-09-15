@@ -1,10 +1,12 @@
 class_name State
 extends Node
 
+var label: String = "State"
+
 func init():
 	pass
 	
-func exit():
+func exit(new_state: State = null):
 	pass
 
 func enter():
