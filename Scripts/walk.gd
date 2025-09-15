@@ -12,11 +12,11 @@ func enter():
 
 func process_input(event: InputEvent) -> State:
 	super(event)
-	if event.is_action_pressed(movement_key): determine_sprite_flipped(event.as_text())
+	if event.is_action_pressed(movement_key): determine_sprite_flipped(event)
 	if event.is_action_pressed(jump_key):
 		return jump_state
 	#else: return idle_state
-	# if event.is_action_pressed(right_key): determine_sprite_flipped(event.as_text())
+	# if event.is_action_pressed(right_key): determine_sprite_flipped(event)
 	return null
 
 func process_physics(delta: float) -> State:
@@ -42,5 +42,6 @@ func get_move_dir() -> float:
 	return dir
 
 func exit(new_state: State = null):
-	player.velocity.x = 0.0
+	if new_state == idle_state:
+		player.velocity.x = 0.0
 	super(new_state)

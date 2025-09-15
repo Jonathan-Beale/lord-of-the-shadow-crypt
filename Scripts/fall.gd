@@ -17,7 +17,7 @@ func exit(new_state: State = null):
 func process_input(event: InputEvent) -> State:
 	super(event)
 	if event.is_action_pressed(movement_key):
-		determine_sprite_flipped(event.as_text())
+		determine_sprite_flipped(event)
 	return null
 
 func process_physics(delta: float) -> State:
