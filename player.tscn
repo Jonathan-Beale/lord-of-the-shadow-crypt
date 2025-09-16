@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://budu47d0iy88e"]
+[gd_scene load_steps=45 format=3 uid="uid://budu47d0iy88e"]
 
 [ext_resource type="Texture2D" uid="uid://fyqj2g7nvmtm" path="res://Assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://c37wd5nr8eia" path="res://Scripts/player.gd" id="1_sweqy"]
@@ -318,11 +318,40 @@ tracks/1/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
+[sub_resource type="Animation" id="Animation_tkwlq"]
+resource_name = "Kick"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Kick"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7ghd"]
 _data = {
 &"Fall": SubResource("Animation_iruf7"),
 &"Idle": SubResource("Animation_dw050"),
 &"Jump": SubResource("Animation_2wuci"),
+&"Kick": SubResource("Animation_tkwlq"),
 &"Punch": SubResource("Animation_khis8"),
 &"RESET": SubResource("Animation_b26j0"),
 &"Walk": SubResource("Animation_q13i1")

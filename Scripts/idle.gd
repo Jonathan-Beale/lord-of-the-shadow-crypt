@@ -20,5 +20,7 @@ func process_input(event: InputEvent) -> State:
 		return jump_state
 	if event.is_action_pressed(punch_key):
 		return punch_state
+	if event.is_action_pressed(kick_key):
+		return kick_state
 
 	return null

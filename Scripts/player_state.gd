@@ -62,27 +62,6 @@ var punch_key: String = "attack_1"
 var kick_key: String = "attack_2"
 
 func determine_sprite_flipped(event: InputEvent) -> void:
-	#if event.is_action_pressed(left_key): sprite_flipped = true
-	#else: sprite_flipped = false
-	#if event.is_action_pressed(right_key): 
-		#sprite_flipped = false
-		#player.sprite.flip_h = sprite_flipped
-		#return
-	#elif event.is_action_pressed(left_key):
-		#sprite_flipped = true
-		#player.sprite.flip_h = sprite_flipped
-		#return
-	#
-	#if event.is_action_released(right_key):
-		#if not event.is_action_released(left_key):
-			#sprite_flipped = true
-			#player.sprite.flip_h = sprite_flipped
-			#return
-	#elif event.is_action_released(left_key):
-		#sprite_flipped = false
-		#player.sprite.flip_h = sprite_flipped
-		#return
-		
 	if player.velocity.x > 0:
 		sprite_flipped = false
 	elif player.velocity.x < 0:
