@@ -1,12 +1,12 @@
-class_name PlayerIdleState
+class_name PlayerKickState
 extends PlayerState
 
 func enter():
-	print("Idle State")
-	player.animation.play(idle_anim)
+	print("Kick State")
+	player.animation.play(kick_anim)
 
 func exit(new_state: State = null):
-	print("Exit Idle State")
+	print("Exit Kick State")
 	super(new_state)
 
 func process_input(event: InputEvent) -> State:
@@ -18,7 +18,5 @@ func process_input(event: InputEvent) -> State:
 		return walk_state
 	if event.is_action_pressed(jump_key):
 		return jump_state
-	if event.is_action_pressed(punch_key):
-		return punch_state
 
 	return null

@@ -17,6 +17,7 @@ var jump_anim: String = "Jump"
 var fall_anim: String = "Fall"
 var punch_anim: String = "Punch"
 var kick_anim: String = "Kick"
+var attacking: bool = false
 
 #@export_group("States")
 @onready var idle_state:  PlayerState = (
@@ -39,8 +40,17 @@ var kick_anim: String = "Kick"
 		if get_node_or_null(^"Fall") 
 		else get_owner().get_node(^"StateMachine").get_node(^"Fall")
 )
+@onready var punch_state: PlayerState = (
+	get_node_or_null(^"Punch") 
+		if get_node_or_null(^"Punch") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Punch")
+)
 
-#@onready var punch_state: PlayerState = get_owner().get_node(^"Punch")
+@onready var kick_state: PlayerState = (
+	get_node_or_null(^"Kick") 
+		if get_node_or_null(^"Kick") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Kick")
+)
 
 var sprite_flipped: bool = false
 
@@ -54,10 +64,30 @@ var kick_key: String = "attack_2"
 func determine_sprite_flipped(event: InputEvent) -> void:
 	#if event.is_action_pressed(left_key): sprite_flipped = true
 	#else: sprite_flipped = false
-	if event.is_action_pressed(right_key): sprite_flipped = false
-	else: sprite_flipped = true
+	#if event.is_action_pressed(right_key): 
+		#sprite_flipped = false
+		#player.sprite.flip_h = sprite_flipped
+		#return
+	#elif event.is_action_pressed(left_key):
+		#sprite_flipped = true
+		#player.sprite.flip_h = sprite_flipped
+		#return
+	#
+	#if event.is_action_released(right_key):
+		#if not event.is_action_released(left_key):
+			#sprite_flipped = true
+			#player.sprite.flip_h = sprite_flipped
+			#return
+	#elif event.is_action_released(left_key):
+		#sprite_flipped = false
+		#player.sprite.flip_h = sprite_flipped
+		#return
+		
+	if player.velocity.x > 0:
+		sprite_flipped = false
+	elif player.velocity.x < 0:
+		sprite_flipped = true
 	player.sprite.flip_h = sprite_flipped
-	pass
 
 func process_physics(delta: float) -> State:
 	super(delta)
@@ -70,6 +100,8 @@ func process_physics(delta: float) -> State:
 	var ground_speed := MOVE_SPEED
 	var air_speed := AIR_SPEED
 	var target_speed := (ground_speed * dir) if player.is_on_floor() else (air_speed * dir)
+	if attacking:
+		target_speed = 0.0
 
 	# accelerate horizontally toward target (units: px/s^2)
 	const ACCEL := 2000.0
@@ -95,7 +127,10 @@ func process_physics(delta: float) -> State:
 func process_input(event: InputEvent) -> State:
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
 		return null
-	super(event)
+		
+	if not event.is_action_released(left_key) or not event.is_action_released(right_key):
+		if not attacking:
+			determine_sprite_flipped(event)
 	return null
 
 func get_move_dir() -> float:
