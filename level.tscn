@@ -564,6 +564,6 @@ layer_3/z_index = -2
 zoom = Vector2(3, 3)
 
 [node name="Player2" parent="." instance=ExtResource("2_0b4ue")]
-position = Vector2(132, 2)
 
 [node name="Player" parent="." instance=ExtResource("2_oi3di")]
+position = Vector2(-94, 10)

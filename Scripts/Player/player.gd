@@ -14,11 +14,15 @@ var controls = {
 	kick="attack_2",
 }
 
+var team: String = "Player"
+
 # a function that updates the controls for this class and 
-func update_controls():
-	return
+func update_controls(new_controls: Object = null):
+	if new_controls:
+		controls = new_controls
 
 func _ready():
+	self.add_to_group(team)
 	state_machine.init()
 
 func _process(delta):

@@ -20,6 +20,10 @@ func process_input(event: InputEvent) -> State:
 		determine_sprite_flipped(event)
 	if event.is_action_released(player.controls.up):
 		player.velocity.y = 0.0
+	if event.is_action_pressed(player.controls.punch):
+		return punch_state
+	if event.is_action_pressed(player.controls.kick):
+		return kick_state
 	return null
 
 func process_physics(delta: float) -> State:

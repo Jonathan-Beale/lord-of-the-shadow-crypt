@@ -18,6 +18,10 @@ func process_input(event: InputEvent) -> State:
 	super(event)
 	if not event.is_action_released(player.controls.right) or not event.is_action_released(player.controls.left):
 		determine_sprite_flipped(event)
+	if event.is_action_pressed(player.controls.punch):
+		return punch_state
+	if event.is_action_pressed(player.controls.kick):
+		return kick_state
 	return null
 
 func process_physics(delta: float) -> State:

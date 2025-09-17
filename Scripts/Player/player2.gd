@@ -2,6 +2,7 @@ extends Player
 
 
 func _ready():
+	team = "Player_2"
 	super()
 	controls = {
 		left="p2_left",

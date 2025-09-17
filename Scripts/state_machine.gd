@@ -27,7 +27,7 @@ func process_physics(delta: float) -> State:
 
 func change_state(new_state: State):
 	if not new_state: return null
-	if new_state == starting_state: print("P2 Entering idle state")
+	#if new_state == starting_state: print("P2 Entering idle state")
 	if current_state: current_state.exit(new_state)
 	current_state = new_state
 	if current_state:

@@ -18,6 +18,7 @@ var jump_anim: String = "Jump"
 var fall_anim: String = "Fall"
 var punch_anim: String = "Punch"
 var kick_anim: String = "Kick"
+var pain_anim: String = "Pain"
 var attacking: bool = false
 
 #@export_group("States")
@@ -57,8 +58,10 @@ var sprite_flipped: bool = false
 
 func determine_sprite_flipped(_event: InputEvent) -> void:
 	if player.velocity.x > 0:
+		player.state_machine.scale.x = 1
 		sprite_flipped = false
 	elif player.velocity.x < 0:
+		player.state_machine.scale.x = -1
 		sprite_flipped = true
 	player.sprite.flip_h = sprite_flipped
 
@@ -74,11 +77,12 @@ func process_physics(delta: float) -> State:
 	var ground_speed := MOVE_SPEED
 	var air_speed := AIR_SPEED
 	var target_speed := (ground_speed * dir) if player.is_on_floor() else (air_speed * dir)
-	if attacking:
+	if attacking and player.is_on_floor():
 		target_speed = 0.0
 
 	# accelerate horizontally toward target (units: px/s^2)
 	const ACCEL := 2000.0
+	#if not attacking or not player.is_on_floor():?
 	player.velocity.x = move_toward(player.velocity.x, target_speed, ACCEL * delta)
 
 	# hard cap to max speed
