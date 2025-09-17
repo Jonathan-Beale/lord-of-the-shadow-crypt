@@ -13,14 +13,14 @@ func process_input(event: InputEvent) -> State:
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
 		return null
 	super(event)
-	if event.is_action_pressed(left_key) or event.is_action_pressed(right_key):
+	if event.is_action_pressed(player.controls.left) or event.is_action_pressed(player.controls.right):
 		determine_sprite_flipped(event)
 		return walk_state
-	if event.is_action_pressed(jump_key):
+	if event.is_action_pressed(player.controls.up):
 		return jump_state
-	if event.is_action_pressed(punch_key):
+	if event.is_action_pressed(player.controls.punch):
 		return punch_state
-	if event.is_action_pressed(kick_key):
+	if event.is_action_pressed(player.controls.kick):
 		return kick_state
 
 	return null

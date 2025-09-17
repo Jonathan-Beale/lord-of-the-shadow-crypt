@@ -12,13 +12,13 @@ func enter():
 
 func process_input(event: InputEvent) -> State:
 	super(event)
-	if event.is_action_pressed(jump_key):
+	if event.is_action_pressed(player.controls.up):
 		return jump_state
-	if event.is_action_pressed(punch_key):
+	if event.is_action_pressed(player.controls.punch):
 		return punch_state
-	if event.is_action_pressed(kick_key):
+	if event.is_action_pressed(player.controls.kick):
 		return kick_state
-	if event.is_action_released(right_key) and event.is_action_released(left_key):
+	if event.is_action_released(player.controls.right) and event.is_action_released(player.controls.left):
 		return idle_state
 	return null
 
@@ -34,7 +34,7 @@ func do_move(move_dir: float) -> void:
 		player.velocity.x += move_dir * SPEED
 
 func get_move_dir() -> float:
-	var dir = Input.get_axis(left_key, right_key)
+	var dir = Input.get_axis(player.controls.left, player.controls.right)
 	return dir
 
 func exit(new_state: State = null):

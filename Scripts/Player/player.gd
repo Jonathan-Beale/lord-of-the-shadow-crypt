@@ -1,9 +1,22 @@
 class_name Player
-extends CharacterBody2D
+extends UnitEntity
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation: AnimationPlayer = $Animation
 @onready var sprite: AnimatedSprite2D = $Sprite
+
+var controls = {
+	left="ui_left",
+	right="ui_right",
+	up="ui_up",
+	down="ui_down",
+	punch="attack_1",
+	kick="attack_2",
+}
+
+# a function that updates the controls for this class and 
+func update_controls():
+	return
 
 func _ready():
 	state_machine.init()

@@ -1,7 +1,8 @@
 class_name PlayerState
 extends State
 
-@onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var player: Player = get_owner()
+#@onready var player: Player = get_tree().get_first_node_in_group("Player")
 
 const JUMP_FORCE: float = 450
 const AIR_SPEED: float = 1220
@@ -54,14 +55,7 @@ var attacking: bool = false
 
 var sprite_flipped: bool = false
 
-var movement_key: String = "Movement"
-var left_key: String = "ui_left"
-var right_key: String = "ui_right"
-var jump_key: String = "ui_up"
-var punch_key: String = "attack_1"
-var kick_key: String = "attack_2"
-
-func determine_sprite_flipped(event: InputEvent) -> void:
+func determine_sprite_flipped(_event: InputEvent) -> void:
 	if player.velocity.x > 0:
 		sprite_flipped = false
 	elif player.velocity.x < 0:
@@ -69,11 +63,12 @@ func determine_sprite_flipped(event: InputEvent) -> void:
 	player.sprite.flip_h = sprite_flipped
 
 func process_physics(delta: float) -> State:
+	#print("processing p2 physics")
 	super(delta)
 	player.velocity.y += gravity * delta
 
 
-	var dir := Input.get_axis(left_key, right_key)
+	var dir := Input.get_axis(player.controls.left, player.controls.right)
 
 	# pick target horizontal speed (per second)
 	var ground_speed := MOVE_SPEED
@@ -107,13 +102,13 @@ func process_input(event: InputEvent) -> State:
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
 		return null
 		
-	if not event.is_action_released(left_key) or not event.is_action_released(right_key):
+	if not event.is_action_released(player.controls.left) or not event.is_action_released(player.controls.right):
 		if not attacking:
 			determine_sprite_flipped(event)
 	return null
 
 func get_move_dir() -> float:
-	var dir = Input.get_axis(left_key, right_key)
+	var dir = Input.get_axis(player.controls.left, player.controls.right)
 	#print("Direction: ",  dir)
 	return dir
 

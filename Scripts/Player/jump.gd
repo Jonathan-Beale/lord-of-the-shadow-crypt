@@ -16,9 +16,9 @@ func exit(new_state: State = null):
 
 func process_input(event: InputEvent) -> State:
 	super(event)
-	if event.is_action_pressed(movement_key):
+	if not event.is_action_released(player.controls.right) or not event.is_action_released(player.controls.left):
 		determine_sprite_flipped(event)
-	if event.is_action_released(jump_key):
+	if event.is_action_released(player.controls.up):
 		player.velocity.y = 0.0
 	return null
 
@@ -33,6 +33,6 @@ func do_move(move_dir: float) -> void:
 	player.velocity.x += move_dir * AIR_SPEED
 
 func get_move_dir() -> float:
-	var dir = Input.get_axis(left_key, right_key)
+	var dir = Input.get_axis(player.controls.left, player.controls.right)
 	#print("Direction: ",  dir)
 	return dir

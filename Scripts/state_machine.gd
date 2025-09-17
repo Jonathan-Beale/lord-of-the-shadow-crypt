@@ -3,7 +3,7 @@ extends Node
 
 var current_state: State
 
-@export var starting_state: State
+@onready var starting_state: State = $Idle
 
 func init(): change_state(starting_state)
 
@@ -26,11 +26,9 @@ func process_physics(delta: float) -> State:
 	return null
 
 func change_state(new_state: State):
-	#print("Changing states to ", State)
 	if not new_state: return null
+	if new_state == starting_state: print("P2 Entering idle state")
 	if current_state: current_state.exit(new_state)
 	current_state = new_state
 	if current_state:
 		current_state.enter()
-	#if current_state:
-		#current_state.enter()
