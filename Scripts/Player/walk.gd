@@ -7,7 +7,7 @@ var stopping = false
 
 func enter():
 	super()
-	print("Walk State")
+	#print("Walk State")
 	player.animation.play(walk_anim)
 
 func process_input(event: InputEvent) -> State:

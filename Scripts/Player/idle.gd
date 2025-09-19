@@ -2,11 +2,11 @@ class_name PlayerIdleState
 extends PlayerState
 
 func enter():
-	print("Idle State")
+	#print("Idle State")
 	player.animation.play(idle_anim)
 
 func exit(new_state: State = null):
-	print("Exit Idle State")
+	#print("Exit Idle State")
 	super(new_state)
 
 func process_input(event: InputEvent) -> State:

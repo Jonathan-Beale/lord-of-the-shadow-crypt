@@ -8,3 +8,4 @@ func enter():
 
 func _ready():
 	hitbox.DAMAGE = 40
+	hitbox.KNOCKBACK = 40

@@ -1,6 +1,5 @@
 extends Player
 
-
 func _ready():
 	team = "Player_2"
 	super()

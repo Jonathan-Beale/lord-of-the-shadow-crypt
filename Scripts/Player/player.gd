@@ -23,9 +23,11 @@ func update_controls(new_controls: Object = null):
 
 func _ready():
 	self.add_to_group(team)
+	print(team)
 	state_machine.init()
 
 func _process(delta):
+	super(delta)
 	state_machine.process_frame(delta)
 
 func _physics_process(delta):

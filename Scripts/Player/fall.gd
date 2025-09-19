@@ -5,12 +5,12 @@ extends PlayerState
 #const AIR_SPEED: float = 20.0
 
 func enter():
-	print("Fall State")
+	#print("Fall State")
 	#player.velocity.y = JUMP_FORCE
 	player.animation.play(jump_anim)
 
 func exit(new_state: State = null):
-	print("Exit Fall State")
+	#print("Exit Fall State")
 	#player.velocity.x = 0.0
 	super(new_state)
 

@@ -1,12 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm6i5evldlu5p"]
+[gd_scene load_steps=5 format=3 uid="uid://b7qspmk8yj07b"]
 
-[ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="1_vonw3"]
-[ext_resource type="PackedScene" uid="uid://c8j7rall7eqqt" path="res://player_2.tscn" id="2_0b4ue"]
-[ext_resource type="PackedScene" uid="uid://budu47d0iy88e" path="res://player.tscn" id="2_oi3di"]
-[ext_resource type="PackedScene" uid="uid://b7qspmk8yj07b" path="res://fight_ui.tscn" id="4_0b4ue"]
+[ext_resource type="Script" uid="uid://c7x33sk440nm8" path="res://fight_ui.gd" id="1_d0ev2"]
+[ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="1_ig3kv"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oi3di"]
-texture = ExtResource("1_vonw3")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0ev2"]
+texture = ExtResource("1_ig3kv")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -543,16 +541,58 @@ texture = ExtResource("1_vonw3")
 9:22/0 = 0
 9:22/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="TileSet" id="TileSet_f2txt"]
+[sub_resource type="TileSet" id="TileSet_aq1nk"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_oi3di")
+sources/0 = SubResource("TileSetAtlasSource_d0ev2")
 
-[node name="Level" type="Node2D"]
+[node name="FightUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d0ev2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -216.0
+offset_top = -132.0
+offset_right = 214.0
+offset_bottom = -92.0
+color = Color(0.294118, 0.294118, 0.294118, 0.827451)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 12.0
+offset_right = 167.0
+offset_bottom = 33.0
+
+[node name="P1HealthBar" type="ColorRect" parent="ColorRect/ColorRect"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 152.0
+offset_bottom = 22.0
+color = Color(0.611919, 0, 0.0204109, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+offset_left = 264.0
+offset_top = 11.0
+offset_right = 414.0
+offset_bottom = 32.0
+
+[node name="P2HealthBar" type="ColorRect" parent="ColorRect/ColorRect2"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 152.0
+offset_bottom = 22.0
+color = Color(0.611919, 0, 0.0204109, 1)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
-tile_set = SubResource("TileSet_f2txt")
+tile_set = SubResource("TileSet_aq1nk")
 format = 2
 layer_0/name = "foreground"
 layer_0/tile_data = PackedInt32Array(327667, 393216, 20, 393203, 393216, 21, 458739, 393216, 22, 327668, 458752, 20, 393204, 458752, 21, 458740, 458752, 22, 327669, 524288, 20, 393205, 524288, 21, 458741, 524288, 22, 327670, 589824, 20, 393206, 589824, 21, 458742, 589824, 22, 327671, 196608, 20, 393207, 196608, 21, 458743, 196608, 22, 327672, 262144, 20, 393208, 262144, 21, 458744, 262144, 22, 327673, 327680, 20, 393209, 327680, 21, 458745, 327680, 22, 327674, 393216, 20, 393210, 393216, 21, 458746, 393216, 22, 327675, 458752, 20, 393211, 458752, 21, 458747, 458752, 22, 327676, 524288, 20, 393212, 524288, 21, 458748, 524288, 22, 327677, 589824, 20, 393213, 589824, 21, 458749, 589824, 22, 327678, 196608, 20, 393214, 196608, 21, 458750, 196608, 22, 327679, 262144, 20, 393215, 262144, 21, 458751, 262144, 22, 262144, 327680, 20, 327680, 327680, 21, 393216, 327680, 22, 262145, 393216, 20, 327681, 393216, 21, 393217, 393216, 22, 262146, 458752, 20, 327682, 458752, 21, 393218, 458752, 22, 262147, 524288, 20, 327683, 524288, 21, 393219, 524288, 22, 262148, 589824, 20, 327684, 589824, 21, 393220, 589824, 22, 262149, 196608, 20, 327685, 196608, 21, 393221, 196608, 22, 262150, 262144, 20, 327686, 262144, 21, 393222, 262144, 22, 262151, 327680, 20, 327687, 327680, 21, 393223, 327680, 22, 262152, 393216, 20, 327688, 393216, 21, 393224, 393216, 22, 262153, 458752, 20, 327689, 458752, 21, 393225, 458752, 22, 262154, 524288, 20, 327690, 524288, 21, 393226, 524288, 22, 262155, 589824, 20, 327691, 589824, 21, 393227, 589824, 22, 262156, 196608, 20, 327692, 196608, 21, 393228, 196608, 22, 262157, 196608, 20, 327693, 196608, 21, 393229, 196608, 22, 262158, 262144, 20, 327694, 262144, 21, 393230, 262144, 22, 262159, 327680, 20, 327695, 327680, 21, 393231, 327680, 22, 262160, 393216, 20, 327696, 393216, 21, 393232, 393216, 22, 262161, 458752, 20, 327697, 458752, 21, 393233, 458752, 22, 262162, 524288, 20, 327698, 524288, 21, 393234, 524288, 22, 262163, 589824, 20, 327699, 589824, 21, 393235, 589824, 22, 327660, 196608, 20, 393196, 196608, 21, 458732, 196608, 22, 327661, 262144, 20, 393197, 262144, 21, 458733, 262144, 22, 327662, 327680, 20, 393198, 327680, 21, 458734, 327680, 22, 327663, 393216, 20, 393199, 393216, 21, 458735, 393216, 22, 327664, 458752, 20, 393200, 458752, 21, 458736, 458752, 22, 327665, 524288, 20, 393201, 524288, 21, 458737, 524288, 22, 327666, 589824, 20, 393202, 589824, 21, 458738, 589824, 22)
@@ -561,13 +601,3 @@ layer_1/tile_data = PackedInt32Array(-65549, 327680, 14, -13, 327680, 15, 65523,
 layer_2/name = "props"
 layer_3/name = "backdrop"
 layer_3/z_index = -2
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(3, 3)
-
-[node name="Player2" parent="." instance=ExtResource("2_0b4ue")]
-
-[node name="Player" parent="." instance=ExtResource("2_oi3di")]
-position = Vector2(-92, -25)
-
-[node name="FightUI" parent="." instance=ExtResource("4_0b4ue")]

@@ -6,6 +6,7 @@ extends HurtBox
 @onready var StateMachine: StateMachine = $"../.."
 var hitting_area: HitBox
 
+
 func on_area_entered(hitbox: HitBox = null) -> void:
 	if hitbox == null: return
 	var hb_owner = hitbox.get_owner()
@@ -16,5 +17,6 @@ func on_area_entered(hitbox: HitBox = null) -> void:
 	hitting_area = hitbox
 	super(hitbox)
 	StateMachine.change_state(pain_state)
-	player.take_damage(hitbox.DAMAGE)
+	hitbox.trigger_hit(player)
+	#player.take_damage(hitbox.DAMAGE)
 	print(player.current_health)
