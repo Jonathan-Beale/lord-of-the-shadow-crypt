@@ -39,7 +39,7 @@
 [ext_resource type="Script" uid="uid://c720xug04devv" path="res://Scripts/hit_box.gd" id="35_hl5qd"]
 [ext_resource type="Script" uid="uid://dir5xrsckh3g4" path="res://Scripts/Player/pain.gd" id="36_khis8"]
 [ext_resource type="Script" uid="uid://dniyih0pus8wa" path="res://Scripts/Player/player_hurt_box.gd" id="39_pgbbb"]
-[ext_resource type="Script" uid="uid://con0qofka8t06" path="res://Scripts/item.gd" id="40_331ug"]
+[ext_resource type="Script" uid="uid://cde1qw6rlg036" path="res://Scripts/Items/Wearables/pyrogauntlet.gd" id="40_331ug"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
@@ -499,7 +499,6 @@ disabled = true
 script = ExtResource("34_hl5qd")
 
 [node name="HitBox" type="Area2D" parent="StateMachine/Kick"]
-visible = false
 script = ExtResource("35_hl5qd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Kick/HitBox"]
@@ -511,7 +510,6 @@ disabled = true
 script = ExtResource("36_khis8")
 
 [node name="HurtBox" type="Area2D" parent="StateMachine/Pain"]
-visible = false
 script = ExtResource("39_pgbbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Pain/HurtBox"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm6i5evldlu5p"]
+[gd_scene load_steps=6 format=3 uid="uid://bm6i5evldlu5p"]
 
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="1_vonw3"]
-[ext_resource type="PackedScene" uid="uid://c8j7rall7eqqt" path="res://player_2.tscn" id="2_0b4ue"]
 [ext_resource type="PackedScene" uid="uid://budu47d0iy88e" path="res://player.tscn" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://b7qspmk8yj07b" path="res://fight_ui.tscn" id="4_0b4ue"]
 
@@ -565,9 +564,10 @@ layer_3/z_index = -2
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
 
-[node name="Player2" parent="." instance=ExtResource("2_0b4ue")]
-
 [node name="Player" parent="." instance=ExtResource("2_oi3di")]
 position = Vector2(-92, -25)
 
 [node name="FightUI" parent="." instance=ExtResource("4_0b4ue")]
+
+[node name="Player2" parent="." instance=ExtResource("2_oi3di")]
+position = Vector2(-184, -50)

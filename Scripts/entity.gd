@@ -1,4 +1,4 @@
-class_name UnitEntity
+class_name Fighter
 extends CharacterBody2D
 
 const START__HEALTH: float = 1000.0
@@ -12,6 +12,51 @@ var resists = {
 	"physical": 100
 }
 
+var global_damage_mods: Array = []
+
+class DamageMod:
+	var owner: Fighter
+	var source: Fighter
+	var amount: float
+	var type: String
+	var dot: bool
+	var dot_duration: float
+	func _init(
+			dmg_source: Fighter = null,
+			dmg_amount: float = 0.0,
+			dmg_type: String = "Physical",
+			dmg_dot: bool = false,
+			dmg_duration: float = 0.0
+		):
+		source = dmg_source
+		amount = dmg_amount
+		type = dmg_type
+		dot = dmg_dot
+		dot_duration = dmg_duration
+
+	func apply(attacker: Fighter = null, target: Fighter = null):
+		var credited_source := source if source else attacker
+		if not dot:
+			target.take_damage(amount, type)
+		else:
+			target.add_dot(amount, dot_duration, type, credited_source)
+
+	func add(to_entity: Fighter):
+		if owner == to_entity: return
+		if owner != null:
+			owner.global_damage_mods.erase(self)
+		owner = to_entity
+		if not owner.global_damage_mods.has(self):
+			owner.global_damage_mods.append(self)
+
+	func remove():
+		if owner == null:
+			return
+		owner.global_damage_mods.erase(self)
+		owner = null
+
+	func delete():
+		self.free()
 
 # --- DoT system --------------------------------------------------------------
 # One manager list, updated once per frame. No Timer nodes per effect.
@@ -83,7 +128,7 @@ func _process(delta: float) -> void:
 	_update_dots(delta)
 
 func _update_dots(delta: float) -> void:
-	print("Updating dot")
+	#print("Updating dot")
 	for i in range(_dots.size() - 1, -1, -1):
 		var d = _dots[i]
 		d.tick_accum += delta
@@ -118,6 +163,13 @@ func take_damage(amount: float, type: String = "physical") -> void:
 	current_health -= amount * resist_quotient
 	if current_health <= 0.0:
 		die()
+
+func deal_damage(hitbox: HitBox = null, target: Fighter = null):
+	if not hitbox or not target:
+		return
+	target.take_damage(hitbox.DAMAGE, "physical")
+	for mod in global_damage_mods:
+		mod.apply(self, target)
 
 func die() -> void:
 	queue_free()
