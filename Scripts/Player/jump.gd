@@ -1,12 +1,12 @@
 class_name PlayerJumpState
 extends PlayerState
 
-#const JUMP_FORCE: float = 300
-#const AIR_SPEED: float = 20.0
+#const jump_force: float = 300
+#const air_speed: float = 20.0
 
 func enter():
 	#print("Jump State")
-	player.velocity.y = -JUMP_FORCE
+	player.velocity.y = -player.jump_force
 	player.animation.play(jump_anim)
 
 func exit(new_state: State = null):
@@ -34,7 +34,7 @@ func process_physics(delta: float) -> State:
 	return super(delta)
 	
 func do_move(move_dir: float) -> void:
-	player.velocity.x += move_dir * AIR_SPEED
+	player.velocity.x += move_dir * player.air_speed
 
 func get_move_dir() -> float:
 	var dir = Input.get_axis(player.controls.left, player.controls.right)

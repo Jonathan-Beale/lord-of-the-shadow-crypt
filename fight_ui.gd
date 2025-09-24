@@ -8,8 +8,8 @@ extends Control
 const HEALTH_BAR_LENGTH = 150
 
 func _ready():
-	p1.current_health = p1.START__HEALTH / 2
-	p2.current_health = p2.START__HEALTH / 2
+	p1.current_health = p1.START_HEALTH / 2
+	p2.current_health = p2.START_HEALTH / 2
 
 func _process(delta: float) -> void:
 	if p1:

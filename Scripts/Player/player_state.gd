@@ -4,10 +4,6 @@ extends State
 @onready var player: Player = get_owner()
 #@onready var player: Player = get_tree().get_first_node_in_group("Player")
 
-const JUMP_FORCE: float = 450
-const AIR_SPEED: float = 1220
-const MOVE_SPEED: float = 820
-const MAX_SPEED: float = 160
 const DEADZONE := 0.15
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 9.8)
@@ -74,8 +70,8 @@ func process_physics(delta: float) -> State:
 	var dir := Input.get_axis(player.controls.left, player.controls.right)
 
 	# pick target horizontal speed (per second)
-	var ground_speed := MOVE_SPEED
-	var air_speed := AIR_SPEED
+	var ground_speed := player.move_speed
+	var air_speed := player.air_speed
 	var target_speed := (ground_speed * dir) if player.is_on_floor() else (air_speed * dir)
 	if attacking and player.is_on_floor():
 		target_speed = 0.0
@@ -86,7 +82,7 @@ func process_physics(delta: float) -> State:
 	player.velocity.x = move_toward(player.velocity.x, target_speed, ACCEL * delta)
 
 	# hard cap to max speed
-	player.velocity.x = clamp(player.velocity.x, -MAX_SPEED, MAX_SPEED)
+	player.velocity.x = clamp(player.velocity.x, -player.max_speed, player.max_speed)
 
 	# --- edge clamp (predict next step) ---
 	var min_x := -180.0

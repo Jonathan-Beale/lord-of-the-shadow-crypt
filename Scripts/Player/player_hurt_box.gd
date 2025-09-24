@@ -17,7 +17,6 @@ func on_area_entered(hitbox: HitBox = null) -> void:
 	hitting_area = hitbox
 	super(hitbox)
 	StateMachine.change_state(pain_state)
-	
-	hitbox.trigger_hit(player)
+	hitbox.trigger_hit(player, pain_state)
 	#player.take_damage(hitbox.DAMAGE)
 	print(player.current_health)

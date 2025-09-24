@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://budu47d0iy88e"]
+[gd_scene load_steps=55 format=3 uid="uid://budu47d0iy88e"]
 
 [ext_resource type="Texture2D" uid="uid://fyqj2g7nvmtm" path="res://Assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://c37wd5nr8eia" path="res://Scripts/Player/player.gd" id="1_sweqy"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://dir5xrsckh3g4" path="res://Scripts/Player/pain.gd" id="36_khis8"]
 [ext_resource type="Script" uid="uid://dniyih0pus8wa" path="res://Scripts/Player/player_hurt_box.gd" id="39_pgbbb"]
 [ext_resource type="Script" uid="uid://cde1qw6rlg036" path="res://Scripts/Items/Wearables/pyrogauntlet.gd" id="40_331ug"]
+[ext_resource type="Script" uid="uid://bp4mq8cfyukhn" path="res://Scripts/Items/Wearables/ogreplate.gd" id="41_ny14h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
@@ -523,3 +524,6 @@ libraries = {
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("40_331ug")
+
+[node name="Node2D2" type="Node2D" parent="."]
+script = ExtResource("41_ny14h")

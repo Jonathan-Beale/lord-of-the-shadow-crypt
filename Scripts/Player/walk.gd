@@ -2,7 +2,7 @@ class_name PlayerWalkState
 extends PlayerState
 
 const SPEED: float = 5.0
-#const MAX_SPEED: float = 180.0
+#const max_speed: float = 180.0
 var stopping = false
 
 func enter():
@@ -30,7 +30,7 @@ func process_physics(delta: float) -> State:
 
 
 func do_move(move_dir: float) -> void:
-	if abs(player.velocity.x) < MAX_SPEED:
+	if abs(player.velocity.x) < player.max_speed:
 		player.velocity.x += move_dir * SPEED
 
 func get_move_dir() -> float:

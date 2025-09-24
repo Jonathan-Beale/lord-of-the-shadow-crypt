@@ -43,8 +43,6 @@ var teams = [
 	"Team 1",
 	"Team 2",
 ]
-
-
 var controls = {
 	left="ui_left",
 	right="ui_right",

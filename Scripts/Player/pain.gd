@@ -2,6 +2,10 @@ class_name PlayerPainState
 extends PlayerState
 
 var has_pained: bool
+
+var knockback: float = 10
+var knockback_vector: Vector2 = Vector2.ZERO
+
 @onready var hurt_box: PlayerHurtBox = $"HurtBox"
 
 func enter():
@@ -36,10 +40,9 @@ func exit(new_state: State = null):
 	return new_state
 
 func apply_knockback():
-	var push_dir: Vector2 = hurt_box.hitting_area.collision_shape.global_position - self.global_position
-	push_dir.y = 0
-	push_dir = push_dir.normalized()
-	var push_mod = push_dir.x * hurt_box.hitting_area.KNOCKBACK
+	knockback_vector.y = 0
+	knockback_vector = knockback_vector.normalized()
+	var push_mod = knockback_vector.x * knockback
 	#print(push_mod)
 	player.velocity.x -= push_mod
 	player.move_and_slide()
