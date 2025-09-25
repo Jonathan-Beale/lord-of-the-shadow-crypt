@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm6i5evldlu5p"]
+[gd_scene load_steps=7 format=3 uid="uid://bm6i5evldlu5p"]
 
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="1_vonw3"]
 [ext_resource type="PackedScene" uid="uid://budu47d0iy88e" path="res://player.tscn" id="2_oi3di"]
 [ext_resource type="PackedScene" uid="uid://b7qspmk8yj07b" path="res://fight_ui.tscn" id="4_0b4ue"]
+[ext_resource type="PackedScene" uid="uid://7n1snqs1obpi" path="res://enemy.tscn" id="4_f2txt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oi3di"]
 texture = ExtResource("1_vonw3")
@@ -568,6 +569,8 @@ zoom = Vector2(3, 3)
 position = Vector2(-92, -25)
 
 [node name="FightUI" parent="." instance=ExtResource("4_0b4ue")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_f2txt")]
 
 [node name="Player2" parent="." instance=ExtResource("2_oi3di")]
 position = Vector2(-184, -50)

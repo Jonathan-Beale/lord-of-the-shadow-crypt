@@ -39,7 +39,7 @@ func _on_damage(type: String, damage: float, target: Dummy, attacker: Fighter):
 		speed_mod.add(attacker)
 		speed_mod.refresh()
 
-func _on_dot(type: String, damage: float, stacks: int, source: Fighter):
+func _on_dot(type: String, damage: float, target: Dummy, source: Fighter):
 	if source != user: return
 	if type == "fire":
 		speed_mod.add(source)

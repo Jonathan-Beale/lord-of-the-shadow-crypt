@@ -8,11 +8,11 @@ var max_health: float = START_HEALTH
 
 # Resistance Stats
 var resists = {
-	"fire": 100,
-	"ice": 100,
-	"shadow": 100,
-	"electric": 100,
-	"physical": 100
+	"fire": 50.0,
+	"ice": 50.0,
+	"shadow": 50.0,
+	"electric": 50.0,
+	"physical": 50.0
 }
 
 # --- DoT system --------------------------------------------------------------
@@ -119,8 +119,8 @@ func _find_dot(type: String, source: Node) -> Dictionary:
 # --- Damage / death ----------------------------------------------------------
 func take_damage(amount: float, type: String = "physical", source: Fighter = null) -> float:
 	var r := float(resists.get(type, 100.0))
-	r = max(r, 1.0) # avoid div by zero / negative
-	var resist_quotient := 100.0 / r
+	r = max(r, 0.0) # avoid negatives
+	var resist_quotient := 100.0 / (100.0 + r)
 	current_health -= amount * resist_quotient
 	emit_signal("damage_taken", type, amount, self, source)
 	if current_health <= 0.0:

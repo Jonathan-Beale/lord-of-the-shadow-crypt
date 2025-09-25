@@ -17,7 +17,7 @@ func unequip():
 	if owner.current_health > owner.max_health:
 		owner.max_health = owner.current_health
 
-func _damage_taken(type: String, amount: float, source: Fighter):
+func _damage_taken(type: String, amount: float, target: Dummy, source: Fighter):
 #	Taking fire damage resets the timer to 3 seconds
 	if type == "fire":
 		reduction_timer = 3.0

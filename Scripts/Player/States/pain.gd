@@ -10,7 +10,6 @@ var knockback_vector: Vector2 = Vector2.ZERO
 
 func enter():
 	has_pained = false
-	#print("Pain State")
 	player.animation.play(pain_anim)
 	player.animation.animation_finished.connect(func(_anim): has_pained = true)
 
