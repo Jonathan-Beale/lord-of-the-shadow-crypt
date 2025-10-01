@@ -13,6 +13,9 @@ func _ready() -> void:
 	collision_mask = 0
 
 func trigger_hit(target: Fighter, pain: State):
-	user.deal_damage(self, target, pain)
+	user.deal_damage(target, DAMAGE_TYPE, DAMAGE)
+#	Apply Knockback Mods
+	pain.knockback = KNOCKBACK + target.knockback_mod
+	pain.knockback_vector = self.global_position - pain.global_position
 	#target.take_damage(DAMAGE, "physical")
 	#player.add_dot(10, 5)

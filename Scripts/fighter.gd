@@ -100,28 +100,21 @@ class BonusDamage:
 	func delete():
 		self.free()
 
-func deal_damage(hitbox: HitBox = null, target: Fighter = null, pain: State = null):
+func deal_damage(target: Fighter = null, dmg_type: String = "", dmg_amount: float = 0.0):
 #	Deals damage amount and type based on hitbox
 #	Then applies damage bonuses from items
-	if not hitbox or not target or not pain:
-		return
-	var damage_amount = hitbox.DAMAGE
-	var damage_type = hitbox.DAMAGE_TYPE
 	
 #	Calc Bonus Damage
-	var agg_bonus_dmg = calc_damage_mod(damage_amount, damage_type)
+	var agg_bonus_dmg = calc_damage_mod(dmg_amount, dmg_type)
 	
 #	Apply Damage
-	var dmg_dealt = target.take_damage(damage_amount + agg_bonus_dmg, damage_type, self)
-	emit_signal("dealt_damage", damage_type, dmg_dealt, target, self)
+	var dmg_dealt = target.take_damage(dmg_amount + agg_bonus_dmg, dmg_type, self)
+	emit_signal("dealt_damage", dmg_type, dmg_dealt, target, self)
+	print("Dealt ", dmg_amount, " ",  dmg_type, " damage")
 	
 #	Apply Bonus Damage Effects
 	for mod in item_bonus_damage:
 		mod.apply(self, target)
-	
-#	Apply Knockback Mods
-	pain.knockback = hitbox.KNOCKBACK + knockback_mod
-	pain.knockback_vector = self.global_position - pain.global_position
 
 func calc_damage_mod(amount: float, type: String) -> float:
 	var agg: float = 0.0
@@ -238,7 +231,7 @@ func add_speed_mod(mod: SpeedMod):
 				speed_mods.insert(i, mod)
 				return
 			elif mod.type == "slow": # Remove redundant slows on lower duration
-				if speed_mods[i].type == "slow" and speed_mods[i].amount == mod.amount:
+				if speed_mods[i].type == "slow" and speed_mods[i].magnitude == mod.magnitude:
 					speed_mods[i].remove()
 		speed_mods.append(mod)
 	calc_speed_effects()

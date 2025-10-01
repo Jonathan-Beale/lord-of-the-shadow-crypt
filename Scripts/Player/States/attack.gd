@@ -4,10 +4,13 @@ extends PlayerState
 var has_attacked: bool
 @onready var hitbox: HitBox = $HitBox
 
+func _ready():
+	hitbox.collision_shape.disabled = true
+
 func enter():
 	has_attacked = false
-	#if sprite_flipped: hitbox.scale.x = -1
-	#else: hitbox.scale.x = 1
+	#if sprite_flipped: hitbox.position.x = -25
+	#else: hitbox.position.x = 0
 	attacking = true
 	#print("Attack State")
 

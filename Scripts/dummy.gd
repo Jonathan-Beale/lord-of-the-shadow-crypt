@@ -5,6 +5,13 @@ extends CharacterBody2D
 const START_HEALTH: float = 1000.0
 var current_health: float = START_HEALTH
 var max_health: float = START_HEALTH
+var grey_health: float = 0.0
+var health_recovery: float = 0.3
+var recovery_rate: float = 0.05
+var gh_timer: float = 0.0
+var anti_heal: float = 0.0
+var heal_power: float = 0.0
+
 
 # Resistance Stats
 var resists = {
@@ -28,6 +35,7 @@ signal dot_applied(type: String, stacks: int, dps: float, duration_left: float)
 signal dot_tick(type: String, damage: float, target: Dummy, source: Fighter)
 signal dot_expired(type: String)
 signal damage_taken(type: String, amount: float, target: Dummy, source: Fighter)
+signal healing_done(amount: float, source: Node2D)
 
 func add_dot(
 	amount: float,
@@ -83,7 +91,25 @@ func has_dot(type: String) -> bool:
 	return false
 
 func _process(delta: float) -> void:
+	_update_grey_health(delta)
 	_update_dots(delta)
+
+func _update_grey_health(delta: float):
+	if gh_timer > 0.0:
+		gh_timer -= delta
+		return
+	if grey_health <= 0.0:
+		return
+	var healing = max_health * recovery_rate * delta
+	if healing > grey_health: healing = grey_health
+	grey_health -= healing
+	print("Recovering ", healing, " health")
+	heal(healing)
+
+func heal(amount: float, source = self):
+	var final_healing = amount * (1 - anti_heal) * (1 + heal_power)
+	emit_signal("healing_done", amount, source)
+	current_health += final_healing
 
 func _update_dots(delta: float) -> void:
 	#print("Updating dot")
@@ -121,7 +147,10 @@ func take_damage(amount: float, type: String = "physical", source: Fighter = nul
 	var r := float(resists.get(type, 100.0))
 	r = max(r, 0.0) # avoid negatives
 	var resist_quotient := 100.0 / (100.0 + r)
-	current_health -= amount * resist_quotient
+	var final_dmg = amount * resist_quotient
+	current_health -= final_dmg
+	grey_health += health_recovery * final_dmg
+	gh_timer = 3.0
 	emit_signal("damage_taken", type, amount, self, source)
 	if current_health <= 0.0:
 		die()

@@ -1,0 +1,11 @@
+# User Interface
+- [] Item Select Screen
+- [] New Campaign Options
+- [] Load Campaign
+- [] Start/Join Screen
+- [x] Main Menu
+- [] Versus Settings
+- [] Resources Bar
+    - [x] Health Bar
+    - [] Energy Bar
+    - [] Effect Icons

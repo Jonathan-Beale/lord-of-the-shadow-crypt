@@ -3,7 +3,7 @@ extends State
 
 @onready var player: Player = get_owner()
 #@onready var player: Player = get_tree().get_first_node_in_group("Player")
-
+signal facing_change(sprite_flipped)
 const DEADZONE := 0.15
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity", 9.8)
@@ -15,6 +15,7 @@ var fall_anim: String = "Fall"
 var punch_anim: String = "Punch"
 var kick_anim: String = "Kick"
 var pain_anim: String = "Pain"
+var crouch_anim: String = "Crouch"
 var attacking: bool = false
 
 #@export_group("States")
@@ -22,6 +23,16 @@ var attacking: bool = false
 	get_node_or_null(^"Idle") 
 		if get_node_or_null(^"Idle") 
 		else get_owner().get_node(^"StateMachine").get_node(^"Idle")
+)
+@onready var crouch_state:  PlayerState = (
+	get_node_or_null(^"Crouch") 
+		if get_node_or_null(^"Crouch") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Crouch")
+)
+@onready var pain_state:  PlayerState = (
+	get_node_or_null(^"Pain") 
+		if get_node_or_null(^"Pain") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Pain")
 )
 @onready var walk_state:  PlayerState = (
 	get_node_or_null(^"Walk") 
@@ -53,13 +64,17 @@ var attacking: bool = false
 var sprite_flipped: bool = false
 
 func determine_sprite_flipped(_event: InputEvent) -> void:
-	if player.velocity.x > 0:
+	var current_state = sprite_flipped
+	if player.velocity.x < 0:
 		player.state_machine.scale.x = 1
 		sprite_flipped = false
-	elif player.velocity.x < 0:
+		player.sprite.position.x = -40
+	elif player.velocity.x > 0:
 		player.state_machine.scale.x = -1
 		sprite_flipped = true
+		player.sprite.position.x = 10
 	player.sprite.flip_h = sprite_flipped
+	#if current_state != sprite_flipped:
 
 func process_physics(delta: float) -> State:
 	#print("processing p2 physics")

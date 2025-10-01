@@ -4,6 +4,7 @@ extends Fighter
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation: AnimationPlayer = $Animation
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var floor_collider: CollisionShape2D = $FloorCollision
 
 var control_schemes = [
 	{

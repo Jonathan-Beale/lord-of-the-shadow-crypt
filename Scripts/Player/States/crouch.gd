@@ -1,13 +1,15 @@
-class_name PlayerIdleState
+class_name  CrouchState
 extends PlayerState
 
 func enter():
-	#print("Idle State")
-	player.animation.play(idle_anim)
+	player.animation.play(crouch_anim)
+	pain_state.hurt_box.scale.y = 0.7
+	pain_state.hurt_box.position.y = 15
 
 func exit(new_state: State = null):
-	#print("Exit Idle State")
 	super(new_state)
+	pain_state.hurt_box.scale.y = 1
+	pain_state.hurt_box.position.y = 0
 
 func process_input(event: InputEvent) -> State:
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
@@ -22,8 +24,4 @@ func process_input(event: InputEvent) -> State:
 		return punch_state
 	if event.is_action_pressed(player.controls.kick):
 		return kick_state
-	if event.is_action_pressed(player.controls.down):
-		return crouch_state
-	
-
 	return null
