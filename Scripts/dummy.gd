@@ -23,47 +23,33 @@ var gh_delay: float = 3.0 # delay before grey health healing begins
 var anti_heal: float = 0.0
 var heal_power: float = 0.0
 
-enum DummyStatTypes = {
-	CURRENT_HEALTH,
-	MAX_HEALTH,
-	GREY_HEALTH,
-	GH_DAMAGE_RATIO,
-	GH_HEAL_RATIO,
-	GH_RECOVERY_RATE,
-	GH_DELAY,
-	RESIST,
-	SHIELD,
-	ANIT_HEAL,
-	HEAL_POWER
-}
-
 signal damage_blocked(type: String, damage: float, target: Dummy, attacker: Fighter)
 signal recovering()
 
 func modify_stat(stat, amount, type, operator):
-	if stat = DummyStatTypes.CURRENT_HEALTH:
+	if stat = Global.StatTypes.CURRENT_HEALTH:
 		current_health = operate(current_health, amount, operator)
-	elif stat = DummyStatTypes.MAX_HEALTH:
+	elif stat = Global.StatTypes.MAX_HEALTH:
 		max_health = operate(max_health, amount, operator)
-	elif stat = DummyStatTypes.GREY_HEALTH:
+	elif stat = Global.StatTypes.GREY_HEALTH:
 		grey_health = operate(grey_health, amount, operator)
-	elif stat = DummyStatTypes.GH_DAMAGE_RATIO:
+	elif stat = Global.StatTypes.GH_DAMAGE_RATIO:
 		gh_damage_ratio = operate(gh_damage_ratio, amount, operator)
-	elif stat = DummyStatTypes.GH_HEAL_RATIO:
+	elif stat = Global.StatTypes.GH_HEAL_RATIO:
 		gh_heal_ratio = operate(gh_heal_ratio, amount, operator)
-	elif stat = DummyStatTypes.GH_RECOVERY_RATE:
+	elif stat = Global.StatTypes.GH_RECOVERY_RATE:
 		gh_recovery_rate = operate(gh_recovery_rate, amount, operator)
-	elif stat = DummyStatTypes.GH_DELAY:
+	elif stat = Global.StatTypes.GH_DELAY:
 		gh_delay = operate(gh_delay, amount, operator)
-	elif stat = DummyStatTypes.RESIST:
+	elif stat = Global.StatTypes.RESIST:
 		if not type: return
 		resists[type] = operate(resists[type], amount, operator)
-	elif stat = DummyStatTypes.SHIELD:
+	elif stat = Global.StatTypes.SHIELD:
 		if not type: shields["generic"] = operate(shields["generic"], amount, operator)
 		else: shields[type] = operate(shields[type], amount, operator)
-	elif stat = DummyStatTypes.ANTI_HEAL:
+	elif stat = Global.StatTypes.ANTI_HEAL:
 		anti_heal = operate(anti_heal, amount, operator)
-	elif stat = DummyStatTypes.HEAL_POWER:
+	elif stat = Global.StatTypes.HEAL_POWER:
 		heal_power = operate(heal_power, amount, operator)
 
 # Shields
@@ -91,50 +77,9 @@ enum Operations = {
 }
 
 var update_needed: bool = false
-var stat_mods: Array[DummyStatMod] = []
+var stat_mods: Array[Global.StatMod] = []
 
-class DummyStatMod:
-	var owner: Dummy
-	var source: Dummy
-	var duration: float
-	var duration_remaining: float
-	var stat: DummyStatTypes
-	var type: DamageTypes
-	var amount: float
-	var operator: Operations = Operations.PLUS
-
-	func _init(m_source: Dummy, m_duration: float = 0.0, m_stat: DummyStatTypes, s_amount: float, s_type: DamageTypes = none)
-		source = m_source
-		duration = m_duration
-		duration_remaining duration
-		stat = m_stat
-		amount = s_amount
-		type = s_type
-
-	func add(to_entity: Dummy):
-		if owner == to_entity: return
-		if owner != null:
-			owner.stat_mods.erase(self)
-		owner = to_entity
-		if not owner.stat_mods.has(self):
-			owner.add_mod(self)
-		owner.modify_stat(stat, amount, type, operator)
-
-	func remove():
-		if owner == null:
-			return
-		if operator == Operations.PLUS:
-			owner.modify_stat(stat, amount, type, operator)
-		elif operator == Operations.MULTIPLY:
-			owner.modify_stat(stat, (1 / amount), type, operator)
-
-		owner.stat_mods.erase(self)
-		owner = null
-
-	func delete():
-		self.free()
-
-func add_mod(mod: DummyStatMod)
+func add_mod(mod: Global.StatMod)
 	update_needed = true
 	if mod.duration == 0.0:
 		stat_mods.append(mod)
