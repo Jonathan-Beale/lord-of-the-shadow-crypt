@@ -1,6 +1,6 @@
 extends Node
 
-enum FighterStatTypes = {
+enum StatTypes = {
 	CURRENT_HEALTH,
 	MAX_HEALTH,
 	GREY_HEALTH,
@@ -25,17 +25,17 @@ enum FighterStatTypes = {
 }
 
 
-class FighterStatMod:
+class StatMod:
 	var owner: Dummy
 	var source: Dummy
 	var duration: float
 	var duration_remaining: float
-	var stat: FighterStatTypes
+	var stat: StatTypes
 	var type: DamageTypes
 	var amount: float
 	var operator: Operations = Operations.PLUS
 
-	func _init(m_source: Dummy, m_duration: float = 0.0, m_stat: FighterStatTypes, s_amount: float, s_type: DamageTypes = none)
+	func _init(m_source: Dummy, m_duration: float = 0.0, m_stat: StatTypes, s_amount: float, s_type: DamageTypes = none)
 		source = m_source
 		duration = m_duration
 		duration_remaining duration
