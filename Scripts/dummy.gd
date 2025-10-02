@@ -1,26 +1,113 @@
 class_name Dummy
 extends CharacterBody2D
+"""
+A Class that has durability mods and takes/blocks damage
+"""
+
 
 # Health Stats
 const START_HEALTH: float = 1000.0
 var current_health: float = START_HEALTH
 var max_health: float = START_HEALTH
+
+# Grey Health Trackers
 var grey_health: float = 0.0
-var health_recovery: float = 0.3
-var recovery_rate: float = 0.05
 var gh_timer: float = 0.0
+
+# Grey Health Mods
+var gh_damage_ratio: float = 0.5 # ratio at which damage taken is converted to grey health
+var gh_heal_ratio: float = 0.5 # ratio at whih grey health is converted to health
+var gh_recovery_rate: float = 0.05 # rate at which grey health recovers
+var gh_delay: float = 3.0 # delay before grey health healing begins
+
 var anti_heal: float = 0.0
 var heal_power: float = 0.0
 
+signal damage_blocked(type: String, damage: float, target: Dummy, attacker: Fighter)
+signal recovering()
+
+func modify_stat(stat, amount, type, operator):
+	if stat = Global.StatTypes.CURRENT_HEALTH:
+		current_health = operate(current_health, amount, operator)
+	elif stat = Global.StatTypes.MAX_HEALTH:
+		max_health = operate(max_health, amount, operator)
+	elif stat = Global.StatTypes.GREY_HEALTH:
+		grey_health = operate(grey_health, amount, operator)
+	elif stat = Global.StatTypes.GH_DAMAGE_RATIO:
+		gh_damage_ratio = operate(gh_damage_ratio, amount, operator)
+	elif stat = Global.StatTypes.GH_HEAL_RATIO:
+		gh_heal_ratio = operate(gh_heal_ratio, amount, operator)
+	elif stat = Global.StatTypes.GH_RECOVERY_RATE:
+		gh_recovery_rate = operate(gh_recovery_rate, amount, operator)
+	elif stat = Global.StatTypes.GH_DELAY:
+		gh_delay = operate(gh_delay, amount, operator)
+	elif stat = Global.StatTypes.RESIST:
+		if not type: return
+		resists[type] = operate(resists[type], amount, operator)
+	elif stat = Global.StatTypes.SHIELD:
+		if not type: shields["generic"] = operate(shields["generic"], amount, operator)
+		else: shields[type] = operate(shields[type], amount, operator)
+	elif stat = Global.StatTypes.ANTI_HEAL:
+		anti_heal = operate(anti_heal, amount, operator)
+	elif stat = Global.StatTypes.HEAL_POWER:
+		heal_power = operate(heal_power, amount, operator)
+
+# Shields
+var shields = {
+	"generic": 0.0
+	"fire": 0.0,
+	"ice": 0.0,
+	"shadow": 0.0,
+	"electric": 0.0,
+	"physical": 0.0
+}
 
 # Resistance Stats
 var resists = {
-	"fire": 50.0,
-	"ice": 50.0,
-	"shadow": 50.0,
-	"electric": 50.0,
+	"fire": 25.0,
+	"ice": 25.0,
+	"shadow": 25.0,
+	"electric": 25.0,
 	"physical": 50.0
 }
+
+enum Operations = {
+	ADD,
+	MULTIPLY
+}
+
+var update_needed: bool = false
+var stat_mods: Array[Global.StatMod] = []
+
+func add_mod(mod: Global.StatMod)
+	update_needed = true
+	if mod.duration == 0.0:
+		stat_mods.append(mod)
+	else:
+		for i in range(stat_mods.size()):
+			if stat_mods[i].duration == 0.0:
+				stat_mods.insert(i, mod)
+				return
+			if stat_mods[i].duration_remaining > mod.duration:
+				stat_mods.insert(i, mod)
+				return
+		stat_mods.append(mod)
+
+func _update_mods(delta: float):
+	update_needed = false
+	for mod in stat_mods:
+		if mod.duration > 0.0:
+			update_needed = true
+			mod.duration_remaining -= delta
+			if mod.duration_remaining <= 0:
+				mod.remove()
+
+func operate(stat: float, amount: float, operator: Operations) -> float:
+	if operator == Operations.ADD:
+		return stat + amount
+	elif operator == Operations.MULTIPLY:
+		return stat * amount
+
 
 # --- DoT system --------------------------------------------------------------
 # One manager list, updated once per frame. No Timer nodes per effect.
@@ -93,16 +180,21 @@ func has_dot(type: String) -> bool:
 func _process(delta: float) -> void:
 	_update_grey_health(delta)
 	_update_dots(delta)
+	if update_needed:	_update_mods(delta)
 
 func _update_grey_health(delta: float):
 	if gh_timer > 0.0:
 		gh_timer -= delta
+		if gh_timer <= 0.0
+			gh_timer = 0.0
+			emit_signal("recovering")
 		return
 	if grey_health <= 0.0:
 		return
-	var healing = max_health * recovery_rate * delta
-	if healing > grey_health: healing = grey_health
-	grey_health -= healing
+	var gh_used = max_health * gh_recovery_rate * delta
+	if gh_used > grey_health: gh_used = grey_health
+	grey_health -= gh_used
+	var healing = gh_used * gh_heal_ratio
 	print("Recovering ", healing, " health")
 	heal(healing)
 
@@ -145,12 +237,39 @@ func _find_dot(type: String, source: Node) -> Dictionary:
 # --- Damage / death ----------------------------------------------------------
 func take_damage(amount: float, type: String = "physical", source: Fighter = null) -> float:
 	var r := float(resists.get(type, 100.0))
+
+	# Apply source armor pen
+	r -= r * source.percent_pen[type]
+	r -= source.flat_pen[type]
 	r = max(r, 0.0) # avoid negatives
 	var resist_quotient := 100.0 / (100.0 + r)
 	var final_dmg = amount * resist_quotient
+
+	# Shield damage reduction
+	var dmg_shielded = 0.0
+	if shields[type] > 0.0: # type pecific shield
+		if shields[type] < final_dmg:
+			dmg_shielded += shields[type]
+			final_dmg -= shields[type]
+			shields[type] = 0
+		else:
+			dmg_shielded += final_dmg
+			shields[type] -= final_dmg
+			final_dmg = 0
+	if shields["all"] > 0.0: # general shield
+		if shields["all"] < final_dmg:
+			final_dmg -= shields["all"]
+			shields["all"] = 0
+		else:
+			shields["all"] -= final_dmg
+			final_dmg = 0
+	if dmg_shielded > 0.0:
+		final_dmg -= dmg_shielded
+		emit_signal("damage_blocked", type, dmg_shielded, self, source) 
+
 	current_health -= final_dmg
-	grey_health += health_recovery * final_dmg
-	gh_timer = 3.0
+	grey_health += gh_damage_ratio * final_dmg
+	gh_timer = gh_delay
 	emit_signal("damage_taken", type, amount, self, source)
 	if current_health <= 0.0:
 		die()
