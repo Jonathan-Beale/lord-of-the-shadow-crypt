@@ -10,6 +10,7 @@ var knockback_vector: Vector2 = Vector2.ZERO
 
 func enter():
 	has_pained = false
+	pained = true
 	player.animation.play(pain_anim)
 	player.animation.animation_finished.connect(func(_anim): has_pained = true)
 
@@ -36,6 +37,7 @@ func process_frame(delta: float):
 func exit(new_state: State = null):
 	#print("Exit Pain State")
 	player.velocity = Vector2.ZERO
+	pained = false
 	return new_state
 
 func apply_knockback():

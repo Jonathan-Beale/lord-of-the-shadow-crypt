@@ -1,0 +1,40 @@
+{
+    "item_name": "Example Item",
+    "item_description": "An item that burns enemies on physical damage. Slows on ice damage and has a lightning burst chance.",
+    "icon": "res://Assets/Icons/example_icon.png",
+    "stat_mods": [
+        {"stat": "health", "amount": 50},
+        {"stat": "energy", "amount": -10},
+        {"stat": "fire_resist", "amount": 5}
+    ],
+    "damage_amps": [
+        {"damage_type": "fire", "amount": 0.1}
+    ],
+    "burns": [
+        {
+            "name": "Blaze",
+            "on_damage_type": "physical",
+            "burn_type": "fire",
+            "burn_amount": 0.05,
+            "duration": 5,
+            "max_stacks": 5
+        }
+    ],
+    "slows": [
+        {
+            "on_damage_type": "ice",
+            "on_dot": false,
+            "slow_amount": 0.2,
+            "duration": 3,
+            "max_stacks": 3
+        }
+    ],
+    "burst": [
+        {
+            "on_damage_type": "lightning",
+            "damage_type": "lightning",
+            "damage_amount": 15,
+            "cooldown": 8.0
+        }
+    ]
+}

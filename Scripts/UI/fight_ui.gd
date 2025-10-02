@@ -2,6 +2,7 @@
 extends Control
 
 @onready var background: ColorRect = $Background
+@onready var fight_label = $Label
 
 const BAR_W := 150.0
 const BAR_H := 15.0
@@ -28,13 +29,27 @@ func _ready() -> void:
 	else:
 		_add_bars_coop(players)
 		
+	start_countdown()
 		
 func _on_viewport_resized() -> void:
 	var size: Vector2 = get_viewport().get_visible_rect().size
 	# Re-affirm top-left and bar layout on resize
 	#global_position = Vector2(-size.x / 2, -size.y / 2)
 	
+func start_countdown() -> void:
+	# Start counting down from 3 to 1
+	print("starting countdown")
+	fight_label.add_theme_font_size_override("font_size", 64)
+	for i in range(3, 0, -1):
+		fight_label.text = str(i)
+		await get_tree().create_timer(1.0).timeout
 	
+	# Optional: display "Go!" at the end
+	fight_label.text = "Fight!"
+	await get_tree().create_timer(0.5).timeout
+	fight_label.text = ""
+
+
 func _add_bars_coop(players: Array) -> void:
 	# Stack all bars on the left inside the background
 	var x := 10.0

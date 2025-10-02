@@ -2,6 +2,10 @@ class_name Wearable
 extends Node2D
 
 @onready var user: Fighter = get_owner()
+var item_name = "Wearable Item"
+var item_description = "An item that effects your stats and does not give a unique attack animation"
+var burns = []
+
 
 func _ready():
 	self.add_to_group("Wearable")
@@ -21,3 +25,10 @@ func equip():
 func unequip():
 #	user.max_health -= 1000
 	pass
+
+# Loadable from json
+# % health burn
+# on damage type
+# burn type
+# burn amount
+# max stacks

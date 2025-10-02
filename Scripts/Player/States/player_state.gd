@@ -17,6 +17,7 @@ var kick_anim: String = "Kick"
 var pain_anim: String = "Pain"
 var crouch_anim: String = "Crouch"
 var attacking: bool = false
+var pained: bool = false
 
 #@export_group("States")
 @onready var idle_state:  PlayerState = (
@@ -29,7 +30,7 @@ var attacking: bool = false
 		if get_node_or_null(^"Crouch") 
 		else get_owner().get_node(^"StateMachine").get_node(^"Crouch")
 )
-@onready var pain_state:  PlayerState = (
+@onready var pain_state: PlayerState = (
 	get_node_or_null(^"Pain") 
 		if get_node_or_null(^"Pain") 
 		else get_owner().get_node(^"StateMachine").get_node(^"Pain")
@@ -88,7 +89,7 @@ func process_physics(delta: float) -> State:
 	var ground_speed := player.move_speed
 	var air_speed := player.air_speed
 	var target_speed := (ground_speed * dir) if player.is_on_floor() else (air_speed * dir)
-	if attacking and player.is_on_floor():
+	if (attacking and player.is_on_floor()) or pained:
 		target_speed = 0.0
 
 	# accelerate horizontally toward target (units: px/s^2)

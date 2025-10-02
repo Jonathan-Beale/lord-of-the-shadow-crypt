@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm6i5evldlu5p"]
 
+[ext_resource type="Script" uid="uid://buac0cveure1h" path="res://Scripts/level.gd" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="1_vonw3"]
-[ext_resource type="PackedScene" uid="uid://cw8qs0wtqrwkl" path="res://Scenes/final_player.tscn" id="3_6phgx"]
 [ext_resource type="PackedScene" uid="uid://b7qspmk8yj07b" path="res://Scenes/fight_ui.tscn" id="4_0b4ue"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oi3di"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6phgx"]
 texture = ExtResource("1_vonw3")
 0:0/0 = 0
 1:0/0 = 0
@@ -545,9 +545,10 @@ texture = ExtResource("1_vonw3")
 [sub_resource type="TileSet" id="TileSet_f2txt"]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_oi3di")
+sources/0 = SubResource("TileSetAtlasSource_6phgx")
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_6phgx")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -1
@@ -573,6 +574,3 @@ offset_bottom = 18.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.909901, 0.989901)
-script = null
-
-[node name="player" parent="." instance=ExtResource("3_6phgx")]
