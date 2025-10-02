@@ -1,20 +1,42 @@
 class_name Fighter
 extends Dummy
 
-# Movement Stats
+# Starting Stats
 const START_jump_force: float = 450
-var jump_force: float = START_jump_force
 const START_air_speed: float = 160	
-var air_speed: float = START_air_speed
 const START_move_speed: float = 160
-var move_speed: float = START_move_speed
 const START_max_speed: float = 820
+
+# Movement Stats
 var max_speed: float = START_max_speed
+var move_speed: float = START_move_speed
+var air_speed: float = START_air_speed
+var jump_force: float = START_jump_force
+var slow_resist: float = 0.0
 
 # Attack Mods
 var knockback_mod: float = 0.0
 var item_bonus_damage: Array[BonusDamage] = []
 var item_damage_mods: Array[DamageMod] = []
+var animation_speed: float = 1.0
+var crit_chance: float = 0.0
+
+var flat_pen = {
+	"fire": 0.0,
+	"ice": 0.0,
+	"shadow": 0.0,
+	"electric": 0.0,
+	"physical": 0.0
+}
+
+var percent_pen = {
+	"fire": 0.0,
+	"ice": 0.0,
+	"shadow": 0.0,
+	"electric": 0.0,
+	"physical": 0.0
+}
+
 
 
 signal dealt_damage(type: String, damage: float, target: Dummy, attacker: Fighter)
@@ -100,15 +122,23 @@ class BonusDamage:
 	func delete():
 		self.free()
 
+var crit_rng = RandomNumberGenerator.new()
 func deal_damage(target: Fighter = null, dmg_type: String = "", dmg_amount: float = 0.0):
 #	Deals damage amount and type based on hitbox
 #	Then applies damage bonuses from items
+
+	# Calc crit chance/damage for phys attacks
+	var agg_dmg = dmg_amount
+	if type == "physical":
+		var crit_score = rng.randf_range(0, 1.0)
+		if crit_score < crit_chance:
+			agg_dmg += dmg_amount * 0.75
 	
 #	Calc Bonus Damage
-	var agg_bonus_dmg = calc_damage_mod(dmg_amount, dmg_type)
+	agg_dmg += calc_damage_mod(agg_dmg, dmg_type)
 	
 #	Apply Damage
-	var dmg_dealt = target.take_damage(dmg_amount + agg_bonus_dmg, dmg_type, self)
+	var dmg_dealt = target.take_damage(agg_dmg, dmg_type, self)
 	emit_signal("dealt_damage", dmg_type, dmg_dealt, target, self)
 	print("Dealt ", dmg_amount, " ",  dmg_type, " damage")
 	
@@ -134,7 +164,7 @@ class SpeedMod:
 	var magnitude: float
 	var stat_effected: SpeedStat
 	var duration: float
-	var duration_left: float
+	var duration_remaining: float
 	var permanent: bool
 	
 	func _init(effect_source: Fighter, effect_type: String, effect_magnitude: float, speed_stat: SpeedStat, effect_duration = 3.0, effect_permanent = false):
@@ -143,7 +173,7 @@ class SpeedMod:
 		magnitude = effect_magnitude
 		stat_effected = speed_stat
 		duration = effect_duration
-		duration_left = effect_duration
+		duration_remaining = effect_duration
 		permanent = effect_permanent
 
 	func calc_effect() -> Array:
@@ -164,7 +194,7 @@ class SpeedMod:
 		return modifiers
 
 	func refresh():
-		duration_left = duration
+		duration_remaining = duration
 
 	func add(to_entity: Fighter):
 		if owner == to_entity: return
@@ -191,8 +221,8 @@ func _process(delta: float) -> void:
 func update_movement_stacks(delta: float):
 	for mod in speed_mods:
 		if not mod.permanent:
-			mod.duration_left -= delta
-			if mod.duration_left <= 0:
+			mod.duration_remaining -= delta
+			if mod.duration_remaining <= 0:
 				mod.remove()
 				print("Speed Boost Ended")
 				#mod.delete()
@@ -207,8 +237,9 @@ func calc_speed_effects():
 		var effects = mod.calc_effect()
 		if mod.type == "slow":
 			for i in range(effects.size()):
-				if slows[i] > effects[i]:
-					slows[i] = effects[i]
+				var current_slow = slows[i] * (1 / (1 + slow_resist))
+				if current_slow > effects[i]:
+					current_slow = effects[i]
 		else:
 			for i in range(effects.size()):
 				boosts[i] = boosts[i] + effects[i]
@@ -227,7 +258,7 @@ func add_speed_mod(mod: SpeedMod):
 			if speed_mods[i].permanent:
 				speed_mods.insert(i, mod)
 				return
-			if speed_mods[i].duration_left > mod.duration:
+			if speed_mods[i].duration_remaining > mod.duration:
 				speed_mods.insert(i, mod)
 				return
 			elif mod.type == "slow": # Remove redundant slows on lower duration
