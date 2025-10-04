@@ -8,8 +8,6 @@ var speed_mod
 
 func _ready():
 #	5% bonus fire damage
-	item_description = ""
-	item_name = "Pyromancer's Gauntlet"
 	dmg_mod = user.DamageMod.new(user, 0.05, "fire")
 	dmg_mod.add(user)
 	

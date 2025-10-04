@@ -5,6 +5,7 @@ extends Control
 @onready var fill: ColorRect = $Fill
 @onready var grey: ColorRect = $Grey
 @onready var backing: ColorRect = $Backdrop
+@onready var shield: ColorRect = $Shield
 
 var player: Node = null  # use your Player type if available: var player: Player
 const BAR_W: float = 150.0
@@ -15,12 +16,15 @@ func _ready() -> void:
 	size = Vector2(BAR_W, BAR_H)
 	fill.position = Vector2.ZERO
 	grey.position = Vector2.ZERO
+	shield.position = Vector2.ZERO
 	backing.position = Vector2.ZERO
 	fill.size = Vector2(BAR_W, BAR_H)
 	backing.size = Vector2(BAR_W, BAR_H)
 	grey.size = Vector2(0.0, BAR_H)
+	shield.size = Vector2(0.0, BAR_H)
 	fill.color = Color8(156, 0, 5)    # #9c0005
 	grey.color = Color8(89, 89, 89)   # #595959
+	shield.color = Color8(189, 189, 300)   # #595959
 	backing.color = Color8(20, 20, 20)
 	anchor_left = 0; anchor_top = 0; anchor_right = 0; anchor_bottom = 0
 
@@ -44,11 +48,17 @@ func _on_heal(_amount, _source) -> void:
 func _update_visuals() -> void:
 	if player == null: return
 	var cur := float(player.current_health)
-	var maxh: float = max(1.0, float(player.max_health))
+	var maxh: float = max(1.0, float(player.max_health.total))
 	var grey_pool: float = player.grey_health if "grey_health" in player else 0.0
+	var f_shield: float = 0.0
+	if player.shields["generic"].size() > 0:
+		f_shield = player.shields["generic"][0].amount
+		#print("displaying shields")
 
 	var fill_w: float = clamp((cur / maxh) * BAR_W, 0.0, BAR_W)
+	var shield_w: float = clamp((f_shield / maxh) * BAR_W, 0.0, BAR_W - fill_w)
 	var grey_w: float = clamp((grey_pool / maxh) * BAR_W, 0.0, BAR_W - fill_w)
 
-	grey.size.x = grey_w + fill_w
+	grey.size.x = grey_w + fill_w + shield_w
+	shield.size.x = shield_w + fill_w
 	fill.size.x = fill_w

@@ -7,5 +7,5 @@ func enter():
 	player.animation.animation_finished.connect(func(_anim): has_attacked = true)
 
 func _ready():
-	hitbox.DAMAGE = 40
+	hitbox.DAMAGE = 400
 	hitbox.KNOCKBACK = 40

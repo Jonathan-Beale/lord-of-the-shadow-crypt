@@ -6,3 +6,6 @@ func enter():
 	player.animation.play(punch_anim)
 	player.animation.animation_finished.connect(func(_anim): has_attacked = true)
 	attacking = false
+
+func _ready():
+	hitbox.DAMAGE = 100

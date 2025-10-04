@@ -2,7 +2,7 @@ class_name PlayerState
 extends State
 
 @onready var player: Player = get_owner()
-#@onready var player: Player = get_tree().get_first_node_in_group("Player")
+
 signal facing_change(sprite_flipped)
 const DEADZONE := 0.15
 
@@ -63,6 +63,7 @@ var pained: bool = false
 )
 
 var sprite_flipped: bool = false
+
 
 func determine_sprite_flipped(_event: InputEvent) -> void:
 	var current_state = sprite_flipped
