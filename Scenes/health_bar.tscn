@@ -23,6 +23,7 @@ offset_bottom = 22.0
 color = Color(0.611919, 0, 0.0204109, 1)
 
 [node name="Shield" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 2.0
 offset_right = 154.0

@@ -37,7 +37,10 @@ class ModBase:
 	var duration: float # 0 for single instance damage
 	var duration_remaining: float
 	var type: String # type of damage
-	var amount: float
+	var current_magnitude: float = 0.0
+	var amount: float # TODO: rename to magnitude
+	var stacks: int = 0
+	var max_stacks: int = 1
 
 	func _init(m_source: Dummy, s_amount: float, s_type: String = "generic", m_duration: float = 0.0):
 		source = m_source
@@ -60,8 +63,17 @@ class ModBase:
 		owner.stat_mods.erase(self)
 		owner = null
 
-	func delete():
-		self.free()
+	func apply_stack():
+		if stacks < max_stacks:
+			stacks += 1
+		duration_remaining = duration
+		current_magnitude += amount
+		var c_owner = owner
+		self.remove()
+		self.add(c_owner)
+
+	#func delete():
+		#self.free()
 
 class Shield extends ModBase:
 	func _init(s_amount: float = 0.0, s_duration: float = 0.0, s_type: String =  "generic"):
@@ -92,4 +104,4 @@ class StatMod extends ModBase:
 
 	func add(to_entity: Dummy):
 		super.add(to_entity)
-		owner.modify_stat(stat, amount, type, operator)
+		owner.modify_stat(stat, current_magnitude, type, operator)

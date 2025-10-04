@@ -7,7 +7,7 @@ extends Control
 @onready var backing: ColorRect = $Backdrop
 @onready var shield: ColorRect = $Shield
 
-var player: Node = null  # use your Player type if available: var player: Player
+var player: Player = null  # use your Player type if available: var player: Player
 const BAR_W: float = 150.0
 const BAR_H: float = 15.0
 
@@ -24,7 +24,7 @@ func _ready() -> void:
 	shield.size = Vector2(0.0, BAR_H)
 	fill.color = Color8(156, 0, 5)    # #9c0005
 	grey.color = Color8(89, 89, 89)   # #595959
-	shield.color = Color8(189, 189, 300)   # #595959
+	shield.color = Color8(189, 189, 300)   # 
 	backing.color = Color8(20, 20, 20)
 	anchor_left = 0; anchor_top = 0; anchor_right = 0; anchor_bottom = 0
 
@@ -37,6 +37,8 @@ func set_player(p: Node) -> void:
 	if player.has_signal("healing_done"):
 		player.healing_done.disconnect(_on_heal) if player.is_connected("healing_done", Callable(self, "_on_heal")) else null
 		player.healing_done.connect(_on_heal)
+	if player.has_signal("damage_blocked"):
+		player.damage_blocked.connect(_on_heal)
 	_update_visuals()
 
 func _on_damage(_type, _amount, _target, _source) -> void:

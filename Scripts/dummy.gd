@@ -301,7 +301,7 @@ func take_damage(amount: float, type: String = "physical", source: Fighter = nul
 			break
 	
 	while shields["generic"].size() > 0 and final_dmg > 0:
-		print("Detecting generic shield")
+		#print("Detecting generic shield")
 		var shield = shields["generic"][0]
 		if shield.amount <= final_dmg:
 			final_dmg -= shield.amount
@@ -324,6 +324,7 @@ func take_damage(amount: float, type: String = "physical", source: Fighter = nul
 
 	if current_health <= 0.0:
 		die()
+	
 	return final_dmg
 
 func die() -> void:
