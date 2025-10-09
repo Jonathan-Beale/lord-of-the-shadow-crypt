@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdcwl7clvccue"
-path="res://.godot/imported/fore.png-a47e104b98d5b424a2ddc803a40b15a3.ctex"
+uid="uid://dj5f0cms8750v"
+path="res://.godot/imported/Ability Slots.png-356cc8cc87c0e3643b07ef0052660769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stage Layers/fore.png"
-dest_files=["res://.godot/imported/fore.png-a47e104b98d5b424a2ddc803a40b15a3.ctex"]
+source_file="res://Assets/Stage Layers/Ability Slots.png"
+dest_files=["res://.godot/imported/Ability Slots.png-356cc8cc87c0e3643b07ef0052660769.ctex"]
 
 [params]
 
