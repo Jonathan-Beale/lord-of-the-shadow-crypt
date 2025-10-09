@@ -565,6 +565,7 @@ offset_bottom = -92.0
 color = Color(0.294118, 0.294118, 0.294118, 0.827451)
 
 [node name="ItemOptions" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -213.0
 offset_top = -133.0
@@ -600,18 +601,21 @@ theme_override_font_sizes/font_size = 10
 text = "item effects description"
 
 [node name="LeftIcon" type="ColorRect" parent="ItemOptions"]
+layout_mode = 0
 offset_left = 36.0
 offset_top = 48.0
 offset_right = 71.0
 offset_bottom = 81.0
 
 [node name="RightIcon" type="ColorRect" parent="ItemOptions"]
+layout_mode = 0
 offset_left = 145.0
 offset_top = 47.0
 offset_right = 180.0
 offset_bottom = 80.0
 
 [node name="CenterIcon" type="ColorRect" parent="ItemOptions"]
+layout_mode = 0
 offset_left = 81.0
 offset_top = 44.0
 offset_right = 135.0
