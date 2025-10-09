@@ -4,6 +4,7 @@ extends Fighter
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation: AnimationPlayer = $Animation
 @onready var sprite: AnimatedSprite2D = $Sprite
+@onready var floor_collider: CollisionShape2D = $FloorCollision
 
 var control_schemes = [
 	{
@@ -13,6 +14,8 @@ var control_schemes = [
 	down="ui_down",
 	punch="attack_1",
 	kick="attack_2",
+	slash="attack_3",
+	#dash="dash_button"
 	},
 	{
 		left="p2_left",
@@ -21,6 +24,7 @@ var control_schemes = [
 		down="p2_down",
 		punch="p2_attack_1",
 		kick="p2_attack_2",
+		slash="p2_attack_3",
 	},
 	{
 		left="p3_left",
@@ -43,8 +47,6 @@ var teams = [
 	"Team 1",
 	"Team 2",
 ]
-
-
 var controls = {
 	left="ui_left",
 	right="ui_right",
@@ -52,6 +54,8 @@ var controls = {
 	down="ui_down",
 	punch="attack_1",
 	kick="attack_2",
+	slash="attack_3",
+	#dash="dash_button"
 }
 
 var team = "Player"

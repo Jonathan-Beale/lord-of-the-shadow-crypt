@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7hxbkpwvfc67"]
+
+[ext_resource type="Script" uid="uid://dr2537vroj0ve" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
+
+[node name="MainMenu" type="ColorRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.174383, 0.17212, 0.390773, 1)
+script = ExtResource("1_28flt")
+
+[node name="Versus" type="Button" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 117.0
+offset_right = 158.0
+offset_bottom = 148.0
+text = "Versus"
