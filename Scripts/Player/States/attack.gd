@@ -12,7 +12,7 @@ func enter():
 	#if sprite_flipped: hitbox.position.x = -25
 	#else: hitbox.position.x = 0
 	attacking = true
-	#print("Attack State")
+	print("Attack State")
 
 func process_input(event: InputEvent) -> State:
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
@@ -30,8 +30,13 @@ func process_frame(delta: float):
 	super(delta)
 	if has_attacked: return idle_state
 	
+
+
+
+	
 func exit(new_state: State = null):
-	#print("Exit Attack State")
+	print("Exit Attack State")
 	attacking = false
 	hitbox.collision_shape.disabled = true
 	return new_state
+	

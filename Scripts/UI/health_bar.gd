@@ -6,22 +6,29 @@ extends Control
 @onready var grey: ColorRect = $Grey
 @onready var backing: ColorRect = $Backdrop
 @onready var shield: ColorRect = $Shield
+@onready var overlay: TextureRect = $Overlay
 
 var player: Player = null  # use your Player type if available: var player: Player
 const BAR_W: float = 150.0
-const BAR_H: float = 15.0
+const BAR_H: float = 10.0
 
 func _ready() -> void:
 	# Ensure we size ourself, and children use left anchors
 	size = Vector2(BAR_W, BAR_H)
-	fill.position = Vector2.ZERO
-	grey.position = Vector2.ZERO
-	shield.position = Vector2.ZERO
-	backing.position = Vector2.ZERO
+	fill.position = Vector2(12,0)
+	grey.position = Vector2(12,0)
+	shield.position = Vector2(12,0)
+	backing.position = Vector2(12,0)
 	fill.size = Vector2(BAR_W, BAR_H)
 	backing.size = Vector2(BAR_W, BAR_H)
 	grey.size = Vector2(0.0, BAR_H)
 	shield.size = Vector2(0.0, BAR_H)
+	
+	overlay.position = Vector2(-14,-10)
+	overlay.size = Vector2(BAR_W, BAR_H)
+	overlay.stretch_mode = TextureRect.STRETCH_SCALE
+	overlay.z_index = 1
+	
 	fill.color = Color8(156, 0, 5)    # #9c0005
 	grey.color = Color8(89, 89, 89)   # #595959
 	shield.color = Color8(189, 189, 300)   # 
