@@ -20,6 +20,9 @@ func process_input(event: InputEvent) -> State:
 		return kick_state
 	if event.is_action_released(player.controls.right) and event.is_action_released(player.controls.left):
 		return idle_state
+	if event.is_action_pressed(player.controls.slash):
+		return slash_state
+		
 	return null
 
 func process_physics(delta: float) -> State:

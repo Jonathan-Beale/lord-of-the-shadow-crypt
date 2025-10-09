@@ -129,8 +129,8 @@ func deal_damage(target: Fighter = null, dmg_type: String = "", dmg_amount: floa
 
 	# Calc crit chance/damage for phys attacks
 	var agg_dmg = dmg_amount
-	if type == "physical":
-		var crit_score = rng.randf_range(0, 1.0)
+	if dmg_type == "physical":
+		var crit_score = crit_rng.randf_range(0, 1.0)
 		if crit_score < crit_chance:
 			agg_dmg += dmg_amount * 0.75
 	
@@ -140,7 +140,7 @@ func deal_damage(target: Fighter = null, dmg_type: String = "", dmg_amount: floa
 #	Apply Damage
 	var dmg_dealt = target.take_damage(agg_dmg, dmg_type, self)
 	emit_signal("dealt_damage", dmg_type, dmg_dealt, target, self)
-	print("Dealt ", dmg_amount, " ",  dmg_type, " damage")
+	print("Dealt ", dmg_dealt, " ",  dmg_type, " damage")
 	
 #	Apply Bonus Damage Effects
 	for mod in item_bonus_damage:
@@ -156,6 +156,8 @@ func calc_damage_mod(amount: float, type: String) -> float:
 
 enum SpeedStat { MOVE, AIR, MAX, JUMP, ALL }
 var speed_mods: Array[SpeedMod] = []
+
+
 
 class SpeedMod:
 	var owner: Fighter

@@ -22,7 +22,7 @@ func unequip():
 func _process(delta: float) -> void:
 	if charged: return
 	remaining_cooldown -= delta
-	if remaining_cooldown <= 0:
+	if remaining_cooldown <= 0.0:
 		charged = true
 
 func _on_damage(type: String, damage: float, target: Dummy, attacker: Fighter):

@@ -1,8 +1,11 @@
 class_name PlayerState
 extends State
 
+
 @onready var player: Player = get_owner()
-#@onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var camera: Camera = get_tree().get_first_node_in_group("playerCam")
+
+
 signal facing_change(sprite_flipped)
 const DEADZONE := 0.15
 
@@ -16,6 +19,8 @@ var punch_anim: String = "Punch"
 var kick_anim: String = "Kick"
 var pain_anim: String = "Pain"
 var crouch_anim: String = "Crouch"
+var slash_anim: String = "Slash"
+var dash_anim: String = "Dash"
 var attacking: bool = false
 var pained: bool = false
 
@@ -62,7 +67,14 @@ var pained: bool = false
 		else get_owner().get_node(^"StateMachine").get_node(^"Kick")
 )
 
+@onready var slash_state: PlayerState = (
+	get_node_or_null(^"Slash") 
+		if get_node_or_null(^"Slash") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Slash")
+)
+
 var sprite_flipped: bool = false
+
 
 func determine_sprite_flipped(_event: InputEvent) -> void:
 	var current_state = sprite_flipped
