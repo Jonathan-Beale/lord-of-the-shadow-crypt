@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7hxbkpwvfc67"]
+
+[ext_resource type="Script" uid="uid://dr2537vroj0ve" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
+
+[node name="MainMenu" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.174383, 0.17212, 0.390773, 1)
+script = ExtResource("1_28flt")
+
+[node name="Versus" type="Button" parent="."]
+layout_mode = 0
+offset_left = 380.0
+offset_top = 390.0
+offset_right = 530.0
+offset_bottom = 450.0
+text = "Versus"
+
+[node name="Enemy" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 650.0
+offset_top = 390.0
+offset_right = -352.0
+offset_bottom = -198.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 200.0
+offset_right = 601.0
+offset_bottom = 261.0
+scale = Vector2(2, 2)
+text = "CHOOSE MODE :)
+
+"
