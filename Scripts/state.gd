@@ -8,6 +8,9 @@ func init():
 	
 func exit(new_state: State = null):
 	pass
+	
+func can_transition() -> bool:
+	return true
 
 func enter():
 	pass

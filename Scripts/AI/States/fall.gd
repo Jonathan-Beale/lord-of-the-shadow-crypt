@@ -1,36 +1,35 @@
-extends State
+class_name EnemyFallState
+extends EnemyState
 
-var gravity = 1200
-var fall_state_target_y = 50
+#const jump_force: float = 75
+#const air_speed: float = 20.0
 
-func enter() -> Variant:
-	var enemy = owner
-	if enemy.animation:
-		enemy.animation.play("fall")
-	return null
+func enter():
+	#print("Fall State")
+	#player.velocity.y = jump_force
+	enemy.animation.play(fall_anim)
 
-func process_frame(delta: float) -> State:
-	var enemy = owner
+func exit(new_state: State = null):
+	#print("Exit Fall State")
+	#player.velocity.x = 0.0
+	super(new_state)
 
+func process_physics(delta: float) -> State:
+	if enemy.is_on_floor():
+		if get_move_dir() != 0.0:
+			return walk_state
+		else:
+			return idle_state
+	var move := get_move_dir()
+	#do_move(move)
 	enemy.velocity.y += gravity * delta
 	enemy.move_and_slide()
-
-	if "move_dir" in enemy.ai_input:
-		enemy.velocity.x = enemy.ai_input["move_dir"] * enemy.speed
-	else:
-		enemy.velocity.x = 0
-
-	if enemy.global_position.y >= fall_state_target_y:
-		enemy.global_position.y = fall_state_target_y
-		enemy.velocity.y = 0
-		
-		var walk_state = null
-		if get_parent().has_node("Walk"):
-			walk_state = get_parent().get_node("Walk")
-		if walk_state != null:
-			return walk_state
-
 	return null
+	
+func do_move(move_dir: float) -> void:
+	enemy.velocity.x += move_dir * enemy.air_speed
 
-func exit(next_state: State = null) -> Variant:
-	return null
+func get_move_dir() -> float:
+	var dir = Input.get_axis(enemy.controls.left, enemy.controls.right)
+	#print("Direction: ",  dir)
+	return dir

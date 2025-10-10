@@ -15,6 +15,7 @@ var ai_input = {
 }
 
 func _ready():
+	self.add_to_group("Enemy")
 	self.add_to_group(team)
 	state_machine.init()
 

@@ -2,6 +2,7 @@ class_name EnemyState
 extends State
 
 @onready var enemy: Enemy = get_owner()
+@onready var camera: Camera = get_tree().get_first_node_in_group("playerCam")
 #@onready var player: Player = get_tree().get_first_node_in_group("Player")
 
 const DEADZONE := 0.15
@@ -23,21 +24,21 @@ var attacking: bool = false
 		if get_node_or_null(^"Idle") 
 		else get_owner().get_node(^"StateMachine").get_node(^"Idle")
 )
-#@onready var walk_state:  EnemyState = (
-	#get_node_or_null(^"Walk") 
-		#if get_node_or_null(^"Walk") 
-		#else get_owner().get_node(^"StateMachine").get_node(^"Walk")
-#)
+@onready var walk_state:  EnemyState = (
+	get_node_or_null(^"Walk") 
+		if get_node_or_null(^"Walk") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Walk")
+)
 #@onready var jump_state:  EnemyState = (
 	#get_node_or_null(^"Jump") 
 		#if get_node_or_null(^"Jump") 
 		#else get_owner().get_node(^"StateMachine").get_node(^"Jump")
 #)
-#@onready var fall_state: EnemyState = (
-	#get_node_or_null(^"Fall") 
-		#if get_node_or_null(^"Fall") 
-		#else get_owner().get_node(^"StateMachine").get_node(^"Fall")
-#)
+@onready var fall_state: EnemyState = (
+	get_node_or_null(^"Fall") 
+		if get_node_or_null(^"Fall") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Fall")
+)
 #@onready var punch_state: EnemyState = (
 	#get_node_or_null(^"Punch") 
 		#if get_node_or_null(^"Punch") 
@@ -51,6 +52,10 @@ var attacking: bool = false
 #)
 
 var sprite_flipped: bool = false
+
+func can_transition() -> bool:
+	# Default: states can transition freely
+	return true
 
 func determine_sprite_flipped(_event: InputEvent) -> void:
 	if enemy.velocity.x > 0:

@@ -23,10 +23,14 @@ func _ready() -> void:
 	var players: Array = get_tree().get_nodes_in_group("Player")
 	if players.is_empty():
 		return
-
+	
+	
+	if(players.size()==1):	
+		mode = "Coop"
+	
 	if mode == "PvP":
 		_add_bars_pvp(players)
-	else:
+	elif mode == "Coop":
 		_add_bars_coop(players)
 		
 	start_countdown()
@@ -55,11 +59,23 @@ func _add_bars_coop(players: Array) -> void:
 	var x := 10.0
 	var y := 10.0
 	for i in players.size():
+		print("ADDING HEALTHBARSSSSS")
 		var bar := preload("res://Scenes/health_bar.tscn").instantiate() as HealthBar
 		background.add_child(bar)            # local to background
 		bar.position = Vector2(x, y)
 		bar.set_player(players[i])
 		y += BAR_H + BAR_PADDING
+	# Set up enemy health bar
+
+
+	var enemyBar := preload("res://Scenes/enemy_health_bar.tscn").instantiate()
+	var enemies = get_tree().get_nodes_in_group("Enemy")
+	if enemies.size() > 0:
+		var enemy = enemies[0]
+		enemyBar.set_enemy(enemy)       
+	enemyBar.set_as_top_level(true)
+	background.add_child(enemyBar)
+	enemyBar.position = Vector2(10, 10)
 
 func _add_bars_pvp(players: Array) -> void:
 	print("Adding bars")

@@ -2,7 +2,7 @@ class_name DecisionAgent
 extends Node2D
 
 # -- ai traits --
-@export var aggressiveness = 3.8      # higher -> prefers attacking
+@export var aggressiveness = 3.5      # higher -> prefers attacking
 @export var defensiveness = 0.3       # higher -> retreats more
 @export var wandering = 0.2           # higher -> wanders and doesnt engage
 @export var waiting = 0.6             # higher -> slower decisions
