@@ -206,13 +206,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sfiy"]
-size = Vector2(10.3448, 0.492611)
+size = Vector2(13.7930975, 0.8620682)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2o4"]
-size = Vector2(38, 16)
+size = Vector2(52, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr6c1"]
-size = Vector2(14, 42.5)
+size = Vector2(24, 59.25)
 
 [sub_resource type="Animation" id="Animation_iruf7"]
 resource_name = "Fall"
@@ -366,10 +366,24 @@ tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.19999999, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 0, 1]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine/Pain")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"add_juice"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_khis8"]
@@ -506,15 +520,17 @@ _data = {
 &"Walk": SubResource("Animation_q13i1")
 }
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["playerCam"]]
 script = ExtResource("1_7k104")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.99999976, -11)
+scale = Vector2(1.361111, 1.361111)
 sprite_frames = SubResource("SpriteFrames_ybt8m")
 animation = &"Idle"
 
 [node name="FloorCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, 31)
+position = Vector2(-1.0000069, 31.125002)
 scale = Vector2(2.03, 2.03)
 shape = SubResource("RectangleShape2D_4sfiy")
 
@@ -540,7 +556,7 @@ script = ExtResource("28_ccdwq")
 script = ExtResource("32_w8nyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Punch/HitBox"]
-position = Vector2(-19, -1)
+position = Vector2(-16, -9)
 shape = SubResource("RectangleShape2D_hb2o4")
 disabled = true
 
@@ -551,7 +567,7 @@ script = ExtResource("22_8cim4")
 script = ExtResource("32_w8nyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Kick/HitBox"]
-position = Vector2(11, 10)
+position = Vector2(-34, 5)
 shape = SubResource("RectangleShape2D_hb2o4")
 disabled = true
 
@@ -562,7 +578,7 @@ script = ExtResource("29_hgro5")
 script = ExtResource("30_18rq2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Pain/HurtBox"]
-position = Vector2(-4, 10)
+position = Vector2(-4, 0.625)
 shape = SubResource("RectangleShape2D_nr6c1")
 
 [node name="Animation" type="AnimationPlayer" parent="."]

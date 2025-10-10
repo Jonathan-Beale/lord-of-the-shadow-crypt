@@ -56,6 +56,9 @@ func process_physics(delta):
 	var enemy = get_owner()
 	velocity.y += GRAVITY * delta
 	velocity.x = move_dir * MOVE_SPEED
+	
+	#if enemy.velocity.y > 0:
+		#return fall_state
 
 	enemy.velocity = velocity
 	enemy.move_and_slide()
@@ -77,6 +80,8 @@ func process_physics(delta):
 		else:
 			enemy.sprite.flip_h = false
 
+	if enemy.is_on_floor():
+		return get_parent().get_node("Idle")
 	
 	if enemy.is_on_floor() and has_jumped and velocity.y >= 0 and enemy.global_position.y >= GROUND_LEVEL - 2.0:
 		enemy.global_position.y = GROUND_LEVEL

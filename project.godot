@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Lord of the Shadow Crypt"
 run/main_scene="uid://c7hxbkpwvfc67"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
