@@ -8,7 +8,7 @@ signal versus_match(players: int)
 signal dungeon(players: int)
 
 const PVP_SCENE_PATH := "res://Scenes/level_pvp.tscn"
-const ENEMY_SCENE_PATH := "res://Scenes/level_enemy.tscn"
+const ENEMY_SCENE_PATH := "res://assetsOW/ScenesOW/sakura_lvl.tscn"
 
 func _ready():
 	size = get_viewport().get_visible_rect().size

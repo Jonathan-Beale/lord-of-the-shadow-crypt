@@ -1,6 +1,8 @@
 class_name Global
 extends Node
 
+var defeated_enemies: Array = []
+var total_defeated: int = -1
 
 enum Operations {
 	ADD,
