@@ -1,6 +1,6 @@
 [gd_scene load_steps=99 format=3 uid="uid://cw8qs0wtqrwkl"]
 
-[ext_resource type="Script" uid="uid://c37wd5nr8eia" path="res://Scripts/Player/player.gd" id="1_16qla"]
+[ext_resource type="Script" uid="uid://c37wd5nr8eia" path="res://Scripts/Playerfighting/playerfighting.gd" id="1_16qla"]
 [ext_resource type="Texture2D" uid="uid://d152rj0m1er1s" path="res://Assets/Sprites/Ninja/Player_Block-Sheet.png" id="2_ew1im"]
 [ext_resource type="Texture2D" uid="uid://b2ho68a4i4471" path="res://Assets/Sprites/Ninja/Player_Idle-Sheet.png" id="2_s5cvf"]
 [ext_resource type="Texture2D" uid="uid://vqy3yhvu6xch" path="res://Assets/Sprites/Ninja/Player_Crouch-Sheet.png" id="2_wwmkn"]
@@ -8,22 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://bpkq6sxerxq81" path="res://Assets/Sprites/Ninja/Player_Light_Punch-Sheet.png" id="3_i7tdw"]
 [ext_resource type="Script" uid="uid://b8md1dj7nqwge" path="res://Scripts/state_machine.gd" id="3_ljad6"]
 [ext_resource type="Texture2D" uid="uid://picqvk31ai7l" path="res://Assets/Sprites/Ninja/Player_Forward_Walk-Sheet.png" id="4_av5s3"]
-[ext_resource type="Script" uid="uid://dmb0bb4dns70w" path="res://Scripts/Player/States/idle.gd" id="4_i7tdw"]
+[ext_resource type="Script" uid="uid://dmb0bb4dns70w" path="res://Scripts/Playerfighting/States/idle.gd" id="4_i7tdw"]
 [ext_resource type="Texture2D" uid="uid://q7rxvouval4a" path="res://Assets/Sprites/Ninja/Player_Dash-Sheet.png" id="4_qwvt6"]
 [ext_resource type="Texture2D" uid="uid://cvtc2r5f4pp5m" path="res://Assets/Sprites/Ninja/Player_Jump-Sheet.png" id="5_dc41j"]
-[ext_resource type="Script" uid="uid://cax06lgtn50a4" path="res://Scripts/Player/States/walk.gd" id="5_wtjr7"]
+[ext_resource type="Script" uid="uid://cax06lgtn50a4" path="res://Scripts/Playerfighting/States/walk.gd" id="5_wtjr7"]
 [ext_resource type="Texture2D" uid="uid://7xsarivlk8jw" path="res://Assets/Sprites/Ninja/Player_Kick-Sheet.png" id="6_ew1im"]
-[ext_resource type="Script" uid="uid://dyhfhhlbkiv" path="res://Scripts/Player/States/jump.gd" id="6_mqgqv"]
-[ext_resource type="Script" uid="uid://bbcpifyxnj2s1" path="res://Scripts/Player/States/fall.gd" id="7_r3psr"]
+[ext_resource type="Script" uid="uid://dyhfhhlbkiv" path="res://Scripts/Playerfighting/States/jump.gd" id="6_mqgqv"]
+[ext_resource type="Script" uid="uid://bbcpifyxnj2s1" path="res://Scripts/Playerfighting/States/fall.gd" id="7_r3psr"]
 [ext_resource type="Texture2D" uid="uid://rtxnjle6rcaj" path="res://Assets/Sprites/Ninja/Player_Throw-Sheet.png" id="8_qwvt6"]
-[ext_resource type="Script" uid="uid://dxs053psbrgf8" path="res://Scripts/Player/States/punch.gd" id="8_yef5y"]
+[ext_resource type="Script" uid="uid://dxs053psbrgf8" path="res://Scripts/Playerfighting/States/punch.gd" id="8_yef5y"]
 [ext_resource type="Script" uid="uid://c720xug04devv" path="res://Scripts/hit_box.gd" id="9_ia7j2"]
 [ext_resource type="Texture2D" uid="uid://3h2hwdtadbnw" path="res://Assets/Sprites/Ninja/Player_Sword-Sheet.png" id="9_qwvt6"]
-[ext_resource type="Script" uid="uid://bf7lu6xd2h6x7" path="res://Scripts/Player/States/kick.gd" id="10_2633w"]
-[ext_resource type="Script" uid="uid://c7ylnmn1yditu" path="res://Scripts/Player/States/crouch.gd" id="20_6y5q2"]
-[ext_resource type="Script" uid="uid://dir5xrsckh3g4" path="res://Scripts/Player/States/pain.gd" id="21_6r4rw"]
-[ext_resource type="Script" uid="uid://bn1qpkunmutsh" path="res://Scripts/Player/States/slash.gd" id="22_qwvt6"]
-[ext_resource type="Script" uid="uid://dniyih0pus8wa" path="res://Scripts/Player/player_hurt_box.gd" id="22_uvgvc"]
+[ext_resource type="Script" uid="uid://bf7lu6xd2h6x7" path="res://Scripts/Playerfighting/States/kick.gd" id="10_2633w"]
+[ext_resource type="Script" uid="uid://c7ylnmn1yditu" path="res://Scripts/Playerfighting/States/crouch.gd" id="20_6y5q2"]
+[ext_resource type="Script" uid="uid://dir5xrsckh3g4" path="res://Scripts/Playerfighting/States/pain.gd" id="21_6r4rw"]
+[ext_resource type="Script" uid="uid://bn1qpkunmutsh" path="res://Scripts/Playerfighting/States/slash.gd" id="22_qwvt6"]
+[ext_resource type="Script" uid="uid://dniyih0pus8wa" path="res://Scripts/Playerfighting/player_hurt_box.gd" id="22_uvgvc"]
 [ext_resource type="Script" uid="uid://con0qofka8t06" path="res://Scripts/Items/Wearables/wearable.gd" id="24_xnhdj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlybi"]
@@ -951,7 +951,7 @@ script = ExtResource("1_16qla")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-14, -19)
-scale = Vector2(0.7616667, 0.7616667)
+scale = Vector2(0.761667, 0.761667)
 sprite_frames = SubResource("SpriteFrames_rh1of")
 animation = &"Idle"
 offset = Vector2(30, 0)
@@ -995,7 +995,7 @@ script = ExtResource("10_2633w")
 script = ExtResource("9_ia7j2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Kick/HitBox"]
-position = Vector2(-41.000004, -30)
+position = Vector2(-41, -30)
 rotation = 0.18458
 shape = SubResource("RectangleShape2D_wwmkn")
 disabled = true

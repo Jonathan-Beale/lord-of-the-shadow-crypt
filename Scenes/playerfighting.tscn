@@ -1,113 +1,61 @@
-[gd_scene load_steps=56 format=3 uid="uid://7n1snqs1obpi"]
+[gd_scene load_steps=55 format=3 uid="uid://budu47d0iy88e"]
 
-[ext_resource type="Script" uid="uid://dxu8t42df5yn" path="res://Scripts/AI/enemy.gd" id="1_7k104"]
-[ext_resource type="Texture2D" uid="uid://cayvec71rvrx5" path="res://Assets/Spritesheets/Brawler Girl/idle.png" id="2_5xdhn"]
-[ext_resource type="Texture2D" uid="uid://dnmunka5q6foq" path="res://Assets/Sprites/Brawler-Girl/Jump/jump1.png" id="6_jnl6c"]
-[ext_resource type="Texture2D" uid="uid://di2w1dpeickee" path="res://Assets/Sprites/Brawler-Girl/Jump/jump2.png" id="7_lv0vf"]
-[ext_resource type="Texture2D" uid="uid://ckqy63erbgnvg" path="res://Assets/Sprites/Brawler-Girl/Jump/jump3.png" id="8_6fu1e"]
-[ext_resource type="Texture2D" uid="uid://becp78ap8kqx7" path="res://Assets/Sprites/Brawler-Girl/Jump/jump4.png" id="9_p80fi"]
-[ext_resource type="Texture2D" uid="uid://bfcnboicrqjqf" path="res://Assets/Sprites/Brawler-Girl/Kick/kick1.png" id="10_ju3h7"]
-[ext_resource type="Texture2D" uid="uid://w2f0of6snaec" path="res://Assets/Sprites/Brawler-Girl/Kick/kick2.png" id="11_p3p7n"]
-[ext_resource type="Texture2D" uid="uid://sh85faw8utuv" path="res://Assets/Spritesheets/Brawler Girl/hurt.png" id="12_4jyny"]
-[ext_resource type="Texture2D" uid="uid://dw8d2v8ixrlxu" path="res://Assets/Sprites/Brawler-Girl/Kick/kick3.png" id="12_8ehh3"]
-[ext_resource type="Texture2D" uid="uid://b01pbey1tn610" path="res://Assets/Sprites/Brawler-Girl/Kick/kick4.png" id="13_8nwx4"]
-[ext_resource type="Texture2D" uid="uid://byq8atsj6sqpy" path="res://Assets/Spritesheets/Brawler Girl/punch.png" id="13_vh8xy"]
-[ext_resource type="Texture2D" uid="uid://ca3q8awl0qngp" path="res://Assets/Sprites/Brawler-Girl/Kick/kick5.png" id="14_fq8ad"]
-[ext_resource type="Texture2D" uid="uid://cate0vp20m7oh" path="res://Assets/Spritesheets/Brawler Girl/walk.png" id="14_qjcj6"]
-[ext_resource type="Script" uid="uid://c4xq2qqic5hbi" path="res://Scripts/AI/States/walk.gd" id="17_vh8xy"]
-[ext_resource type="Script" uid="uid://bjln3cw2jgkvh" path="res://jump.gd" id="18_qjcj6"]
-[ext_resource type="Script" uid="uid://baccff47x3vf3" path="res://Scripts/AI/States/fall.gd" id="19_qjcj6"]
-[ext_resource type="Script" uid="uid://cg0g2aj4hajdc" path="res://Scripts/AI/States/kick.gd" id="22_8cim4"]
-[ext_resource type="Script" uid="uid://bwprhg14cwfha" path="res://Scripts/AI/ai_controller.gd" id="25_7x82w"]
-[ext_resource type="Script" uid="uid://b8md1dj7nqwge" path="res://Scripts/state_machine.gd" id="26_ccbbw"]
-[ext_resource type="Script" uid="uid://do5gsaelej78j" path="res://Scripts/AI/States/idle.gd" id="27_b5wqg"]
-[ext_resource type="Script" uid="uid://baponbjt3xu31" path="res://Scripts/AI/States/punch.gd" id="28_ccdwq"]
-[ext_resource type="Script" uid="uid://1fwjnajh82jy" path="res://Scripts/AI/States/pain.gd" id="29_hgro5"]
-[ext_resource type="Script" uid="uid://cfka6h273dn7x" path="res://Scripts/hurt_box.gd" id="30_18rq2"]
-[ext_resource type="Script" uid="uid://c720xug04devv" path="res://Scripts/hit_box.gd" id="32_w8nyb"]
+[ext_resource type="Texture2D" uid="uid://fyqj2g7nvmtm" path="res://Assets/Sprites/Brawler-Girl/Idle/idle1.png" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://c37wd5nr8eia" path="res://Scripts/Playerfighting/playerfighting.gd" id="1_sweqy"]
+[ext_resource type="Texture2D" uid="uid://cfy5tagvue04b" path="res://Assets/Sprites/Brawler-Girl/Idle/idle2.png" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://djsvmn857u35j" path="res://Assets/Sprites/Brawler-Girl/Idle/idle3.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://c3vxj8jtejmoa" path="res://Assets/Sprites/Brawler-Girl/Idle/idle4.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://dnmunka5q6foq" path="res://Assets/Sprites/Brawler-Girl/Jump/jump1.png" id="6_7lmhl"]
+[ext_resource type="Script" uid="uid://b8md1dj7nqwge" path="res://Scripts/state_machine.gd" id="6_dw050"]
+[ext_resource type="Texture2D" uid="uid://cn620s2rsuuoq" path="res://Assets/Sprites/Brawler-Girl/Walk/walk1.png" id="6_q13i1"]
+[ext_resource type="Script" uid="uid://dmb0bb4dns70w" path="res://Scripts/Playerfighting/States/idle.gd" id="7_b26j0"]
+[ext_resource type="Texture2D" uid="uid://di2w1dpeickee" path="res://Assets/Sprites/Brawler-Girl/Jump/jump2.png" id="7_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://cpajghmqffefb" path="res://Assets/Sprites/Brawler-Girl/Walk/walk2.png" id="7_pylmc"]
+[ext_resource type="Texture2D" uid="uid://ckqy63erbgnvg" path="res://Assets/Sprites/Brawler-Girl/Jump/jump3.png" id="8_jm5j8"]
+[ext_resource type="Script" uid="uid://cax06lgtn50a4" path="res://Scripts/Playerfighting/States/walk.gd" id="8_n7ghd"]
+[ext_resource type="Texture2D" uid="uid://b1fyuaf8wwu3s" path="res://Assets/Sprites/Brawler-Girl/Walk/walk3.png" id="8_pbfsw"]
+[ext_resource type="Texture2D" uid="uid://1ss6mmgb6j4m" path="res://Assets/Sprites/Brawler-Girl/Walk/walk4.png" id="9_5tmop"]
+[ext_resource type="Texture2D" uid="uid://becp78ap8kqx7" path="res://Assets/Sprites/Brawler-Girl/Jump/jump4.png" id="9_7hik5"]
+[ext_resource type="Texture2D" uid="uid://b5colty0h11bg" path="res://Assets/Sprites/Brawler-Girl/Walk/walk5.png" id="10_7ahtn"]
+[ext_resource type="Texture2D" uid="uid://bfcnboicrqjqf" path="res://Assets/Sprites/Brawler-Girl/Kick/kick1.png" id="10_efrwb"]
+[ext_resource type="Texture2D" uid="uid://hy78dqbsa34u" path="res://Assets/Sprites/Brawler-Girl/Punch/punch1.png" id="10_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://4ivvc07rfgdd" path="res://Assets/Sprites/Brawler-Girl/Punch/punch2.png" id="11_2wuci"]
+[ext_resource type="Texture2D" uid="uid://dc7hyai8erfii" path="res://Assets/Sprites/Brawler-Girl/Walk/walk6.png" id="11_7lmhl"]
+[ext_resource type="Texture2D" uid="uid://w2f0of6snaec" path="res://Assets/Sprites/Brawler-Girl/Kick/kick2.png" id="11_hiqhm"]
+[ext_resource type="Texture2D" uid="uid://c8bhhfs4ejxbn" path="res://Assets/Sprites/Brawler-Girl/Walk/walk7.png" id="12_dx0e4"]
+[ext_resource type="Texture2D" uid="uid://bnqb5ph6110l1" path="res://Assets/Sprites/Brawler-Girl/Punch/punch3.png" id="12_iruf7"]
+[ext_resource type="Texture2D" uid="uid://dw8d2v8ixrlxu" path="res://Assets/Sprites/Brawler-Girl/Kick/kick3.png" id="12_tkwlq"]
+[ext_resource type="Texture2D" uid="uid://b01pbey1tn610" path="res://Assets/Sprites/Brawler-Girl/Kick/kick4.png" id="13_hl5qd"]
+[ext_resource type="Texture2D" uid="uid://bqnxcim4b56n" path="res://Assets/Sprites/Brawler-Girl/Walk/walk8.png" id="13_jm5j8"]
+[ext_resource type="Texture2D" uid="uid://bcwe8at3l2m6d" path="res://Assets/Sprites/Brawler-Girl/Walk/walk9.png" id="14_7hik5"]
+[ext_resource type="Texture2D" uid="uid://ca3q8awl0qngp" path="res://Assets/Sprites/Brawler-Girl/Kick/kick5.png" id="14_ek41f"]
+[ext_resource type="Texture2D" uid="uid://uplblum2m8p3" path="res://Assets/Sprites/Brawler-Girl/Hurt/hurt1.png" id="15_pgbbb"]
+[ext_resource type="Texture2D" uid="uid://ctkh3l00d7eqq" path="res://Assets/Sprites/Brawler-Girl/Walk/walk10.png" id="15_qtqh7"]
+[ext_resource type="Texture2D" uid="uid://ceviyk7r1qon6" path="res://Assets/Sprites/Brawler-Girl/Hurt/hurt2.png" id="16_331ug"]
+[ext_resource type="Script" uid="uid://dyhfhhlbkiv" path="res://Scripts/Playerfighting/States/jump.gd" id="23_qtqh7"]
+[ext_resource type="Script" uid="uid://bbcpifyxnj2s1" path="res://Scripts/Playerfighting/States/fall.gd" id="24_dx0e4"]
+[ext_resource type="Script" uid="uid://dxs053psbrgf8" path="res://Scripts/Playerfighting/States/punch.gd" id="33_tkwlq"]
+[ext_resource type="Script" uid="uid://bf7lu6xd2h6x7" path="res://Scripts/Playerfighting/States/kick.gd" id="34_hl5qd"]
+[ext_resource type="Script" uid="uid://c720xug04devv" path="res://Scripts/hit_box.gd" id="35_hl5qd"]
+[ext_resource type="Script" uid="uid://dir5xrsckh3g4" path="res://Scripts/Playerfighting/States/pain.gd" id="36_khis8"]
+[ext_resource type="Script" uid="uid://dniyih0pus8wa" path="res://Scripts/Playerfighting/player_hurt_box.gd" id="39_pgbbb"]
+[ext_resource type="Script" uid="uid://cde1qw6rlg036" path="res://Scripts/Items/Wearables/pyrogauntlet.gd" id="40_331ug"]
+[ext_resource type="Script" uid="uid://bokyst5o0ctos" path="res://Scripts/Items/Wearables/ruination.gd" id="41_ny14h"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ycey"]
-atlas = ExtResource("2_5xdhn")
-region = Rect2(0, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cim4"]
-atlas = ExtResource("2_5xdhn")
-region = Rect2(96, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7x82w"]
-atlas = ExtResource("2_5xdhn")
-region = Rect2(192, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iatxd"]
-atlas = ExtResource("2_5xdhn")
-region = Rect2(288, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qqxsh"]
-atlas = ExtResource("12_4jyny")
-region = Rect2(0, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0whn2"]
-atlas = ExtResource("12_4jyny")
-region = Rect2(96, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bx1xr"]
-atlas = ExtResource("13_vh8xy")
-region = Rect2(0, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n85mp"]
-atlas = ExtResource("13_vh8xy")
-region = Rect2(96, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nxecp"]
-atlas = ExtResource("13_vh8xy")
-region = Rect2(192, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6jaer"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(0, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ve8xs"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(96, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q0iv8"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(192, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c1gwg"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(288, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mxp7"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(384, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5a56t"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(480, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a6sir"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(576, 0, 96, 63)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ej4m"]
-atlas = ExtResource("14_qjcj6")
-region = Rect2(672, 0, 96, 63)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ybt8m"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ycey")
+"texture": ExtResource("1_hqtel")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8cim4")
+"texture": ExtResource("2_sweqy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7x82w")
+"texture": ExtResource("3_2hs0m")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iatxd")
+"texture": ExtResource("4_1jxqw")
 }],
 "loop": true,
 "name": &"Idle",
@@ -115,16 +63,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_jnl6c")
+"texture": ExtResource("6_7lmhl")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_lv0vf")
+"texture": ExtResource("7_dx0e4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_6fu1e")
+"texture": ExtResource("8_jm5j8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_p80fi")
+"texture": ExtResource("9_7hik5")
 }],
 "loop": false,
 "name": &"Jump",
@@ -132,19 +80,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_ju3h7")
+"texture": ExtResource("10_efrwb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_p3p7n")
+"texture": ExtResource("11_hiqhm")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_8ehh3")
+"texture": ExtResource("12_tkwlq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_8nwx4")
+"texture": ExtResource("13_hl5qd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_fq8ad")
+"texture": ExtResource("14_ek41f")
 }],
 "loop": false,
 "name": &"Kick",
@@ -152,10 +100,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qqxsh")
+"texture": ExtResource("15_pgbbb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0whn2")
+"texture": ExtResource("16_331ug")
 }],
 "loop": true,
 "name": &"Pain",
@@ -163,13 +111,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bx1xr")
+"texture": ExtResource("10_qtqh7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n85mp")
+"texture": ExtResource("11_2wuci")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nxecp")
+"texture": ExtResource("12_iruf7")
 }],
 "loop": false,
 "name": &"Punch",
@@ -177,42 +125,48 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6jaer")
+"texture": ExtResource("6_q13i1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ve8xs")
+"texture": ExtResource("7_pylmc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q0iv8")
+"texture": ExtResource("8_pbfsw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c1gwg")
+"texture": ExtResource("9_5tmop")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3mxp7")
+"texture": ExtResource("10_7ahtn")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5a56t")
+"texture": ExtResource("11_7lmhl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a6sir")
+"texture": ExtResource("12_dx0e4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8ej4m")
+"texture": ExtResource("13_jm5j8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_7hik5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qtqh7")
 }],
 "loop": true,
 "name": &"Walk",
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4sfiy"]
-size = Vector2(13.7931, 0.862068)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
+size = Vector2(19, 5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hb2o4"]
-size = Vector2(52, 16)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hl5qd"]
+size = Vector2(44, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nr6c1"]
-size = Vector2(24, 59.25)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ek41f"]
+size = Vector2(14, 43)
 
 [sub_resource type="Animation" id="Animation_iruf7"]
 resource_name = "Fall"
@@ -366,30 +320,15 @@ tracks/1/path = NodePath("Sprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 0, 1]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine/Pain")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"add_juice"
-}]
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_khis8"]
 resource_name = "Punch"
 length = 0.3
-loop_mode = 1
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -422,7 +361,7 @@ tracks/2/path = NodePath("StateMachine/Punch/HitBox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -520,71 +459,71 @@ _data = {
 &"Walk": SubResource("Animation_q13i1")
 }
 
-[node name="Enemy" type="CharacterBody2D" groups=["playerCam"]]
-script = ExtResource("1_7k104")
+[node name="Playerfighting" type="CharacterBody2D"]
+script = ExtResource("1_sweqy")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -11)
-scale = Vector2(1.36111, 1.36111)
-sprite_frames = SubResource("SpriteFrames_ybt8m")
+sprite_frames = SubResource("SpriteFrames_dw050")
 animation = &"Idle"
 
 [node name="FloorCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-1.00001, 31.125)
-scale = Vector2(2.03, 2.03)
-shape = SubResource("RectangleShape2D_4sfiy")
+position = Vector2(-1.5, 28.5)
+shape = SubResource("RectangleShape2D_b26j0")
 
 [node name="StateMachine" type="Node2D" parent="."]
-script = ExtResource("26_ccbbw")
+script = ExtResource("6_dw050")
 
 [node name="Idle" type="Node2D" parent="StateMachine"]
-script = ExtResource("27_b5wqg")
+script = ExtResource("7_b26j0")
 
 [node name="Walk" type="Node2D" parent="StateMachine"]
-script = ExtResource("17_vh8xy")
+script = ExtResource("8_n7ghd")
 
 [node name="Jump" type="Node2D" parent="StateMachine"]
-script = ExtResource("18_qjcj6")
+script = ExtResource("23_qtqh7")
 
 [node name="Fall" type="Node2D" parent="StateMachine"]
-script = ExtResource("19_qjcj6")
+script = ExtResource("24_dx0e4")
 
 [node name="Punch" type="Node2D" parent="StateMachine"]
-script = ExtResource("28_ccdwq")
+script = ExtResource("33_tkwlq")
 
 [node name="HitBox" type="Area2D" parent="StateMachine/Punch"]
-script = ExtResource("32_w8nyb")
+script = ExtResource("35_hl5qd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Punch/HitBox"]
-position = Vector2(-16, -9)
-shape = SubResource("RectangleShape2D_hb2o4")
+position = Vector2(15, -1)
+shape = SubResource("RectangleShape2D_hl5qd")
 disabled = true
 
 [node name="Kick" type="Node2D" parent="StateMachine"]
-script = ExtResource("22_8cim4")
+script = ExtResource("34_hl5qd")
 
 [node name="HitBox" type="Area2D" parent="StateMachine/Kick"]
-script = ExtResource("32_w8nyb")
+script = ExtResource("35_hl5qd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Kick/HitBox"]
-position = Vector2(-34, 5)
-shape = SubResource("RectangleShape2D_hb2o4")
+position = Vector2(11, 10)
+shape = SubResource("RectangleShape2D_hl5qd")
 disabled = true
 
 [node name="Pain" type="Node2D" parent="StateMachine"]
-script = ExtResource("29_hgro5")
+script = ExtResource("36_khis8")
 
 [node name="HurtBox" type="Area2D" parent="StateMachine/Pain"]
-script = ExtResource("30_18rq2")
+script = ExtResource("39_pgbbb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Pain/HurtBox"]
-position = Vector2(-4, 0.625)
-shape = SubResource("RectangleShape2D_nr6c1")
+position = Vector2(-5, 10)
+shape = SubResource("RectangleShape2D_ek41f")
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_n7ghd")
 }
 
-[node name="AIController" type="Node2D" parent="."]
-script = ExtResource("25_7x82w")
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("40_331ug")
+
+[node name="Node2D2" type="Node2D" parent="."]
+script = ExtResource("41_ny14h")

@@ -587,3 +587,14 @@ offset_top = 65.0
 offset_right = -146.0
 offset_bottom = 105.0
 texture = ExtResource("5_83h6v")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Controls" type="Label" parent="CanvasLayer"]
+offset_top = 105.0
+offset_right = 259.0
+offset_bottom = 206.0
+text = "WASD or Left Stick For Movement
+U or X(Playstation) To Punch
+I or O(Playstation) To Kick
+Y or R1(Playstation) To Slash"
