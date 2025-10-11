@@ -1,0 +1,28 @@
+{
+	"item_name": "Example Item",
+	"item_description": "An item that burns enemies on physical damage. Slows on ice damage and has a lightning burst chance.",
+	"icon": "res://Assets/Icons/example_icon.png",
+	"effects": [
+		{
+			"trigger": "on_damage",
+			"cooldown": 8.0,
+			"condition": "fire_damage",
+			"cooldown_d": 0.0,
+			"mods": [
+				{
+					"type": "stat_mod",
+					"stat": "max_speed",
+					"value": 100
+				}
+			],
+			"damage": [
+				{
+					"duration": 3.0,
+					"type": "electric",
+					"max_stacks": 1,
+					"damage": 20.0
+				}
+			]
+		}
+	]
+}
