@@ -26,6 +26,7 @@ class ItemEffect:
 	var remaining_cooldown: float = 0.0
 	var max_stacks: int = 1
 	var current_stacks: int = 0
+	var active_mods: Array = []
 
 	func _init(e_trigger, e_mods, e_damage, c, cd=0.0, ms=1):
 		trigger = e_trigger
@@ -87,25 +88,40 @@ class ItemEffect:
 		# Check cooldowns
 		if remaining_cooldown > 0.0:
 			return
-		owner.active_cooldowns.append(self)
-		remaining_cooldown = cooldown
-		current_stacks += 1
-		if current_stacks > max_stacks:
-			current_stacks = max_stacks
-			return
-		for mod in mods:
-			if mod.type == "shield":
-				var shield = Global.Shield.new(mod.amount, mod.duration)
-				shield.add(user)
-			if mod.type == "stat":
-				var stat_mod = Global.StatMod.new(mod.stat, user, mod.amount, mod.type, mod.duration)
-				stat_mod.add(user)
+		if cooldown > 0.0:
+			owner.active_cooldowns.append(self)
+			remaining_cooldown = cooldown
 		
-		for dmg in damage:
-			if dmg.duration > 0.0:
-				_trigger_entity.add_dot(dmg.amount, dmg.duration, dmg.type, user, _trigger_entity.DotStacking.STACK_DPS, dmg.max_stacks)
-			else:
-				_trigger_entity.take_damage(dmg.amount, dmg.type, user)
+		if current_stacks == 0:
+			for mod in mods:
+				if mod["type"] == "shield":
+					var shield = Global.Shield.new(mod["amount"], mod["duration"], mod["type"])
+					shield.add(user)
+					active_mods.append(shield)
+				if mod["type"] == "stat":
+					var stat_mod = Global.StatMod.new(mod["stat"], user, mod["amount"], mod["type"], mod["duration"])
+					stat_mod.add(user)
+					active_mods.append(stat_mod)
+
+			for dmg in damage:
+				if dmg["duration"] > 0.0:
+					var dot = Global.BurnStack.new(user, dmg["amount"], dmg["duration"], dmg["type"])
+					dot.add(_trigger_entity)
+				else:
+					_trigger_entity.take_damage(dmg["amount"], dmg["type"], user)
+		else:
+			if current_stacks >= max_stacks:
+				return
+			current_stacks += 1
+			for mod in active_mods:
+				mod.apply_stack()	
+
+			for dmg in damage:
+				if dmg["duration"] > 0.0:
+					var dot = Global.BurnStack.new(user, dmg["amount"], dmg["duration"], dmg["type"])
+					dot.add(_trigger_entity)
+				else:
+					_trigger_entity.take_damage(dmg["amount"], dmg["type"], user)
 
 func load_item_stats(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
@@ -180,7 +196,7 @@ func _on_recover():
 	var duration = 0.0
 	var amount = user.grey_health / 2
 	user.grey_health -= amount
-	var shield = Global.Shield.new(amount, duration)
+	var shield = Global.Shield.new(user, amount, duration)
 	shield.add(user)
 
 # Loadable from json

@@ -15,3 +15,4 @@ Start menu > Versus Screen > Item Selection > Fight Count Down > Fight > Victory
 - [] Versus Settings Screen
 - [] Victory Screen
 
+- [] create weapon archetype

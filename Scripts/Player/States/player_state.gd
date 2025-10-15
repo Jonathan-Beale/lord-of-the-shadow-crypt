@@ -64,7 +64,6 @@ var pained: bool = false
 
 var sprite_flipped: bool = false
 
-
 func determine_sprite_flipped(_event: InputEvent) -> void:
 	var current_state = sprite_flipped
 	if player.velocity.x < 0:

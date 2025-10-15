@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7qspmk8yj07b"]
+[gd_scene load_steps=7 format=3 uid="uid://b7qspmk8yj07b"]
 
 [ext_resource type="Script" uid="uid://c7x33sk440nm8" path="res://Scripts/UI/fight_ui.gd" id="1_d0ev2"]
 [ext_resource type="Script" uid="uid://t4q5hkefqel6" path="res://Scripts/UI/item_options.gd" id="2_7r788"]
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="2_15jwc"]
+[ext_resource type="Texture2D" uid="uid://ctj54gqwgl4tj" path="res://Assets/Icons/liandry's.jpg" id="3_vcimm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7r788"]
 texture = ExtResource("2_15jwc")
@@ -620,6 +621,11 @@ offset_left = 81.0
 offset_top = 44.0
 offset_right = 135.0
 offset_bottom = 96.0
+
+[node name="Liandry\'s" type="Sprite2D" parent="ItemOptions/CenterIcon"]
+position = Vector2(26.75, 26)
+scale = Vector2(0.0453125, 0.0407407)
+texture = ExtResource("3_vcimm")
 
 [node name="ItemOption" type="Control" parent="ItemOptions"]
 anchors_preset = 0
