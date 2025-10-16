@@ -76,8 +76,8 @@ class ModBase:
 		#self.free()
 
 class Shield extends ModBase:
-	func _init(s_amount: float = 0.0, s_duration: float = 0.0, s_type: String =  "generic"):
-		super._init(null, s_amount, s_type, s_duration)
+	func _init(m_source: Dummy, s_amount: float = 0.0, s_duration: float = 0.0, s_type: String =  "generic"):
+		super._init(m_source, s_amount, s_type, s_duration)
 	
 	func add(to_entity: Dummy):
 		if owner == to_entity: return
@@ -93,12 +93,51 @@ class Shield extends ModBase:
 		owner.shields[type].erase(self)
 		owner = null
 
+	func apply_stack():
+		if int(current_magnitude) % int(amount) != 0:
+			stacks = int(current_magnitude / amount) + 1
+		else:
+			stacks = int(current_magnitude / amount)
+
+		if stacks < max_stacks:
+			stacks += 1
+		duration_remaining = duration
+		current_magnitude += amount
+		var c_owner = owner
+		self.remove()
+		self.add(c_owner)	
+
+class BurnStack extends ModBase:
+	var damage_per_second: float = 0.0
+
+	func _init(m_source: Dummy, dps: float = 0.0, s_duration: float = 0.0, s_type: String = "fire"):
+		super._init(m_source, dps, s_type, s_duration)
+		damage_per_second = dps
+
+	func add(to_entity: Dummy):
+		if owner == to_entity: return
+		if owner != null:
+			owner.dot_mods.erase(self)
+		owner = to_entity
+		if not owner.dot_mods.has(self):
+			owner.dot_mods.append(self)
+
+	func remove():
+		if owner == null:
+			return
+		owner.dot_mods.erase(self)
+		owner = null
+
+	func apply_stack():
+		if stacks < max_stacks:
+			stacks += 1
+		duration_remaining = duration
 
 class StatMod extends ModBase:
-	var stat: StatTypes
+	var stat: String
 	var operator: Operations = Operations.ADD
 
-	func _init(m_stat: StatTypes, m_source: Dummy, s_amount: float, s_type: String = "generic", m_duration: float = 0.0):
+	func _init(m_stat: String, m_source: Dummy, s_amount: float, s_type: String = "generic", m_duration: float = 0.0):
 		super._init(m_source, s_amount, s_type, m_duration)
 		stat = m_stat
 

@@ -37,8 +37,6 @@ var percent_pen = {
 	"physical": 0.0
 }
 
-
-
 signal dealt_damage(type: String, damage: float, target: Dummy, attacker: Fighter)
 
 # A class for additive percentile damage mods
@@ -103,7 +101,8 @@ class BonusDamage:
 			var agg = credited_source.calc_damage_mod(amount, type)
 			target.take_damage(amount + agg, type, credited_source)
 		else:
-			target.add_dot(amount, dot_duration, type, credited_source)
+			var dot = Global.BurnStack.new(attacker, amount, dot_duration, type)
+			dot.add(target)
 
 	func add(to_entity: Fighter):
 		if owner == to_entity: return

@@ -578,6 +578,21 @@ grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.909901, 0.989901)
 
+[node name="SpawnPoint2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 125.0
+offset_top = -90.0
+offset_right = 125.0
+offset_bottom = -90.0
+
+[node name="SpawnPoint1" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -125.0
+offset_top = -90.0
+offset_right = -125.0
+offset_bottom = -90.0
 [node name="AbilitiesUI" type="Node2D" parent="."]
 
 [node name="Overlay" type="TextureRect" parent="AbilitiesUI"]

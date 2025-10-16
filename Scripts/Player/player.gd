@@ -65,6 +65,11 @@ func update_controls(new_controls: Object = null):
 	if new_controls:
 		controls = new_controls
 
+func flip_sprite():
+	if sprite == null: return
+	var new_orientation = not sprite.flip_h
+	sprite.flip_h = new_orientation
+
 func _ready():
 	self.add_to_group("Player")
 	
