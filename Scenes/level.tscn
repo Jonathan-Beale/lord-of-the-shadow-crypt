@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm6i5evldlu5p"]
+[gd_scene load_steps=8 format=3 uid="uid://bm6i5evldlu5p"]
 
 [ext_resource type="Script" uid="uid://buac0cveure1h" path="res://Scripts/level.gd" id="1_6phgx"]
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="1_vonw3"]
+[ext_resource type="Script" uid="uid://bup73gni77hyf" path="res://Scenes/camera.gd" id="3_wqkje"]
 [ext_resource type="PackedScene" uid="uid://b7qspmk8yj07b" path="res://Scenes/fight_ui.tscn" id="4_0b4ue"]
+[ext_resource type="Texture2D" uid="uid://dj5f0cms8750v" path="res://Assets/Stage Layers/Ability Slots.png" id="4_81xng"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6phgx"]
 texture = ExtResource("1_vonw3")
@@ -562,9 +564,9 @@ layer_2/name = "props"
 layer_3/name = "backdrop"
 layer_3/z_index = -2
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
+[node name="Camera" type="Camera2D" parent="." groups=["playerCam"]]
 zoom = Vector2(3, 3)
+script = ExtResource("3_wqkje")
 
 [node name="FightUI" parent="." instance=ExtResource("4_0b4ue")]
 anchors_preset = 0
@@ -591,3 +593,12 @@ offset_left = -125.0
 offset_top = -90.0
 offset_right = -125.0
 offset_bottom = -90.0
+[node name="AbilitiesUI" type="Node2D" parent="."]
+
+[node name="Overlay" type="TextureRect" parent="AbilitiesUI"]
+z_index = 100
+offset_left = -186.0
+offset_top = 65.0
+offset_right = -146.0
+offset_bottom = 105.0
+texture = ExtResource("4_81xng")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dp13gibtmpakh"]
+[gd_scene load_steps=3 format=3 uid="uid://dp13gibtmpakh"]
 
 [ext_resource type="Script" uid="uid://cxxmjunitwu54" path="res://Scripts/UI/health_bar.gd" id="1_m7ell"]
+[ext_resource type="Texture2D" uid="uid://doqnx13bu7lei" path="res://Assets/Stage Layers/Player HealthBar.png" id="2_m34ix"]
 
 [node name="HealthBar" type="Control"]
 layout_mode = 3
@@ -37,3 +38,9 @@ offset_top = 2.0
 offset_right = 154.0
 offset_bottom = 23.0
 color = Color(0.347817, 0.347817, 0.347817, 1)
+
+[node name="Overlay" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_m34ix")

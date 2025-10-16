@@ -14,6 +14,8 @@ var control_schemes = [
 	down="ui_down",
 	punch="attack_1",
 	kick="attack_2",
+	slash="attack_3",
+	#dash="dash_button"
 	},
 	{
 		left="p2_left",
@@ -22,6 +24,7 @@ var control_schemes = [
 		down="p2_down",
 		punch="p2_attack_1",
 		kick="p2_attack_2",
+		slash="p2_attack_3",
 	},
 	{
 		left="p3_left",
@@ -51,6 +54,8 @@ var controls = {
 	down="ui_down",
 	punch="attack_1",
 	kick="attack_2",
+	slash="attack_3",
+	#dash="dash_button"
 }
 
 var team = "Player"

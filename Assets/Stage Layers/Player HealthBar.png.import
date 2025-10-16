@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gl72s370fjdr"
-path="res://.godot/imported/Tilesetv3.png-a0a5e81e846e19473dbb8ac08d095d30.ctex"
+uid="uid://doqnx13bu7lei"
+path="res://.godot/imported/Player HealthBar.png-1159e42b692fb8496d273b2e983b06e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesetv3.png"
-dest_files=["res://.godot/imported/Tilesetv3.png-a0a5e81e846e19473dbb8ac08d095d30.ctex"]
+source_file="res://Assets/Stage Layers/Player HealthBar.png"
+dest_files=["res://.godot/imported/Player HealthBar.png-1159e42b692fb8496d273b2e983b06e6.ctex"]
 
 [params]
 

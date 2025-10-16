@@ -12,6 +12,10 @@ func exit(new_state: State = null):
 	pain_state.hurt_box.position.y = 0
 
 func process_input(event: InputEvent) -> State:
+		# If crouch button is released, go back to idle
+	if not Input.is_action_pressed(player.controls.down): 
+		# player.animation.play_backwards(crouch_anim)
+		return idle_state
 	if event is InputEventJoypadMotion and abs(event.axis_value) < DEADZONE:
 		return null
 	super(event)
