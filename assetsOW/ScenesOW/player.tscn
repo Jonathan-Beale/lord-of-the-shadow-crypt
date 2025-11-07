@@ -696,7 +696,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqm"]
-size = Vector2(6.75, 4.625)
+size = Vector2(5.89665, 5.55489)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -707,8 +707,9 @@ position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_mkd7p")
 animation = &"walk_right1"
 frame = 7
-frame_progress = 0.8417629
+frame_progress = 0.841763
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(-1.375, 7.3125)
+position = Vector2(-0.5, 2)
+scale = Vector2(0.847939, -1.08013)
 shape = SubResource("RectangleShape2D_sweqm")

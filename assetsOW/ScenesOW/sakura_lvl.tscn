@@ -1180,7 +1180,7 @@ terrain_set_2/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_6sp1c")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8cxr"]
-size = Vector2(10, 6)
+size = Vector2(7, 8)
 
 [node name="SakuraLvl" type="Node2D"]
 y_sort_enabled = true
@@ -1223,7 +1223,7 @@ z_index = 1
 position = Vector2(-4, -11)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 7)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_e8cxr")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
