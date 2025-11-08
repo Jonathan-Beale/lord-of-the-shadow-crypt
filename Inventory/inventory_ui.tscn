@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://2qxbv3elnba7"]
 
-[ext_resource type="Script" uid="uid://cfhg4dtgb0b4g" path="res://Inventory/inventory_ui.gd" id="1_se627"]
+[ext_resource type="Script" uid="uid://cfhg4dtgb0b4g" path="res://Inventory/Scripts/inventory_ui.gd" id="1_se627"]
 [ext_resource type="Texture2D" uid="uid://ccyc2fqq8qdw6" path="res://assetsOW/Sprites/inventory-background.png" id="2_o6avf"]
 [ext_resource type="PackedScene" uid="uid://lombgk7rbgu1" path="res://Inventory/inv_ui_slot.tscn" id="3_6gduq"]
 

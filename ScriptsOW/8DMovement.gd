@@ -85,3 +85,9 @@ func play_attack():
 			animated_sprite_2d.animation = "attack_down"
 	
 	animated_sprite_2d.play()
+
+func player():
+	pass
+
+func collect(item):
+	inv.insert(item)
