@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://dfksh0gaxrmca"]
+[gd_scene load_steps=11 format=4 uid="uid://dfksh0gaxrmca"]
 
 [ext_resource type="Texture2D" uid="uid://t1o8c4t2a2iu" path="res://assetsOW/Sprites/sakuratilemap.PNG" id="1_1xyn5"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_6sp1c"]
+[ext_resource type="Resource" uid="uid://dio02v71v6d6f" path="res://Inventory/playerInv.tres" id="3_dvmdw"]
 [ext_resource type="PackedScene" uid="uid://da78lnvhlxl1m" path="res://assetsOW/ScenesOW/enemy.tscn" id="4_1hhis"]
 [ext_resource type="Script" uid="uid://bc0dwynjc1tmt" path="res://ScriptsOW/EnemyManager.gd" id="4_dvmdw"]
 [ext_resource type="Script" uid="uid://b5y70tsb515ar" path="res://assetsOW/ScenesOW/enemy2.gd" id="6_prsiy"]
@@ -1221,6 +1222,7 @@ tile_set = SubResource("TileSet_e8cxr")
 [node name="Player" parent="." instance=ExtResource("2_6sp1c")]
 z_index = 1
 position = Vector2(-4, -11)
+inv = ExtResource("3_dvmdw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.5, 0)
