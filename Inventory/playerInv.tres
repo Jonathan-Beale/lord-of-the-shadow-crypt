@@ -65,5 +65,5 @@ metadata/_custom_type_script = "uid://2cdhp5rymf3j"
 
 [resource]
 script = ExtResource("3_x0t36")
-slots = Array[Object]([SubResource("Resource_ksk25"), SubResource("Resource_8j7sk"), SubResource("Resource_x0t36"), SubResource("Resource_0bcud"), SubResource("Resource_a4n5k"), SubResource("Resource_huo70"), SubResource("Resource_actsy"), SubResource("Resource_hn126"), SubResource("Resource_oe83e"), SubResource("Resource_cdbcl"), SubResource("Resource_l5g0o"), SubResource("Resource_x2fqq")])
+slots = Array[ExtResource("2_vja0v")]([SubResource("Resource_ksk25"), SubResource("Resource_8j7sk"), SubResource("Resource_x0t36"), SubResource("Resource_0bcud"), SubResource("Resource_a4n5k"), SubResource("Resource_huo70"), SubResource("Resource_actsy"), SubResource("Resource_hn126"), SubResource("Resource_oe83e"), SubResource("Resource_cdbcl"), SubResource("Resource_l5g0o"), SubResource("Resource_x2fqq")])
 metadata/_custom_type_script = "uid://d276puoo17smm"
