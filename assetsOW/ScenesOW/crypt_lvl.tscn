@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://du6dt0ed27sbg"]
+[gd_scene load_steps=8 format=4 uid="uid://du6dt0ed27sbg"]
 
 [ext_resource type="TileSet" uid="uid://d33eyj1qaxgk5" path="res://assetsOW/ScenesOW/crypt.tres" id="1_ysoil"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_5xbob"]
 [ext_resource type="PackedScene" uid="uid://da8b35vdb6jhq" path="res://assetsOW/ScenesOW/stairs_up.tscn" id="4_kdiss"]
+[ext_resource type="Script" uid="uid://bc0dwynjc1tmt" path="res://ScriptsOW/EnemyManager.gd" id="4_v175n"]
+[ext_resource type="PackedScene" uid="uid://da78lnvhlxl1m" path="res://assetsOW/ScenesOW/enemy.tscn" id="5_ixc2g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xbob"]
 size = Vector2(5, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdiss"]
+size = Vector2(8, 10)
 
 [node name="crypt_lvl" type="Node2D"]
 
@@ -40,3 +45,13 @@ shape = SubResource("RectangleShape2D_5xbob")
 z_index = 1
 position = Vector2(-62, 134)
 scale = Vector2(0.1, 0.1)
+
+[node name="EnemyManager" type="Node2D" parent="."]
+script = ExtResource("4_v175n")
+
+[node name="Enemy" parent="EnemyManager" instance=ExtResource("5_ixc2g")]
+position = Vector2(-255, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyManager/Enemy"]
+position = Vector2(2, 3)
+shape = SubResource("RectangleShape2D_kdiss")
