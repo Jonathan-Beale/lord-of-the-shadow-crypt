@@ -55,4 +55,4 @@ func update_counter_display() -> void:
 		label = get_tree().current_scene.find_child("EnemyCounter", true, false)
 	if label != null:
 		global.total_defeated += 1
-		label.text = "Enemies Defeated: " + str(global.total_defeated) + "\n WASD or Left Stick To Move\nU or X(Playstation) To Attack"
+		label.text = " Enemies Defeated: " + str(global.total_defeated) + "\n WASD or Left Stick To Move\n I for Inventory" + "\n DESCEND INTO THE CRYPT \n AND DEFEAT THE SHADOW LORD"
