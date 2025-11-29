@@ -329,4 +329,8 @@ func take_damage(amount: float, type: String = "physical", source: Fighter = nul
 
 func die() -> void:
 	emit_signal("dying")
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("Death"):
+		print("WHYD ODESNB THIS WORK")
+		$AnimationPlayer.play("Death")
+	await get_tree().create_timer(1.8).timeout
 	queue_free()

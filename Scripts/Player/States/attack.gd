@@ -54,6 +54,11 @@ func process_input(event: InputEvent) -> State:
 			return parent.get_node("Kick")
 		if input_buffer == "attack_3" and PlayerSlashState in combo_chain:
 			return parent.get_node("Slash")
+		if input_buffer == "p1_block" and PlayerBlockState in combo_chain:
+			return parent.get_node("Block")
+		if input_buffer == "dash" and PlayerDashState in combo_chain:
+			print("dAshhhinnng")
+			return parent.get_node("dash")
 
 	# Default transitions (after attack)
 	if has_attacked:

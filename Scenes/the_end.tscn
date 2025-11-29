@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8njaymasfs8x"]
+
+[ext_resource type="Texture2D" uid="uid://ct8o34kdpkrcu" path="res://Assets/Stage Layers/backdrop.png" id="2_ekukb"]
+[ext_resource type="Script" uid="uid://bup73gni77hyf" path="res://Scripts/UI/camera.gd" id="4_hdft0"]
+
+[node name="Level" type="Node2D"]
+
+[node name="Node2D2" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Node2D2"]
+offset_left = -200.0
+offset_top = -163.0
+offset_right = 221.5
+offset_bottom = 118.0
+texture = ExtResource("2_ekukb")
+expand_mode = 1
+
+[node name="Camera" type="Camera2D" parent="." groups=["playerCam"]]
+zoom = Vector2(3, 3)
+script = ExtResource("4_hdft0")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 350.0
+offset_top = 231.0
+offset_right = 764.0
+offset_bottom = 460.0
+text = "									The End...
+
+							Congratulations on 
+                       defeating the  shadow lord!
+
+                  Special thanks to the dev team, 
+                              TA's and Dr. Mell!
+"

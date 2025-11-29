@@ -21,6 +21,7 @@ var pain_anim: String = "Pain"
 var crouch_anim: String = "Crouch"
 var slash_anim: String = "Slash"
 var dash_anim: String = "Dash"
+var block_anim: String = "Block"
 var attacking: bool = false
 var pained: bool = false
 
@@ -73,6 +74,18 @@ var pained: bool = false
 		else get_owner().get_node(^"StateMachine").get_node(^"Slash")
 )
 
+@onready var block_state: PlayerState = (
+	get_node_or_null(^"Block") 
+		if get_node_or_null(^"Block") 
+		else get_owner().get_node(^"StateMachine").get_node(^"Block")
+)
+
+@onready var dash_state: PlayerState = (
+	get_node_or_null(^"Dash") 
+	if get_node_or_null(^"Dash")
+	else get_owner().get_node(^"StateMachine").get_node(^"Dash")
+)
+
 var sprite_flipped: bool = false
 
 
@@ -93,8 +106,8 @@ func process_physics(delta: float) -> State:
 	#print("processing p2 physics")
 	super(delta)
 	player.velocity.y += gravity * delta
-
-
+	
+	
 	var dir := Input.get_axis(player.controls.left, player.controls.right)
 
 	# pick target horizontal speed (per second)
@@ -133,6 +146,9 @@ func process_input(event: InputEvent) -> State:
 	if not event.is_action_released(player.controls.left) or not event.is_action_released(player.controls.right):
 		if not attacking:
 			determine_sprite_flipped(event)
+			
+	if event.is_action_pressed(player.controls.dash) and not attacking and not pained:
+		return dash_state
 	return null
 
 func get_move_dir() -> float:

@@ -7,6 +7,8 @@ const EDGE_RIGHT = 180.0
 
 func enter():
 	var enemy = get_owner()
+	if not enemy.is_on_floor():
+		return get_parent().get_node("Fall")
 	if enemy.animation != null:
 		enemy.animation.play("Walk")
 

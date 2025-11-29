@@ -14,6 +14,6 @@ func add_juice() -> void:
 func _ready():
 	hitbox.DAMAGE = 300
 	hitbox.KNOCKBACK = 30
-	combo_chain = [PlayerSlashState]
+	combo_chain = [PlayerSlashState, PlayerBlockState]
 	cancel_window_start = 0.2   # when cancel window opens
 	cancel_window_end = 0.45     # when cancel window closes
