@@ -24,12 +24,11 @@ script = ExtResource("4_hdft0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
-offset_left = 350.0
-offset_top = 231.0
-offset_right = 764.0
-offset_bottom = 460.0
+offset_left = 391.0
+offset_top = 226.0
+offset_right = 805.0
+offset_bottom = 455.0
 text = "									The End...
-
 							Congratulations on 
                        defeating the  shadow lord!
 

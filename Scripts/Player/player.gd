@@ -17,7 +17,9 @@ var control_schemes = [
 	kick="attack_2",
 	slash="attack_3",
 	block="p1_block",
-	dash="dash"
+	dash="dash",
+	heavy="heavy_attack",
+	nun = "nun_attack"
 	},
 	{
 		left="p2_left",
@@ -28,7 +30,9 @@ var control_schemes = [
 		kick="p2_attack_2",
 		slash="p2_attack_3",
 		block="p2_block",
-		dash = "p2_dash"
+		dash = "p2_dash",
+		heavy="p2_heavy_attack",
+		nun = "p2_nun_attack"
 		
 	},
 	{
@@ -61,7 +65,9 @@ var controls = {
 	kick="attack_2",
 	slash="attack_3",
 	block="p1_block",
-	dash="dash"
+	dash="dash",
+	heavy="heavy_attack",
+	nun = "nun_attack"
 }
 
 var team = "Player"

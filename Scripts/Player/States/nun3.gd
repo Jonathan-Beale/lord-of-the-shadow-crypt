@@ -1,9 +1,9 @@
-class_name PlayerKickState
+class_name PlayerNun3State
 extends PlayerAttackState
 
 func enter():
 	super()
-	player.animation.play(kick_anim)
+	player.animation.play(nun3_anim)
 	player.animation.animation_finished.connect(func(_anim): has_attacked = true)
 	
 func add_juice() -> void:
@@ -12,8 +12,8 @@ func add_juice() -> void:
 	# maybe change to play only when hurt animation plays
 
 func _ready():
-	hitbox.DAMAGE = 200
-	hitbox.KNOCKBACK = -20
-	combo_chain = [PlayerSlashState, PlayerBlockState, PlayerHeavyState]
-	cancel_window_start = 0.2   # when cancel window opens
-	cancel_window_end = 0.45     # when cancel window closes
+	hitbox.DAMAGE = 100
+	hitbox.KNOCKBACK = -5
+	combo_chain = []
+	cancel_window_start = 0.15   # when cancel window opens
+	cancel_window_end = 0.5     # when cancel window closes

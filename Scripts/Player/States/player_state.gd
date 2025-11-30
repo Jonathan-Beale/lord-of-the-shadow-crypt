@@ -22,6 +22,10 @@ var crouch_anim: String = "Crouch"
 var slash_anim: String = "Slash"
 var dash_anim: String = "Dash"
 var block_anim: String = "Block"
+var heavy_anim: String = "Heavy"
+var nun1_anim: String = "Nun1"
+var nun2_anim: String = "Nun2"
+var nun3_anim: String = "Nun3"
 var attacking: bool = false
 var pained: bool = false
 
@@ -84,6 +88,30 @@ var pained: bool = false
 	get_node_or_null(^"Dash") 
 	if get_node_or_null(^"Dash")
 	else get_owner().get_node(^"StateMachine").get_node(^"Dash")
+)
+
+@onready var heavy_state: PlayerState = (
+	get_node_or_null(^"Heavy") 
+	if get_node_or_null(^"Heavy")
+	else get_owner().get_node(^"StateMachine").get_node(^"Heavy")
+)
+
+@onready var nun_state: PlayerState = (
+	get_node_or_null(^"Nun") 
+	if get_node_or_null(^"Nun")
+	else get_owner().get_node(^"StateMachine").get_node(^"Nun")
+)
+
+@onready var nun2_state: PlayerState = (
+	get_node_or_null(^"Nun2") 
+	if get_node_or_null(^"Nun2")
+	else get_owner().get_node(^"StateMachine").get_node(^"Nun2")
+)
+
+@onready var nun3_state: PlayerState = (
+	get_node_or_null(^"3") 
+	if get_node_or_null(^"Nun3")
+	else get_owner().get_node(^"StateMachine").get_node(^"Nun3")
 )
 
 var sprite_flipped: bool = false

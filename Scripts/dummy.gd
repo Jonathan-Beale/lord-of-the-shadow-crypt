@@ -42,6 +42,8 @@ var gh_delay: Stat = Stat.new(3.0) # delay before grey health healing begins
 var anti_heal: Stat = Stat.new(0.5)
 var heal_power: Stat = Stat.new(0.5)
 
+
+
 signal damage_blocked(type: String, damage: float, target: Dummy, attacker: Fighter)
 signal recovering()
 
