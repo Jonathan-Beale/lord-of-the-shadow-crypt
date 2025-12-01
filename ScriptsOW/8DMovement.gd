@@ -3,7 +3,6 @@ extends CharacterBody2D
 var character_direction: Vector2
 @export var speed = 100
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@export var inv: Inv
 
 var last_direction := "down"
 var is_attacking := false
@@ -85,9 +84,3 @@ func play_attack():
 			animated_sprite_2d.animation = "attack_down"
 	
 	animated_sprite_2d.play()
-
-func player():
-	pass
-
-func collect(item):
-	inv.insert(item)
