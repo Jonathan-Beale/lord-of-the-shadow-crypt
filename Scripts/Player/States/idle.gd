@@ -26,6 +26,14 @@ func process_input(event: InputEvent) -> State:
 		return crouch_state
 	if event.is_action_pressed(player.controls.slash):
 		return slash_state
+	if event.is_action_pressed(player.controls.block):
+		return block_state
+	if event.is_action_pressed(player.controls.dash) and not attacking and not pained:
+		return dash_state
+	if event.is_action_pressed(player.controls.heavy):
+		return heavy_state
+	if event.is_action_pressed(player.controls.nun):
+		return nun_state
 	
 
 	return null

@@ -1,6 +1,9 @@
+
 [gd_scene load_steps=13 format=4 uid="uid://dfksh0gaxrmca"]
 
+
 [ext_resource type="Texture2D" uid="uid://t1o8c4t2a2iu" path="res://assetsOW/Sprites/sakuratilemap.PNG" id="1_1xyn5"]
+[ext_resource type="Script" uid="uid://kyo4iynwuv10" path="res://assetsOW/ScenesOW/sakura_lvl.gd" id="1_dvmdw"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_6sp1c"]
 [ext_resource type="Resource" uid="uid://dio02v71v6d6f" path="res://Inventory/playerInv.tres" id="3_dvmdw"]
 [ext_resource type="PackedScene" uid="uid://da78lnvhlxl1m" path="res://assetsOW/ScenesOW/enemy.tscn" id="4_1hhis"]
@@ -1187,6 +1190,7 @@ size = Vector2(7, 8)
 
 [node name="SakuraLvl" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_dvmdw")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e8cxr")

@@ -16,6 +16,7 @@ var fall_anim: String = "Fall"
 var punch_anim: String = "Punch"
 var kick_anim: String = "Kick"
 var pain_anim: String = "Pain"
+var death_anim: String = "Death"
 var attacking: bool = false
 
 #@export_group("States")
@@ -52,6 +53,9 @@ var attacking: bool = false
 #)
 
 var sprite_flipped: bool = false
+
+func can_attack() -> bool:
+	return enemy.is_on_floor()
 
 func can_transition() -> bool:
 	# Default: states can transition freely
