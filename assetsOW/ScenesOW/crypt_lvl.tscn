@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://du6dt0ed27sbg"]
+[gd_scene load_steps=8 format=4 uid="uid://bqtymcw82m27t"]
 
 [ext_resource type="TileSet" uid="uid://d33eyj1qaxgk5" path="res://assetsOW/ScenesOW/crypt.tres" id="1_ysoil"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_5xbob"]

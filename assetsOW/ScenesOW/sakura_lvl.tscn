@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbdv1qnilnga4" path="res://Inventory/stick_collectable.tscn" id="6_7b5re"]
 [ext_resource type="Script" uid="uid://b5y70tsb515ar" path="res://assetsOW/ScenesOW/enemy2.gd" id="6_prsiy"]
 [ext_resource type="Script" uid="uid://bv74738fo61x5" path="res://assetsOW/ScenesOW/enemy3.gd" id="7_7b5re"]
-[ext_resource type="PackedScene" uid="uid://dndaqjuxtktyg" path="res://assetsOW/ScenesOW/stairs_down.tscn" id="9_7b5re"]
+[ext_resource type="PackedScene" uid="uid://dn0vwqpi7pqlx" path="res://assetsOW/ScenesOW/stairs_down.tscn" id="9_7b5re"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sp1c"]
 texture = ExtResource("1_1xyn5")

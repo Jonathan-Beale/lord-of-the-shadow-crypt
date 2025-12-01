@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://da8b35vdb6jhq"]
 
-[ext_resource type="Script" uid="uid://r6hu5o66a3bx" path="res://assetsOW/ScenesOW/stairs_up.gd" id="1_fy3bp"]
+[ext_resource type="Script" path="res://assetsOW/ScenesOW/stairs_up.gd" id="1_fy3bp"]
 [ext_resource type="Texture2D" uid="uid://bj01fbn5wy4v8" path="res://assetsOW/Sprites/stairsUp.png" id="2_g517h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pdmg"]
