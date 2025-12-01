@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://dfksh0gaxrmca"]
+[gd_scene load_steps=12 format=4 uid="uid://dfksh0gaxrmca"]
 
 [ext_resource type="Texture2D" uid="uid://t1o8c4t2a2iu" path="res://assetsOW/Sprites/sakuratilemap.PNG" id="1_1xyn5"]
+[ext_resource type="Script" uid="uid://kyo4iynwuv10" path="res://assetsOW/ScenesOW/sakura_lvl.gd" id="1_dvmdw"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_6sp1c"]
 [ext_resource type="PackedScene" uid="uid://da78lnvhlxl1m" path="res://assetsOW/ScenesOW/enemy.tscn" id="4_1hhis"]
 [ext_resource type="Script" uid="uid://bc0dwynjc1tmt" path="res://ScriptsOW/EnemyManager.gd" id="4_dvmdw"]
 [ext_resource type="Script" uid="uid://b5y70tsb515ar" path="res://assetsOW/ScenesOW/enemy2.gd" id="6_prsiy"]
 [ext_resource type="Script" uid="uid://bv74738fo61x5" path="res://assetsOW/ScenesOW/enemy3.gd" id="7_7b5re"]
+[ext_resource type="PackedScene" uid="uid://dn0vwqpi7pqlx" path="res://assetsOW/ScenesOW/stairs_down.tscn" id="9_7b5re"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sp1c"]
 texture = ExtResource("1_1xyn5")
@@ -1184,6 +1186,7 @@ size = Vector2(10, 6)
 
 [node name="SakuraLvl" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_dvmdw")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e8cxr")
@@ -1270,3 +1273,7 @@ shape = SubResource("RectangleShape2D_e8cxr")
 [node name="EnemyCounter" type="Label" parent="CanvasLayer"]
 offset_right = 46.44
 offset_bottom = 23.0
+
+[node name="stairs_down" parent="." instance=ExtResource("9_7b5re")]
+position = Vector2(87, 238)
+scale = Vector2(0.1, 0.1)

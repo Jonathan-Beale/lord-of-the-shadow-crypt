@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnhy6fi6d5t10"]
+
+[ext_resource type="Texture2D" uid="uid://nvtb03y0y8r" path="res://Assets/Stage Layers/pausemenu.png" id="1_hdmo1"]
+[ext_resource type="Script" uid="uid://5s1r8jyyvxue" path="res://pausemenu.gd" id="1_nwcfo"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_nwcfo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 224.0
+offset_top = 92.0
+offset_right = 908.1256
+offset_bottom = 543.0
+texture = ExtResource("1_hdmo1")
+expand_mode = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 500.0
+offset_top = 284.0
+offset_right = 630.9678
+offset_bottom = 342.0
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 435.0
+offset_top = 359.0
+offset_right = 696.6774
+offset_bottom = 411.0
+text = "Quit To Main Menu"
+
+[node name="PauseMenu" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0

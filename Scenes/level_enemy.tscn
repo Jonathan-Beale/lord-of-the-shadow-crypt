@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cexqi8c7jreeu"]
+[gd_scene load_steps=9 format=3 uid="uid://cexqi8c7jreeu"]
 
 [ext_resource type="Script" uid="uid://nr8vjeetu3xt" path="res://Scripts/UI/level_enemy.gd" id="1_g7sbh"]
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="2_s6m4m"]
 [ext_resource type="Script" uid="uid://bup73gni77hyf" path="res://Scripts/UI/camera.gd" id="3_lexpj"]
 [ext_resource type="PackedScene" uid="uid://b7qspmk8yj07b" path="res://Scenes/fight_ui.tscn" id="4_yi4oe"]
 [ext_resource type="Texture2D" uid="uid://dj5f0cms8750v" path="res://Assets/Stage Layers/Ability Slots.png" id="5_83h6v"]
+[ext_resource type="Texture2D" uid="uid://bq3wvup4gyyoi" path="res://Assets/Stage Layers/sakura level.png" id="5_s6m4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6phgx"]
 texture = ExtResource("2_s6m4m")
@@ -577,6 +578,16 @@ offset_bottom = 18.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.909901, 0.989901)
+
+[node name="Sakura stage" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Sakura stage"]
+offset_left = -209.0
+offset_top = -149.0
+offset_right = 211.0
+offset_bottom = 131.0
+texture = ExtResource("5_s6m4m")
+expand_mode = 1
 
 [node name="AbilitiesUI" type="Node2D" parent="."]
 

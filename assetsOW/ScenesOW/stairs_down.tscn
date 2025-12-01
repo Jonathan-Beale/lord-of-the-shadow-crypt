@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dn0vwqpi7pqlx"]
 
-[ext_resource type="Script" path="res://assetsOW/ScenesOW/stairs_down.gd" id="1_nht1v"]
-[ext_resource type="Texture2D" path="res://assetsOW/Sprites/stairs.png" id="1_xwmk6"]
+[ext_resource type="Script" uid="uid://kumi85kycaa0" path="res://assetsOW/ScenesOW/stairs_down.gd" id="1_nht1v"]
+[ext_resource type="Texture2D" uid="uid://b2ok7f210pofg" path="res://assetsOW/Sprites/stairs.png" id="1_xwmk6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_liv0a"]
 size = Vector2(278, 270)

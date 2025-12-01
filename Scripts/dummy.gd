@@ -42,6 +42,8 @@ var gh_delay: Stat = Stat.new(3.0) # delay before grey health healing begins
 var anti_heal: Stat = Stat.new(0.5)
 var heal_power: Stat = Stat.new(0.5)
 
+
+
 signal damage_blocked(type: String, damage: float, target: Dummy, attacker: Fighter)
 signal recovering()
 
@@ -329,4 +331,8 @@ func take_damage(amount: float, type: String = "physical", source: Fighter = nul
 
 func die() -> void:
 	emit_signal("dying")
+	if has_node("AnimationPlayer") and $AnimationPlayer.has_animation("Death"):
+		print("WHYD ODESNB THIS WORK")
+		$AnimationPlayer.play("Death")
+	await get_tree().create_timer(1.8).timeout
 	queue_free()

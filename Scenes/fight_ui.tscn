@@ -562,7 +562,7 @@ offset_left = -216.0
 offset_top = -132.0
 offset_right = 214.0
 offset_bottom = -92.0
-color = Color(0.294118, 0.294118, 0.294118, 0.827451)
+color = Color(1, 1, 1, 0)
 
 [node name="ItemOptions" type="ColorRect" parent="."]
 visible = false

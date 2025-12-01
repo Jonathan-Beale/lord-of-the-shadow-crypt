@@ -13,9 +13,10 @@ func _ready() -> void:
 	collision_mask = 0
 
 func trigger_hit(target: Fighter, pain: State):
+	 # Deal normal damage
 	user.deal_damage(target, DAMAGE_TYPE, DAMAGE)
-#	Apply Knockback Mods
-	pain.knockback = KNOCKBACK + target.knockback_mod
-	pain.knockback_vector = self.global_position - pain.global_position
-	#target.take_damage(DAMAGE, "physical")
-	#player.add_dot(10, 5)
+
+	# Only apply knockback if this is actually a pain state that defines the properties
+	if pain is PlayerPainState:
+		pain.knockback = KNOCKBACK + target.knockback_mod
+		pain.knockback_vector = (target.global_position - user.global_position).normalized()
