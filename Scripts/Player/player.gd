@@ -6,6 +6,7 @@ extends Fighter
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var floor_collider: CollisionShape2D = $FloorCollision
 
+
 var control_schemes = [
 	{
 	left="ui_left",
@@ -15,7 +16,10 @@ var control_schemes = [
 	punch="attack_1",
 	kick="attack_2",
 	slash="attack_3",
-	#dash="dash_button"
+	block="p1_block",
+	dash="dash",
+	heavy="heavy_attack",
+	nun = "nun_attack"
 	},
 	{
 		left="p2_left",
@@ -25,6 +29,11 @@ var control_schemes = [
 		punch="p2_attack_1",
 		kick="p2_attack_2",
 		slash="p2_attack_3",
+		block="p2_block",
+		dash = "p2_dash",
+		heavy="p2_heavy_attack",
+		nun = "p2_nun_attack"
+		
 	},
 	{
 		left="p3_left",
@@ -55,7 +64,10 @@ var controls = {
 	punch="attack_1",
 	kick="attack_2",
 	slash="attack_3",
-	#dash="dash_button"
+	block="p1_block",
+	dash="dash",
+	heavy="heavy_attack",
+	nun = "nun_attack"
 }
 
 var team = "Player"
@@ -74,6 +86,8 @@ func _ready():
 	assign_team(teams[index])
 	
 	state_machine.init()
+	
+
 
 func _process(delta):
 	super(delta)

@@ -1,11 +1,13 @@
 class_name EnemyKickState
 extends EnemyState
 
-const KICK_DURATION = 0.4
+const KICK_DURATION = 1.5
 var timer = 0.0
 
 func enter():
 	var enemy = get_owner()
+	if not enemy.is_on_floor():
+		return get_parent().get_node("Fall")
 	if enemy.animation != null:
 		enemy.animation.play("Kick")
 	timer = 0.0

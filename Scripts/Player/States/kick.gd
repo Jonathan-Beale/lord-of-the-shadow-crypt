@@ -12,8 +12,8 @@ func add_juice() -> void:
 	# maybe change to play only when hurt animation plays
 
 func _ready():
-	hitbox.DAMAGE = 300
-	hitbox.KNOCKBACK = 30
-	combo_chain = [PlayerSlashState]
+	hitbox.DAMAGE = 200
+	hitbox.KNOCKBACK = -20
+	combo_chain = [PlayerSlashState, PlayerBlockState, PlayerHeavyState]
 	cancel_window_start = 0.2   # when cancel window opens
 	cancel_window_end = 0.45     # when cancel window closes

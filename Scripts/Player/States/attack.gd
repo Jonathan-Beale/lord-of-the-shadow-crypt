@@ -14,11 +14,22 @@ var can_cancel: bool = false
 # Define what attacks this can chain into
 var combo_chain: Array = []  # e.g. [PlayerAttack2, PlayerAttack3]
 var next_attack_state: State = null
+var current_state = ""
 
 # Optional: input buffer
 var input_buffer: StringName = ""
 var buffer_timer: float = 0.0
 const BUFFER_TIME := 0.15
+
+const COMBAT_ACTIONS := [
+	"attack_1",
+	"attack_2",
+	"attack_3",
+	"heavy_attack",
+	"nun_attack",
+	"dash",
+	"p1_block",
+]
 
 func _ready():
 	hitbox.collision_shape.disabled = true
@@ -31,7 +42,7 @@ func enter():
 	next_attack_state = null
 	buffer_timer = 0.0
 	hitbox.collision_shape.disabled = false
-	player.animation.play("attack_light") # Or whichever animation
+	#player.animation.play("attack_light") # Or whichever animation
 	print("Entered Attack State")
 
 func process_input(event: InputEvent) -> State:
@@ -39,7 +50,7 @@ func process_input(event: InputEvent) -> State:
 
 	# Store buffered attack input
 	if event.is_pressed():
-		for action_name in InputMap.get_actions():
+		for action_name in COMBAT_ACTIONS:
 			if Input.is_action_pressed(action_name):
 				input_buffer = action_name
 				buffer_timer = BUFFER_TIME
@@ -54,6 +65,21 @@ func process_input(event: InputEvent) -> State:
 			return parent.get_node("Kick")
 		if input_buffer == "attack_3" and PlayerSlashState in combo_chain:
 			return parent.get_node("Slash")
+		if input_buffer == "p1_block" and PlayerBlockState in combo_chain:
+			return parent.get_node("Block")
+		if input_buffer == "heavy_attack" and PlayerHeavyState in combo_chain:
+			return parent.get_node("Heavy")
+		if input_buffer == "nun_attack" and PlayerNunState in combo_chain:
+			return parent.get_node("Nun")
+		if input_buffer == "nun_attack" and current_state == "nun1":
+			return parent.get_node("Nun2")
+		if input_buffer == "nun_attack" and current_state == "nun2":
+			return parent.get_node("Nun3")
+		if input_buffer == "dash" and PlayerDashState in combo_chain:
+			return parent.get_node("Dash")
+		if input_buffer == "attack_1" and PlayerPunchState in combo_chain:
+			return parent.get_node("Punch")
+
 
 	# Default transitions (after attack)
 	if has_attacked:
@@ -82,10 +108,11 @@ func process_frame(delta: float):
 	if attack_timer >= attack_duration:
 		has_attacked = true
 
-	if has_attacked:
+	if has_attacked and not player.animation.is_playing():
 		if Input.is_action_pressed(player.controls.left) or Input.is_action_pressed(player.controls.right):
 			return walk_state
 		else:
+			#await get_tree().create_timer(1.0).timeout
 			return idle_state
 
 func exit(new_state: State = null):
