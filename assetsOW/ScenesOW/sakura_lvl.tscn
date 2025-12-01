@@ -1,12 +1,17 @@
-[gd_scene load_steps=11 format=4 uid="uid://dfksh0gaxrmca"]
+
+[gd_scene load_steps=13 format=4 uid="uid://dfksh0gaxrmca"]
+
 
 [ext_resource type="Texture2D" uid="uid://t1o8c4t2a2iu" path="res://assetsOW/Sprites/sakuratilemap.PNG" id="1_1xyn5"]
 [ext_resource type="Script" uid="uid://kyo4iynwuv10" path="res://assetsOW/ScenesOW/sakura_lvl.gd" id="1_dvmdw"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_6sp1c"]
+[ext_resource type="Resource" uid="uid://dio02v71v6d6f" path="res://Inventory/playerInv.tres" id="3_dvmdw"]
 [ext_resource type="PackedScene" uid="uid://da78lnvhlxl1m" path="res://assetsOW/ScenesOW/enemy.tscn" id="4_1hhis"]
 [ext_resource type="Script" uid="uid://bc0dwynjc1tmt" path="res://ScriptsOW/EnemyManager.gd" id="4_dvmdw"]
+[ext_resource type="PackedScene" uid="uid://dbdv1qnilnga4" path="res://Inventory/stick_collectable.tscn" id="6_7b5re"]
 [ext_resource type="Script" uid="uid://b5y70tsb515ar" path="res://assetsOW/ScenesOW/enemy2.gd" id="6_prsiy"]
 [ext_resource type="Script" uid="uid://bv74738fo61x5" path="res://assetsOW/ScenesOW/enemy3.gd" id="7_7b5re"]
+[ext_resource type="PackedScene" uid="uid://dndaqjuxtktyg" path="res://assetsOW/ScenesOW/stairs_down.tscn" id="9_7b5re"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sp1c"]
 texture = ExtResource("1_1xyn5")
@@ -1181,7 +1186,7 @@ terrain_set_2/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_6sp1c")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8cxr"]
-size = Vector2(10, 6)
+size = Vector2(7, 8)
 
 [node name="SakuraLvl" type="Node2D"]
 y_sort_enabled = true
@@ -1219,18 +1224,6 @@ use_parent_material = true
 position = Vector2(-1, 0)
 tile_map_data = PackedByteArray("AAACAAIAAAAPAAYAAAAGAAAAAAAPAAYAAAAJAAIAAAAPAAYAAAD6//P/AAAPAAYAAAD2/wgAAAAPAAYAAAAJAAgAAAAPAAYAAAD6//z/AAAPAAYAAAAIAPr/AAAPAAYAAAA=")
 tile_set = SubResource("TileSet_e8cxr")
-
-[node name="Player" parent="." instance=ExtResource("2_6sp1c")]
-z_index = 1
-position = Vector2(-4, -11)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 7)
-shape = SubResource("RectangleShape2D_e8cxr")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 3)
-zoom = Vector2(5, 5)
 
 [node name="EnemyManager" type="Node2D" parent="."]
 script = ExtResource("4_dvmdw")
@@ -1272,3 +1265,32 @@ shape = SubResource("RectangleShape2D_e8cxr")
 [node name="EnemyCounter" type="Label" parent="CanvasLayer"]
 offset_right = 46.44
 offset_bottom = 23.0
+
+[node name="stick_collectable" parent="." instance=ExtResource("6_7b5re")]
+z_index = 1
+position = Vector2(43, -70)
+
+[node name="stick_collectable2" parent="." instance=ExtResource("6_7b5re")]
+z_index = 1
+position = Vector2(-44, -95)
+
+[node name="stick_collectable3" parent="." instance=ExtResource("6_7b5re")]
+z_index = 1
+position = Vector2(-27, -48)
+
+[node name="Player" parent="." instance=ExtResource("2_6sp1c")]
+z_index = 1
+position = Vector2(-4, -11)
+inv = ExtResource("3_dvmdw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_e8cxr")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 3)
+zoom = Vector2(5, 5)
+
+[node name="stairs_down" parent="." instance=ExtResource("9_7b5re")]
+position = Vector2(90, 239)
+scale = Vector2(0.1, 0.1)

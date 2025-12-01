@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://djp3k1rb4vncc"]
+[gd_scene load_steps=99 format=3 uid="uid://djp3k1rb4vncc"]
 
 [ext_resource type="Script" uid="uid://1eb5op46ho5g" path="res://ScriptsOW/8DMovement.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://dderpgaky413u" path="res://assetsOW/Sprites/new_character_spritesheet.png" id="2_cvnsp"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://coj4pm7ahlwfi" path="res://assetsOW/Sprites/player walk down-Sheet.png" id="7_vxdo6"]
 [ext_resource type="Texture2D" uid="uid://q4y2kf1tkw6u" path="res://assetsOW/Sprites/player walk up-Sheet.png" id="8_2wx3g"]
 [ext_resource type="Texture2D" uid="uid://dtog4bw28aa5y" path="res://assetsOW/Sprites/player walk right-Sheet.png" id="8_yvmga"]
+[ext_resource type="PackedScene" uid="uid://2qxbv3elnba7" path="res://Inventory/inventory_ui.tscn" id="10_0i18n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
 atlas = ExtResource("2_cvnsp")
@@ -696,7 +697,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sweqm"]
-size = Vector2(6.75, 4.625)
+size = Vector2(5.89665, 5.55489)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -707,8 +708,15 @@ position = Vector2(1, -1)
 sprite_frames = SubResource("SpriteFrames_mkd7p")
 animation = &"walk_right1"
 frame = 7
-frame_progress = 0.8417629
+frame_progress = 0.841763
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
-position = Vector2(-1.375, 7.3125)
+position = Vector2(-0.5, 2)
+scale = Vector2(0.847939, -1.08013)
 shape = SubResource("RectangleShape2D_sweqm")
+
+[node name="InventoryUI" parent="." instance=ExtResource("10_0i18n")]
+offset_left = -40.0
+offset_top = 12.0
+offset_right = 39.0
+offset_bottom = 71.0
