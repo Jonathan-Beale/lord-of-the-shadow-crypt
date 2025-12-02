@@ -6,6 +6,7 @@ func enter():
 	has_attacked = false
 	
 	player.animation.play(heavy_anim)
+	player.play_heavy_attack_sound()
 	player.animation.animation_finished.connect(_on_animation_finished, CONNECT_ONE_SHOT)
 
 func _on_animation_finished(anim_name: String):

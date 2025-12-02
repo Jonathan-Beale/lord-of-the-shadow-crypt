@@ -4,6 +4,7 @@ extends PlayerAttackState
 func enter():
 	super()
 	player.animation.play(kick_anim)
+	player.play_heavy_attack_sound()
 	player.animation.animation_finished.connect(func(_anim): has_attacked = true)
 	
 func add_juice() -> void:

@@ -8,6 +8,7 @@ func enter():
 	#print("Jump State")
 	player.velocity.y = -player.jump_force
 	player.animation.play(jump_anim)
+	player.play_jump_sfx()
 
 func exit(new_state: State = null):
 	#print("Exit Jump State")
