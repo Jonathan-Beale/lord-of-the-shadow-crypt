@@ -13,6 +13,9 @@ func _ready() -> void:
 	collision_mask = 0
 
 func trigger_hit(target: Fighter, pain: State):
+	if user and user.has_method("play_impact_sound"):
+		user.play_impact_sound()
+	
 	 # Deal normal damage
 	user.deal_damage(target, DAMAGE_TYPE, DAMAGE)
 
