@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dfksh0gaxrmca"]
+[gd_scene load_steps=13 format=4 uid="uid://dfksh0gaxrmca"]
 
 [ext_resource type="Texture2D" uid="uid://t1o8c4t2a2iu" path="res://assetsOW/Sprites/sakuratilemap.PNG" id="1_1xyn5"]
 [ext_resource type="Script" uid="uid://kyo4iynwuv10" path="res://assetsOW/ScenesOW/sakura_lvl.gd" id="1_dvmdw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b5y70tsb515ar" path="res://assetsOW/ScenesOW/enemy2.gd" id="6_prsiy"]
 [ext_resource type="Script" uid="uid://bv74738fo61x5" path="res://assetsOW/ScenesOW/enemy3.gd" id="7_7b5re"]
 [ext_resource type="PackedScene" uid="uid://dn0vwqpi7pqlx" path="res://assetsOW/ScenesOW/stairs_down.tscn" id="9_7b5re"]
+[ext_resource type="AudioStream" uid="uid://b720vfnx2kcx2" path="res://Audio/music_overworld_theme_ambient.mp3" id="9_vh5lj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sp1c"]
 texture = ExtResource("1_1xyn5")
@@ -1277,3 +1278,7 @@ offset_bottom = 23.0
 [node name="stairs_down" parent="." instance=ExtResource("9_7b5re")]
 position = Vector2(87, 238)
 scale = Vector2(0.1, 0.1)
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_vh5lj")
+autoplay = true

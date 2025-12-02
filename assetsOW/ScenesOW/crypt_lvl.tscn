@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://bqtymcw82m27t"]
+[gd_scene load_steps=9 format=4 uid="uid://bqtymcw82m27t"]
 
 [ext_resource type="TileSet" uid="uid://b0x8m47ahduir" path="res://crypttiles.tres" id="1_kdiss"]
 [ext_resource type="PackedScene" uid="uid://djp3k1rb4vncc" path="res://assetsOW/ScenesOW/player.tscn" id="2_5xbob"]
 [ext_resource type="PackedScene" uid="uid://da8b35vdb6jhq" path="res://assetsOW/ScenesOW/stairs_up.tscn" id="4_kdiss"]
 [ext_resource type="Script" uid="uid://bc0dwynjc1tmt" path="res://ScriptsOW/EnemyManager.gd" id="4_v175n"]
 [ext_resource type="PackedScene" uid="uid://da78lnvhlxl1m" path="res://assetsOW/ScenesOW/enemy.tscn" id="5_ixc2g"]
+[ext_resource type="AudioStream" uid="uid://j2dmcn6y4ang" path="res://Audio/music_crypt_theme_ambient.mp3" id="6_v175n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5xbob"]
 size = Vector2(5, 6)
@@ -45,6 +46,7 @@ shape = SubResource("RectangleShape2D_5xbob")
 z_index = 1
 position = Vector2(-62, 134)
 scale = Vector2(0.1, 0.1)
+script = null
 
 [node name="EnemyManager" type="Node2D" parent="."]
 script = ExtResource("4_v175n")
@@ -55,3 +57,7 @@ position = Vector2(-255, -22)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyManager/Enemy"]
 position = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_kdiss")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_v175n")
+autoplay = true
