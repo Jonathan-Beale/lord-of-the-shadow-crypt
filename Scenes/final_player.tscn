@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://cw8qs0wtqrwkl"]
+[gd_scene load_steps=150 format=3 uid="uid://cw8qs0wtqrwkl"]
 
 [ext_resource type="Script" uid="uid://c37wd5nr8eia" path="res://Scripts/Player/player.gd" id="1_16qla"]
 [ext_resource type="Texture2D" uid="uid://d152rj0m1er1s" path="res://Assets/Sprites/Ninja/Player_Block-Sheet.png" id="2_ew1im"]
@@ -33,6 +33,11 @@
 [ext_resource type="Script" uid="uid://bpt0pk7lble4n" path="res://Scripts/Player/States/nun.gd" id="29_ptkxi"]
 [ext_resource type="Script" uid="uid://dar04mkqrfqcm" path="res://Scripts/Player/States/nun2.gd" id="30_h15gv"]
 [ext_resource type="Script" uid="uid://yfxcyejvl504" path="res://Scripts/Player/States/nun3.gd" id="31_k2puq"]
+[ext_resource type="AudioStream" uid="uid://d3h31yonj44bj" path="res://Audio/sfx_player_movement_jump.mp3" id="34_k2puq"]
+[ext_resource type="AudioStream" uid="uid://l8sjrfwf5gb2" path="res://Audio/sfx_player_combat_attack_punch.mp3" id="35_wv6fd"]
+[ext_resource type="AudioStream" uid="uid://bdawed01yaxna" path="res://Audio/sfx_player_combat_attack_kick.mp3" id="36_s5n28"]
+[ext_resource type="AudioStream" uid="uid://582c5ss4sd5e" path="res://Audio/sfx_player_impact_attack_punch.mp3" id="37_u8wnx"]
+[ext_resource type="AudioStream" uid="uid://cb1627ooxqny5" path="res://Audio/sfx_player_movement_step_stone.mp3" id="38_5u6g1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hlybi"]
 atlas = ExtResource("2_ew1im")
@@ -1398,6 +1403,35 @@ size = Vector2(86.875, 29.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljad6"]
 size = Vector2(82.75, 3)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_s5n28"]
+random_pitch = 1.29
+random_volume_offset_db = 0.38
+streams_count = 1
+stream_0/stream = ExtResource("34_k2puq")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u8wnx"]
+random_pitch = 1.2
+random_volume_offset_db = 1.14
+streams_count = 1
+stream_0/stream = ExtResource("35_wv6fd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5u6g1"]
+random_pitch = 1.2
+random_volume_offset_db = 0.5
+streams_count = 1
+stream_0/stream = ExtResource("36_s5n28")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_cbld5"]
+random_pitch = 1.29
+streams_count = 1
+stream_0/stream = ExtResource("37_u8wnx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4kuy0"]
+random_pitch = 1.2
+random_volume_offset_db = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("38_5u6g1")
+
 [node name="player" type="CharacterBody2D" groups=["playerCam"]]
 collision_layer = 0
 script = ExtResource("1_16qla")
@@ -1539,3 +1573,21 @@ shape = SubResource("RectangleShape2D_ljad6")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("24_xnhdj")
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_s5n28")
+
+[node name="LightAttackSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_u8wnx")
+
+[node name="HeavyAttackSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_5u6g1")
+
+[node name="ImpactSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_cbld5")
+volume_db = -3.817
+
+[node name="StoneFootstepSound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_4kuy0")
+volume_db = -3.25
+pitch_scale = 0.74
