@@ -594,7 +594,11 @@ texture = ExtResource("4_81xng")
 offset_top = 105.0
 offset_right = 259.0
 offset_bottom = 206.0
-text = "WASD or Left Stick For Movement  (Arrow Keys for P2)
-U or X(Playstation) To Punch  (O For P2)
-I or O(Playstation) To Kick (P For P2)
-Y or R1(Playstation) To Slash  (J For P2)"
+text = "WASD or Left Stick For Movement Ctrl or L2(PS) To Block
+U or X(PS) To Punch K or R2(PS) To Heavy Attack
+I or O(PS) To Kick H (repeatedly) or L1 (PS) To Use Nunchucks
+Y or R1(PS) To Slash Shift or O(PS) To Dash
+
+
+
+"

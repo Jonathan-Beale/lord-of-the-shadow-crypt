@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dfksh0gaxrmca"]
+[gd_scene load_steps=14 format=4 uid="uid://dfksh0gaxrmca"]
 
 [ext_resource type="Texture2D" uid="uid://t1o8c4t2a2iu" path="res://assetsOW/Sprites/sakuratilemap.PNG" id="1_1xyn5"]
 [ext_resource type="Script" uid="uid://kyo4iynwuv10" path="res://assetsOW/ScenesOW/sakura_lvl.gd" id="1_dvmdw"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://bc0dwynjc1tmt" path="res://ScriptsOW/EnemyManager.gd" id="4_dvmdw"]
 [ext_resource type="Script" uid="uid://b5y70tsb515ar" path="res://assetsOW/ScenesOW/enemy2.gd" id="6_prsiy"]
 [ext_resource type="Script" uid="uid://bv74738fo61x5" path="res://assetsOW/ScenesOW/enemy3.gd" id="7_7b5re"]
+[ext_resource type="PackedScene" uid="uid://1r3kd0ftqplc" path="res://Inventory/stick.tscn" id="8_7b5re"]
 [ext_resource type="PackedScene" uid="uid://dn0vwqpi7pqlx" path="res://assetsOW/ScenesOW/stairs_down.tscn" id="9_7b5re"]
+[ext_resource type="PackedScene" uid="uid://cosxy5e340m8n" path="res://assetsOW/ScenesOW/stick_collectable.tscn" id="11_tygt1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6sp1c"]
 texture = ExtResource("1_1xyn5")
@@ -1221,18 +1223,6 @@ position = Vector2(-1, 0)
 tile_map_data = PackedByteArray("AAACAAIAAAAPAAYAAAAGAAAAAAAPAAYAAAAJAAIAAAAPAAYAAAD6//P/AAAPAAYAAAD2/wgAAAAPAAYAAAAJAAgAAAAPAAYAAAD6//z/AAAPAAYAAAAIAPr/AAAPAAYAAAA=")
 tile_set = SubResource("TileSet_e8cxr")
 
-[node name="Player" parent="." instance=ExtResource("2_6sp1c")]
-z_index = 1
-position = Vector2(-4, -11)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 7)
-shape = SubResource("RectangleShape2D_e8cxr")
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, 3)
-zoom = Vector2(5, 5)
-
 [node name="EnemyManager" type="Node2D" parent="."]
 script = ExtResource("4_dvmdw")
 
@@ -1277,3 +1267,63 @@ offset_bottom = 23.0
 [node name="stairs_down" parent="." instance=ExtResource("9_7b5re")]
 position = Vector2(87, 238)
 scale = Vector2(0.1, 0.1)
+
+[node name="stick_collectable" parent="." instance=ExtResource("11_tygt1")]
+z_index = 2
+position = Vector2(24, -50)
+
+[node name="stick_collectable2" parent="." instance=ExtResource("11_tygt1")]
+z_index = 1
+position = Vector2(-42, -66)
+
+[node name="stick_collectable3" parent="." instance=ExtResource("11_tygt1")]
+z_index = 1
+position = Vector2(-50, 5)
+
+[node name="stick_collectable4" parent="." instance=ExtResource("11_tygt1")]
+z_index = 1
+position = Vector2(-207, 36)
+
+[node name="stick_collectable5" parent="." instance=ExtResource("11_tygt1")]
+z_index = 1
+position = Vector2(206, 1)
+
+[node name="stick_collectable6" parent="." instance=ExtResource("11_tygt1")]
+z_index = 1
+position = Vector2(-74, 108)
+
+[node name="stick_collectable7" parent="." instance=ExtResource("11_tygt1")]
+z_index = 1
+position = Vector2(-191, -103)
+
+[node name="Player" parent="." instance=ExtResource("2_6sp1c")]
+z_index = 1
+position = Vector2(-2, -14)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_e8cxr")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, 3)
+zoom = Vector2(5, 5)
+
+[node name="apple" parent="." instance=ExtResource("8_7b5re")]
+z_index = 1
+position = Vector2(-31, 32)
+
+[node name="apple2" parent="." instance=ExtResource("8_7b5re")]
+z_index = 1
+position = Vector2(-28, -22)
+
+[node name="apple3" parent="." instance=ExtResource("8_7b5re")]
+z_index = 1
+position = Vector2(80, -53)
+
+[node name="apple4" parent="." instance=ExtResource("8_7b5re")]
+z_index = 1
+position = Vector2(-209, 113)
+
+[node name="apple5" parent="." instance=ExtResource("8_7b5re")]
+z_index = 1
+position = Vector2(-114, -11)

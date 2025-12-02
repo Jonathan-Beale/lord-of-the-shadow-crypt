@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cd82smj7lwb8e"]
 
-[ext_resource type="Script" uid="uid://4a7iymaa8b3k" path="res://Scenes/level_final_boss.gd" id="1_s4acv"]
+[ext_resource type="Script" path="res://Scenes/level_final_boss.gd" id="1_s4acv"]
 [ext_resource type="Texture2D" uid="uid://ur2g2kn0wcia" path="res://Assets/Stage Layers/tileset.png" id="2_hixgm"]
 [ext_resource type="Script" uid="uid://bup73gni77hyf" path="res://Scripts/UI/camera.gd" id="3_cmf3m"]
 [ext_resource type="Texture2D" uid="uid://dx86vuup0p8cp" path="res://Assets/Stage Layers/crypt background.png" id="3_hixgm"]
@@ -604,11 +604,14 @@ texture = ExtResource("5_vpilv")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Controls" type="Label" parent="CanvasLayer"]
-visible = false
 offset_top = 105.0
 offset_right = 259.0
 offset_bottom = 206.0
-text = "WASD or Left Stick For Movement
-U or X(Playstation) To Punch
-I or O(Playstation) To Kick
-Y or R1(Playstation) To Slash"
+text = "WASD or Left Stick For Movement Ctrl or L2(PS) To Block
+U or X(PS) To Punch K or R2(PS) To Heavy Attack
+I or O(PS) To Kick H (repeatedly) or L1 (PS) To Use Nunchucks
+Y or R1(PS) To Slash Shift or O(PS) To Dash
+
+
+
+"

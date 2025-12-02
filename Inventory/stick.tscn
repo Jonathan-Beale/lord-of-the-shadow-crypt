@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://1r3kd0ftqplc"]
+
+[ext_resource type="Script" uid="uid://dkj1g6t17dl4b" path="res://stick.gd" id="1_oqw88"]
+[ext_resource type="Resource" uid="uid://bnl4u4nq4kijx" path="res://assetsOW/ScenesOW/apple.tres" id="2_1jmiq"]
+[ext_resource type="Texture2D" uid="uid://d1ut77muhbooj" path="res://assetsOW/Sprites/apple-icon.png" id="3_kk0qq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jmiq"]
+
+[node name="apple" type="StaticBody2D"]
+script = ExtResource("1_oqw88")
+item = ExtResource("2_1jmiq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_kk0qq")
+
+[node name="interactable_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_1jmiq")
+
+[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]
