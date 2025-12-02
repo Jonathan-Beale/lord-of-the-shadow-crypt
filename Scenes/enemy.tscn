@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dxu8t42df5yn" path="res://Scripts/AI/enemy.gd" id="1_7k104"]
 [ext_resource type="Texture2D" uid="uid://ds6nyl8brrwks" path="res://Assets/Spritesheets/Skeleton enemy.png" id="2_ta2yt"]
 [ext_resource type="Script" uid="uid://c4xq2qqic5hbi" path="res://Scripts/AI/States/walk.gd" id="17_vh8xy"]
-[ext_resource type="Script" uid="uid://bjln3cw2jgkvh" path="res://jump.gd" id="18_qjcj6"]
+[ext_resource type="Script" uid="uid://du4vwalyg27o5" path="res://jump.gd" id="18_qjcj6"]
 [ext_resource type="Script" uid="uid://baccff47x3vf3" path="res://Scripts/AI/States/fall.gd" id="19_qjcj6"]
 [ext_resource type="Script" uid="uid://cg0g2aj4hajdc" path="res://Scripts/AI/States/kick.gd" id="22_8cim4"]
 [ext_resource type="Script" uid="uid://bwprhg14cwfha" path="res://Scripts/AI/ai_controller.gd" id="25_7x82w"]
@@ -355,6 +355,35 @@ size = Vector2(27.5, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nr6c1"]
 size = Vector2(24, 59.25)
 
+[sub_resource type="Animation" id="Animation_anrbk"]
+resource_name = "Death"
+length = 1.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Death"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
 [sub_resource type="Animation" id="Animation_iruf7"]
 resource_name = "Fall"
 length = 0.1
@@ -648,35 +677,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_anrbk"]
-resource_name = "Death"
-length = 1.8
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Death"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05, 1.2, 1.35, 1.5, 1.65, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n7ghd"]

@@ -1270,19 +1270,19 @@ scale = Vector2(0.1, 0.1)
 
 [node name="stick_collectable" parent="." instance=ExtResource("11_tygt1")]
 z_index = 2
-position = Vector2(24, -50)
+position = Vector2(32, -95)
 
 [node name="stick_collectable2" parent="." instance=ExtResource("11_tygt1")]
 z_index = 1
-position = Vector2(-42, -66)
+position = Vector2(-92, -143)
 
 [node name="stick_collectable3" parent="." instance=ExtResource("11_tygt1")]
 z_index = 1
-position = Vector2(-50, 5)
+position = Vector2(-119, 16)
 
 [node name="stick_collectable4" parent="." instance=ExtResource("11_tygt1")]
 z_index = 1
-position = Vector2(-207, 36)
+position = Vector2(215, 134)
 
 [node name="stick_collectable5" parent="." instance=ExtResource("11_tygt1")]
 z_index = 1
@@ -1310,15 +1310,15 @@ zoom = Vector2(5, 5)
 
 [node name="apple" parent="." instance=ExtResource("8_7b5re")]
 z_index = 1
-position = Vector2(-31, 32)
+position = Vector2(48, 143)
 
 [node name="apple2" parent="." instance=ExtResource("8_7b5re")]
 z_index = 1
-position = Vector2(-28, -22)
+position = Vector2(-131, -74)
 
 [node name="apple3" parent="." instance=ExtResource("8_7b5re")]
 z_index = 1
-position = Vector2(80, -53)
+position = Vector2(116, -151)
 
 [node name="apple4" parent="." instance=ExtResource("8_7b5re")]
 z_index = 1
@@ -1326,4 +1326,4 @@ position = Vector2(-209, 113)
 
 [node name="apple5" parent="." instance=ExtResource("8_7b5re")]
 z_index = 1
-position = Vector2(-114, -11)
+position = Vector2(-41, -33)
