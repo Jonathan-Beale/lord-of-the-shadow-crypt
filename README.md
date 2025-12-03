@@ -1,0 +1,4 @@
+# Lord of the Shadow Crypt
+Our game is a roguelike-inspired fighting game where the player progresses through a 2d pixel art dungeon fighting ninjas and skeletons in mortal kombat/smash bros fashion, while also expanding their moveset and build each run, with the goal of defeating the evil Necromancer who lies sealed at the bottom of the crypt. If the player falls in battle they are sent back to the start of the dungeon now playing as an entirely new ninja, but are now at risk of encountering their old ninja, now resurrected by enemy necromancers as a mini boss. We have one member and a couple of friends willing to contribute audio and create a somber atmosphere that we hope will appeal to fighting game enthusiasts who want a feeling of progression.
+
+## Game Play

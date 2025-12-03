@@ -1,0 +1,39 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b0x8m47ahduir"]
+
+[ext_resource type="Texture2D" uid="uid://dsibqhgqd885t" path="res://assetsOW/ScenesOW/DarkStoneTile.png" id="1_02apj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gl61r"]
+texture = ExtResource("1_02apj")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -0.197845, -0.44515, -0.0989227, -0.247305, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.840839, -0.593534, -8, -0.593534, -8, -8, 8, -8, 8, -0.494612, 0.840839, -0.593534, 0.939762, -0.692457)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.840839, -0.593534, -8, -0.593534, -8, -8, 8, -8, 8, 8, 0.840839, 8, 0.939762, -0.692457)
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.0494614, -8, -0.346228, -0.0989227, -0.44515, -0.0989227, -0.247305, 8, -8, 8)
+1:1/0 = 0
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0.840839, -0.593534, 0.939762, -0.692457, 1.13761, -8, 8, -8, 8, 8, 0.840839, 8, 0.939762, -0.692457)
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 0.0494614, -8, 0.0494614, -0.494612, 8, -0.296768, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 0.189932, 8, 0.0910091, 8, 8, 0.215649, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 8, -8, 0.189932, 1.89733, 0.0910091, 1.7984, -8, 8, -8, 8, 8, 0.215649, 8)
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gl61r")

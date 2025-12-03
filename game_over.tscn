@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://danuskr1j636s"]
+
+[ext_resource type="Script" uid="uid://5s1r8jyyvxue" path="res://pausemenu.gd" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://nvtb03y0y8r" path="res://Assets/Stage Layers/pausemenu.png" id="2_8u835"]
+[ext_resource type="AudioStream" uid="uid://dbgs4rwb7dddo" path="res://Audio/sfx_general_ui_cursor_click.mp3" id="3_ftari"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_ccer4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 224.0
+offset_top = 92.0
+offset_right = 908.126
+offset_bottom = 543.0
+texture = ExtResource("2_8u835")
+expand_mode = 1
+
+[node name="ResumeButton" type="Button" parent="."]
+offset_left = 500.0
+offset_top = 284.0
+offset_right = 630.968
+offset_bottom = 342.0
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 435.0
+offset_top = 359.0
+offset_right = 696.677
+offset_bottom = 411.0
+text = "Quit To Main Menu"
+
+[node name="PauseMenu" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ftari")

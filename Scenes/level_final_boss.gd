@@ -1,0 +1,67 @@
+extends Node2D
+
+var game_mode = "PvE"
+const PlayerScene := preload("res://Scenes/final_player.tscn")
+const EnemyScene := preload("res://Scenes/finalboss.tscn")
+@onready var FightUI = $FightUI
+var player_actions = []
+signal round_over(move_log)
+var enemy = EnemyScene.instantiate()
+
+func set_up(players: int = 1):
+	for i in range(players):
+		var player = PlayerScene.instantiate()
+		player.position = Vector2(-100, 50)
+		add_child(player)
+		player.state_machine.changing_state.connect(_record_move)
+		player.dying.connect(_on_player_died)
+
+	#var enemy = EnemyScene.instantiate()
+	enemy.position = Vector2(50, 50)
+	add_child(enemy)
+	if enemy.has_signal("dying"):
+		enemy.dying.connect(_on_enemy_died)
+	if enemy.has_node("StateMachine"):
+		enemy.state_machine.changing_state.connect(_record_move)
+
+	FightUI.position = Vector2(-5, 18)
+	FightUI._add_bars_coop(get_tree().get_nodes_in_group("Player"))
+	FightUI.start_countdown()
+
+func _record_move(state, global_pos, player):
+	player_actions.append({
+		"player": player,
+		"state": state,
+		"pos": global_pos
+	})
+
+func _on_player_died():
+	finish(false)
+
+func _on_enemy_died():
+	finish(true)
+
+func finish(player_won: bool = true):
+	emit_signal("round_over", player_actions)
+	var enemy_manager = get_tree().root.get_node_or_null("EnemyManager")
+	if enemy_manager == null:
+		for child in get_tree().root.get_children():
+			if child.name == "EnemyManager":
+				enemy_manager = child
+				break
+
+	if enemy_manager:
+		if player_won:
+			await get_tree().create_timer(1.0).timeout
+			enemy_manager.return_from_battle()
+		else:
+			enemy_manager.pending_battle_enemy_id = -1
+			await get_tree().create_timer(1.0).timeout
+			enemy_manager.return_from_battle()
+	else:
+		enemy.animation.play("Death")
+		await get_tree().create_timer(5.0).timeout
+		get_tree().change_scene_to_file("res://Scenes/the_end.tscn")
+
+func _ready():
+	set_up()
