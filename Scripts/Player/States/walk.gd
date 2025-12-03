@@ -5,10 +5,14 @@ const SPEED: float = 5.0
 #const max_speed: float = 180.0
 var stopping = false
 
+const STEP_INTERVAL := 0.25
+var step_timer := 0.0
+
 func enter():
 	super()
 	#print("Walk State")
 	player.animation.play(walk_anim)
+	step_timer = 0.0
 
 func process_input(event: InputEvent) -> State:
 	super(event)
@@ -37,6 +41,14 @@ func process_physics(delta: float) -> State:
 	if player.velocity.x == 0:
 		
 		return idle_state
+	
+	# Footsteps while moving and on the ground
+	if player.is_on_floor() and abs(player.velocity.x) > 0.1:
+		step_timer -= delta
+		if step_timer <= 0.0:
+			player.play_stone_footstep_sound()
+			step_timer = STEP_INTERVAL
+	
 	return null
 
 

@@ -5,6 +5,7 @@ func enter():
 	super()
 	player.animation.play(punch_anim)
 	player.animation.animation_finished.connect(func(_anim): has_attacked = true)
+	player.play_light_attack_sound()
 	attacking = false
 	
 func add_juice() -> void:
