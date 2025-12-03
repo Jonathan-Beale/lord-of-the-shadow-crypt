@@ -6,6 +6,12 @@ extends Fighter
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var floor_collider: CollisionShape2D = $FloorCollision
 
+#SFX
+@onready var jump_sfx: AudioStreamPlayer = $JumpSound
+@onready var light_attack_sound: AudioStreamPlayer = $LightAttackSound
+@onready var heavy_attack_sound: AudioStreamPlayer = $HeavyAttackSound
+@onready var impact_sound: AudioStreamPlayer = $ImpactSound
+@onready var stone_footstep_sound: AudioStreamPlayer = $StoneFootstepSound
 
 var control_schemes = [
 	{
@@ -103,3 +109,18 @@ func assign_team(new_team: String = ""):
 	if not new_team: return
 	team = new_team
 	self.add_to_group(team)
+
+func play_jump_sfx():
+	jump_sfx.play()
+
+func play_light_attack_sound():
+	light_attack_sound.play()
+
+func play_heavy_attack_sound():
+	heavy_attack_sound.play()
+
+func play_impact_sound():
+	impact_sound.play()
+	
+func play_stone_footstep_sound():
+	stone_footstep_sound.play()
