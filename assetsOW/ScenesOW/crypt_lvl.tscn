@@ -76,6 +76,6 @@ shape = SubResource("RectangleShape2D_05cam")
 
 [node name="crypt_music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_inghv")
-volume_db = -20.0
+volume_db = -10.0
 autoplay = true
 parameters/looping = false
